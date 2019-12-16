@@ -27,7 +27,7 @@ class Login extends Component {
       })
       .catch(err => {
         console.log(err);
-        Swal.fire(res.date.message);
+        Swal.fire(err.response.data.message);
       });
   };
 
