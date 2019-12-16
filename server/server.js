@@ -6,6 +6,7 @@ const session = require('express-session')
 const { SERVER_PORT, CONNECTION_STRING, SECRET } = process.env
 
 // Controllers
+const authCtrl = require('./controllers/authCtrl')
 const postCtrl = require('./controllers/postController')
 const commentCtrl = require('./controllers/commentController')
 
@@ -22,6 +23,11 @@ app.use(
     secret: SECRET,
     cookie: { secure: false }
   }))
+
+// Auth Endpoints
+  app.post('/auth/register', authCtrl.register)
+  app.post('/auth/login', authCtrl.login)
+  app.delete('/auth/logout', authCtrl.logout)
 
 // Post Endpoints
 app.get('/api/posts', postCtrl.getAllPosts)
