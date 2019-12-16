@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="app-contanier">
       <Header />
-      {routes}
+      {/* {routes} */}
     </div>
   );
 }
