@@ -1,7 +1,7 @@
 {
   "name": "social-coders",
   "main": "server/server.js",
-  "proxy": "https://localhost:3000",
+  "proxy": "http://localhost:4446",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,7 +13,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
-    "massiv": "0.0.34",
     "massive": "^6.1.4",
     "mdbreact": "^4.23.1",
     "react": "^16.12.0",
