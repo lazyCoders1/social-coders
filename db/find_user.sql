@@ -1,0 +1,1 @@
+select count(*) from sc_users where email = $1;

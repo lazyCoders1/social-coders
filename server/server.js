@@ -16,6 +16,7 @@ const auth = require('./middleware/authMiddleware')
 const app = express()
 
 app.use(express.json())
+
 app.use(
   session({
     resave: true,
@@ -40,6 +41,11 @@ app.patch('/api/posts/:id', postCtrl.updatePost)
 app.get('/api/comments/:id', commentCtrl.getComments)
 app.post('/api/comments', auth.usersOnly, commentCtrl.addComment)
 app.delete('/api/comments/:id', commentCtrl.deleteComment)
+
+//*******AUTHENTICATION*******//
+app.post('/auth/register', authCtrl.register)
+app.post('/auth/login', authCtrl.login)
+app.delete('/auth/logout', authCtrl.logout)
 
 massive(CONNECTION_STRING).then(database => {
   app.set('db', database)
