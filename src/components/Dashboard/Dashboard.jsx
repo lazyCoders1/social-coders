@@ -15,8 +15,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="dashboardDiv">
-        <MDBCol className="cardsContainer">
-          <MDBCard className="cards" style={{ width: '25rem' }}>
+        <MDBCol className="cardsContainer" >
+          <MDBCard className="cards" style={{ width: '25rem', margin: 'auto' }}>
             <MDBCardImage
               className="img-fluid"
               src="https://images.unsplash.com/photo-1526397751294-331021109fbd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80"

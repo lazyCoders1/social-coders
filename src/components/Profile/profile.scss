@@ -1,0 +1,70 @@
+.user-post-container {
+    height: auto;
+    width: 60vw;
+    padding: 20px;
+    margin: 0 auto;
+    .h1 {
+        font-size: 1.5rem;
+        
+    }
+    .img {
+        height: 200px;
+        width: 400px;
+        margin: 15px 0 20px 0;
+    }
+    .p {
+        font-size: 1rem;
+    }
+}
+
+.top-margin {
+    padding-top: 80px;
+}
+
+.user-profile-container {
+    width: 60vw;
+    height: 400px;
+    margin: auto;
+    box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.376);
+    margin-top: 20px;
+
+    .cover-photo {
+        background-image: url('https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
+        background-size: cover;
+        background-position: center;
+        height: 250px;
+    }
+    .header-container {
+        display: flex;
+        margin: 35px 0 0 30px;
+        h4 {
+            font-size: 1.4rem;
+        }
+        .about-container {
+            margin-left: 100px;
+        }
+    }
+  
+}
+
+.profile-pic {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.972);
+    position: absolute;
+    top: 180px;
+    margin: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.952);
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.376);
+
+    img {
+        position: relative;
+        height: 130px;
+        margin: 0 auto;
+    }
+
+}

@@ -10,6 +10,12 @@ module.exports = {
     const post = await db.get_post(id);
     res.status(200).send(post);
   },
+  getUsersPosts: async (req, res) => {
+    const db = req.app.get('db')
+    const { id } = req.params
+    const posts = await db.get_users_posts(id)
+    res.status(200).send(posts)
+  },
   addPost: (req, res) => {
     const db = req.app.get("db");
     const { title, img, content, author_id } = req.body;
