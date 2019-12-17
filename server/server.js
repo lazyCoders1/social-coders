@@ -34,6 +34,7 @@ app.delete("/auth/logout", authCtrl.logout);
 // Post Endpoints
 app.get("/api/posts", postCtrl.getAllPosts);
 app.get("/api/posts/:id", postCtrl.getOnePost);
+app.get("/api/user/posts/:id", postCtrl.getUsersPosts);
 app.post("/api/posts", auth.usersOnly, postCtrl.addPost);
 app.delete("/api/posts/:id", postCtrl.deletePost);
 app.patch("/api/posts/:id", postCtrl.updatePost);
