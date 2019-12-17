@@ -11,10 +11,11 @@ import {
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBIcon,
-  MDBFormInline
+  MDBFormInline,
+  MDBBtn
 } from "mdbreact";
-
 import { BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
 
 export class Header extends Component {
   state = {
@@ -28,7 +29,7 @@ export class Header extends Component {
   render() {
     return (
       <Router>
-        <MDBNavbar color="default-color" dark expand="md">
+        <MDBNavbar className='position-sticky' color="default-color" dark expand="md" style={{position: "fixed", top: 0, width: '100vw', zIndex: '10'}} >
           {/* <MDBNavbar color="grey lighten-5" dark expand="md"> */}
           <MDBNavbarBrand>
             <strong className="white-text">Social Coders</strong>
@@ -67,18 +68,29 @@ export class Header extends Component {
                 </MDBNavItem>
               </MDBNavbarNav>
               <MDBNavbarNav right>
-                <MDBNavItem>
-                  <MDBDropdown>
-                    <MDBDropdownToggle nav caret>
-                      <MDBIcon icon="user" />
-                    </MDBDropdownToggle>
-                    <MDBDropdownMenu right className="dropdown-default">
-                      <MDBDropdownItem href="#!">Profile</MDBDropdownItem>
-                      <MDBDropdownItem href="#!">Favorites</MDBDropdownItem>
-                      <MDBDropdownItem href="#!">SginOut</MDBDropdownItem>
-                    </MDBDropdownMenu>
-                  </MDBDropdown>
-                </MDBNavItem>
+                {this.props.id ? (
+                  <MDBNavItem>
+                    <MDBDropdown>
+                      <MDBDropdownToggle nav caret>
+                        <MDBIcon icon="user" />
+                      </MDBDropdownToggle>
+                      <MDBDropdownMenu right className="dropdown-default">
+                        <MDBDropdownItem href="#!">Profile</MDBDropdownItem>
+                        <MDBDropdownItem href="#!">Favorites</MDBDropdownItem>
+                        <MDBDropdownItem href="#!">SignOut</MDBDropdownItem>
+                      </MDBDropdownMenu>
+                    </MDBDropdown>
+                  </MDBNavItem>
+                ) : (
+                  <div style={{display: 'flex'}}>
+                    <MDBBtn color="warning" size="sm">
+                      SignUp
+                    </MDBBtn>
+                    <MDBBtn color="warning" size="sm">
+                      SignIn
+                    </MDBBtn>
+                  </div>
+                )}
               </MDBNavbarNav>
             </div>
           </MDBCollapse>
@@ -88,4 +100,9 @@ export class Header extends Component {
   }
 }
 
-export default Header;
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
+}
+
+export default connect(mapStateToProps)(Header);

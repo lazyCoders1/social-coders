@@ -34,13 +34,13 @@ app.delete("/auth/logout", authCtrl.logout);
 // Post Endpoints
 app.get("/api/posts", postCtrl.getAllPosts);
 app.get("/api/posts/:id", postCtrl.getOnePost);
-app.post("/api/posts", auth.usersOnly, postCtrl.addPost);
+app.post("/api/posts", /* auth.usersOnly */ postCtrl.addPost);
 app.delete("/api/posts/:id", postCtrl.deletePost);
 app.patch("/api/posts/:id", postCtrl.updatePost);
 
 // Comment Endpoints
 app.get("/api/comments/:id", commentCtrl.getComments);
-app.post("/api/comments", auth.usersOnly, commentCtrl.addComment);
+app.post("/api/comments", /* auth.usersOnly */ commentCtrl.addComment);
 app.delete("/api/comments/:id", commentCtrl.deleteComment);
 app.patch("/api/comments/:id", commentCtrl.updateComment);
 
