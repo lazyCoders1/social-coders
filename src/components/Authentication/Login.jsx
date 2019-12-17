@@ -6,11 +6,16 @@ import Swal from "sweetalert2";
 import Register from './Register'
 
 class Login extends Component {
-  state = {
-    email: "",
-    password: "",
-    toggle: false
-  };
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+          email: "",
+          password: "",
+          toggle: false
+        };
+    }
+    
 
   handleChange = (key, value) => {
     this.setState({ [key]: value });
@@ -18,8 +23,7 @@ class Login extends Component {
 
   login = () => {
     const { email, password } = this.state;
-    axios
-      .post("/auth/login", { email, password })
+    axios.post("/auth/login", { email, password })
       .then(res => {
         this.props.updateUserInfo(res.data.user);
         console.log(res.data.user);
@@ -56,8 +60,8 @@ class Login extends Component {
               placeholder="Password"
               type="password"
             />
-            <button onClick={this.login}>Login!</button>
-            <h4 onClick={this.toggle}>Need an account? Register here!</h4>
+            <button onClick={() => this.login()}>Login!</button>
+            <h4 onClick={() => this.toggle()}>Need an account? Register here!</h4>
           </div>
         ) : (
           <Register toggle={this.toggle} />

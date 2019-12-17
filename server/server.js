@@ -25,11 +25,6 @@ app.use(
     cookie: { secure: false }
   }))
 
-// Auth Endpoints
-  app.post('/auth/register', authCtrl.register)
-  app.post('/auth/login', authCtrl.login)
-  app.delete('/auth/logout', authCtrl.logout)
-
 // Post Endpoints
 app.get('/api/posts', postCtrl.getAllPosts)
 app.get('/api/posts/:id', postCtrl.getOnePost)

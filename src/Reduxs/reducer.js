@@ -2,7 +2,7 @@ const initialState = {
   //!USER_INFO
   email: "",
   name: "",
-  user_id: "",
+  id: "",
   profile_img: "",
   //!CREATE_POST
   createInput: "",

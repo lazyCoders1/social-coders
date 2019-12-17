@@ -62,8 +62,8 @@ class Dashboard extends Component {
           </MDBCard>
         </MDBCol>
       </div>
-    )
+    );
   }
 }
 
-export default Dashboard
+export default Dashboard;
