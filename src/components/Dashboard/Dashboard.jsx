@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import {Link} from 'react-router-dom'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   render() {
@@ -11,8 +11,8 @@ class Dashboard extends Component {
         <Link to="/favorites">favorites</Link>
         <Link to="/">dashboard</Link>
       </div>
-    )
+    );
   }
 }
 
-export default Dashboard
+export default Dashboard;
