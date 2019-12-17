@@ -7,8 +7,7 @@ module.exports = {
   },
   addComment: (req, res) => {
     const db = req.app.get("db");
-    const { id: post_id } = req.params;
-    const { content, author_id } = req.body;
+    const { content, post_id, author_id } = req.body;
     const comment = db.add_comment({ post_id, content, author_id });
     res.status(200).send(comment);
   },
