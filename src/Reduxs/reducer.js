@@ -1,6 +1,6 @@
 const initialState = {
   //!USER_INFO
-  eamil: "",
+  email: "",
   name: "",
   user_id: "",
   profile_img: "",
