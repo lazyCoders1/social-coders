@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-import axios from "axios";
+import axios from 'axios';
 import { updateUserInfo } from "../../Reduxs/reducer";
 import { connect } from "react-redux";
 import Swal from "sweetalert2";
 
 class Register extends Component {
-  state = {
-    email: "",
-    name: "",
-    password1: "",
-    password2: ""
-  };
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+          email: "",
+          name: "",
+          password1: "",
+          password2: ""
+        };
+    }
+    
 
   handleChange = (key, value) => {
     this.setState({
@@ -20,20 +25,20 @@ class Register extends Component {
 
   register = () => {
     if (this.state.password1 === this.state.password2) {
-      const { name, email, password1: password } = this.state;
-      axios
-        .post("/auth/register", { name, email, password })
+
+        const {name, email, password1: password} = this.state
+        axios.post('/auth/register', {name, email, password})
         .then(res => {
-          this.props.updateUserInfo(res.data.user);
-          Swal.fire(res.data.message);
-        })
-        .catch(err => {
-          Swal.fire(err.response.data.message);
-        });
+                console.log(res.data)
+                this.props.updateUserInfo(res.data.user)
+            })
+            .catch(err => {
+                console.log(err.response.data.message)
+            })
     } else {
-      Swal.fire({ text: `passwords don't match` });
+        Swal.fire(`passwords don't match`)
     }
-  };
+}
 
   render() {
     return (
@@ -66,7 +71,7 @@ class Register extends Component {
           placeholder="Retype password"
           type="password"
         />
-        <button onClick={() => this.register()}>Register!</button>
+        <button onClick = {() => this.register()}>Register!</button>
           <h4 onClick={() => this.props.toggle()}>Already have an account? Login here</h4>
       </div>
     );
