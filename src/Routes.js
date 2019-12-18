@@ -20,7 +20,7 @@ export default (
     <Route path="/meetups" component={Meetups}></Route>
     <Route path="/createpost" component={CreatePost}></Route>
     <Route path="/userposts" component={UserPost}></Route>
-    <Route path="/profile" component={Profile}></Route>
+    <Route path="/profile/:id" component={Profile}></Route>
     <Route path="/favorites" component={Favorites}></Route>
     <Route path="/startups" component={Startups}></Route>
     <Route path="/login" component={Login}></Route>
