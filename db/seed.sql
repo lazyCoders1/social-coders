@@ -43,3 +43,16 @@ create table chatroom_junction (
   user_id int references sc_users(id),
   chatroom_id int references chatroom(id)
 );
+
+create table meetups(
+  id serial primary key,
+  title varchar(25),
+  img text,
+  description varchar,
+  date TIMESTAMP, 
+  user_id integer references sc_users(id),
+  street varchar(120),
+  city varchar(50),
+  state varchar(2),
+  zipcode integer
+)
