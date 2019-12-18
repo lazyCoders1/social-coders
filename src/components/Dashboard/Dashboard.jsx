@@ -18,7 +18,7 @@ class Dashboard extends Component {
       <div className="dashboardDiv">
         <header
           className="topHalf"
-          style={{ display: 'flex', flexDirection: 'row' }}
+          style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
           <MDBContainer style={{ margin: '0 auto' }}>
             <MDBJumbotron
@@ -152,7 +152,8 @@ class Dashboard extends Component {
               rel="noopener noreferrer"
               style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
             >
-              <MDBIcon icon="beer" style={{ color: '#FFBB33' }} /> >Roundy
+              <MDBIcon icon="beer" style={{ color: '#FFBB33' }} />
+              >Roundy
             </a>
             <a
               href="https://www.linkedin.com/in/joshjagoda"

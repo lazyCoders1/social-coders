@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
+require('dotenv').config()
+const { GOOGLE_API_KEY } = process.env
 
 class MeetUps extends Component {
   render() {
@@ -28,5 +30,5 @@ class MeetUps extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBTEz9tmLc2NzmQ6Aq_zt9qE3OjWgoiGRM'
+  apiKey: { GOOGLE_API_KEY }
 })(MeetUps)
