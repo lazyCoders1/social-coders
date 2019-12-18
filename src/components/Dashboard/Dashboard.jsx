@@ -51,7 +51,7 @@ class Dashboard extends Component {
                   style={{ fontSize: '5rem', maxWidth: '26rem' }}
                   className="h1-responsive pt-3 m-5 font-bold"
                 >
-                  Social Development
+                  Develop Socially
                 </MDBCardTitle>
               </MDBCol>
             </MDBJumbotron>
@@ -152,7 +152,7 @@ class Dashboard extends Component {
               rel="noopener noreferrer"
               style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
             >
-              <MDBIcon icon="beer" /> >Roundy
+              <MDBIcon icon="beer" style={{ color: '#FFBB33' }} /> >Roundy
             </a>
             <a
               href="https://www.linkedin.com/in/joshjagoda"
@@ -160,7 +160,7 @@ class Dashboard extends Component {
               rel="noopener noreferrer"
               style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
             >
-              <MDBIcon icon="robot" />
+              <MDBIcon icon="robot" style={{ color: '#FFBB33' }} />
               >Josh
             </a>
             <a
@@ -169,7 +169,7 @@ class Dashboard extends Component {
               rel="noopener noreferrer"
               style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
             >
-              <MDBIcon fab icon="earlybirds" />
+              <MDBIcon fab icon="earlybirds" style={{ color: '#FFBB33' }} />
               >Cody
             </a>
             <a
@@ -178,7 +178,7 @@ class Dashboard extends Component {
               rel="noopener noreferrer"
               style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
             >
-              <MDBIcon icon="user-ninja" />
+              <MDBIcon icon="user-ninja" style={{ color: '#FFBB33' }} />
               >Hari
             </a>
           </div>
