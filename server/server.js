@@ -28,6 +28,7 @@ app.use(
 
 // Auth Endpoints
 app.post("/auth/register", authCtrl.register);
+// app.post("/auth/register", ()=> console.log("hit"));
 app.post("/auth/login", authCtrl.login);
 app.delete("/auth/logout", authCtrl.logout);
 
@@ -47,9 +48,9 @@ app.delete("/api/comments/:id", commentCtrl.deleteComment);
 app.patch("/api/comments/:id", commentCtrl.updateComment);
 
 //*******AUTHENTICATION*******//
-app.post("/auth/register", authCtrl.register);
-app.post("/auth/login", authCtrl.login);
-app.delete("/auth/logout", authCtrl.logout);
+// app.post("/auth/register", authCtrl.register);
+// app.post("/auth/login", authCtrl.login);
+// app.delete("/auth/logout", authCtrl.logout);
 
 massive(CONNECTION_STRING).then(database => {
   app.set("db", database);

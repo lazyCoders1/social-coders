@@ -39,12 +39,14 @@ class Register extends Component {
 
   register = () => {
     if (this.state.password1 === this.state.password2) {
-      const { name, email, password1: password } = this.state;
+      const { email, name, password1: password } = this.state;
       axios
         .post("/auth/register", { name, email, password })
         .then(res => {
           console.log("register res.data", res.data);
           this.props.updateUserInfo(res.data.user);
+          Swal.fire(res.data.message);
+          this.props.history.push("/");
         })
         .catch(err => {
           console.log("Err register", err.response.data.message);
@@ -53,25 +55,6 @@ class Register extends Component {
       Swal.fire(`passwords don't match`);
     }
   };
-  // register = () => {
-  //   if (this.state.password1 === this.state.password2) {
-  //     const { name, email, password1: password } = this.state;
-  //     axios
-  //       .post("/auth/register", { name, email, password })
-  //       .then(res => {
-  //         console.log(res.data);
-  //         this.props.updateUserInfo(res.data.user);
-  //         Swal.fire(res.data.message);
-  //         this.props.history.push("/");
-  //       })
-  //       .catch(err => {
-  //         console.log(err.response.data.message);
-  //         Swal.fire(err.response.data.message);
-  //       });
-  //   } else {
-  //     Swal.fire("Passwords dont match!");
-  //   }
-  // };
 
   //! REACTSTRAP MDB-REACT
   toggleCollapse = collapseID => () =>
@@ -135,10 +118,23 @@ class Register extends Component {
                             className="white-text"
                             iconClass="white-text"
                             label="Email"
-                            icon="user"
+                            outline
+                            icon="envelope"
                             value={this.state.email}
                             onChange={e =>
                               this.handleChange("email", e.target.value)
+                            }
+                            type="text"
+                          />
+                          <MDBInput
+                            className="white-text"
+                            iconClass="white-text"
+                            label="Name"
+                            outline
+                            icon="user"
+                            value={this.state.name}
+                            onChange={e =>
+                              this.handleChange("name", e.target.value)
                             }
                             type="text"
                           />
@@ -146,13 +142,14 @@ class Register extends Component {
                           className="white-text"
                           iconClass="white-text"
                           label="Your email"
-                          icon="envelope"
+                          
                         /> */}
 
                           <MDBInput
                             className="white-text"
                             iconClass="white-text"
                             label="Password"
+                            outline
                             icon="lock"
                             type="password"
                             autoComplete="off"
@@ -165,6 +162,7 @@ class Register extends Component {
                             className="white-text"
                             iconClass="white-text"
                             label="Repeat password"
+                            outline
                             icon="lock"
                             type="password"
                             autoComplete="off"
@@ -175,7 +173,10 @@ class Register extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.register} color="indigo">
+                          <MDBBtn
+                            onClick={() => this.register()}
+                            color="indigo"
+                          >
                             Sign Up
                           </MDBBtn>
                           <hr className="hr-light" />
