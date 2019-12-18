@@ -5,7 +5,7 @@ module.exports = {
     console.log("hit authCtrl register");
     const db = req.app.get("db");
     const { email, password, name } = req.body;
-    console.log("authCtrl, register",req.body);
+    console.log("authCtrl, register", req.body);
     const found = await db.find_user([email]);
     // console.log(found)
     if (+found[0].count !== 0) {
@@ -18,7 +18,8 @@ module.exports = {
     db.add_hash({ hash, id: id[0].id });
     req.session.user = { id: id[0].id, email, name };
     res.status(201).send({
-      message: `Hello ${req.session.user.name}, welcome to Social Coders!`,
+      message: `Thanks for Signing Up ${req.session.user.name}, Please sgin in!`,
+      // message: `Hello ${req.session.user.name}, welcome to Social Coders!`,
       user: req.session.user
     });
     console.log(req.session);
@@ -40,6 +41,15 @@ module.exports = {
     req.session.user = { id, email, name };
     // console.log(req)
     res.status(200).send({
+      // message: {
+      //   icon: "success",
+      //   title: "Logged in!",
+      //   showConfirmButton: false,
+      //   // background: 'black',
+      //   timer: 1500
+      // },
+      // user: req.session.user
+
       message: `Hello ${req.session.user.name}, welcome back to Social Coders!`,
       user: req.session.user
     });

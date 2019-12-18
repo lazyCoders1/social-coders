@@ -44,6 +44,7 @@ class Login extends Component {
         this.props.updateUserInfo(res.data.user);
         console.log(res.data.user);
         Swal.fire(res.data.message);
+        this.props.history.push("/");
       })
       .catch(err => {
         console.log(err);
@@ -86,22 +87,18 @@ class Login extends Component {
                             className="white-text"
                             iconClass="white-text"
                             label="Email"
-                            icon="user"
+                            outline
+                            icon="envelope"
                             onChange={e =>
                               this.handleChange("email", e.target.value)
                             }
                             value={this.state.email}
                           />
-                          {/* <MDBInput
-                          className="white-text"
-                          iconClass="white-text"
-                          label="Your email"
-                          icon="envelope"
-                        /> */}
                           <MDBInput
                             className="white-text"
                             iconClass="white-text"
-                            label="Your password"
+                            label="Password"
+                            outline
                             icon="lock"
                             type="password"
                             autoComplete="on"

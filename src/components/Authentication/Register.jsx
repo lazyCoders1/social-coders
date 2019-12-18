@@ -46,7 +46,7 @@ class Register extends Component {
           console.log("register res.data", res.data);
           this.props.updateUserInfo(res.data.user);
           Swal.fire(res.data.message);
-          this.props.history.push("/");
+          this.props.history.push("/login");
         })
         .catch(err => {
           console.log("Err register", err.response.data.message);
@@ -89,7 +89,7 @@ class Register extends Component {
                         “I choose a lazy person to do a hard job. Because a lazy
                         person will find an easy way to do it.” ~ Bill Gates
                       </h6>
-                      <Link to="/">
+                      <Link to="/login">
                         <MDBBtn outline color="white">
                           Sign In
                         </MDBBtn>
