@@ -20,7 +20,7 @@ class Dashboard extends Component {
           className="topHalf"
           style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
-          <MDBContainer style={{ margin: '0 auto' }}>
+          <MDBContainer style={{ margin: '3rem' }}>
             <MDBJumbotron
               style={{
                 borderRadius: '2%',
