@@ -2,10 +2,10 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   register: async (req, res) => {
-    console.log("hit");
+    console.log("hit authCtrl register");
     const db = req.app.get("db");
     const { email, password, name } = req.body;
-    console.log(req.body);
+    console.log("authCtrl, register",req.body);
     const found = await db.find_user([email]);
     // console.log(found)
     if (+found[0].count !== 0) {

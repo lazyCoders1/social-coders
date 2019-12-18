@@ -1,0 +1,48 @@
+#sign-up .view {
+  background-image: url("../../assets/./laptop.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+
+#sign-up-card {
+  background-color: rgba(0, 0, 0, 0.808);
+  height: auto; 
+}
+
+#classicformpage h6 {
+  line-height: 1.7;
+}
+
+/* #classicformpage .navbar {
+  transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+} */
+
+/* #classicformpage .top-nav-collapse {
+  background: #424f95 !important;
+} */
+
+/* !KEEP FOR LOG/REG MOBILE */
+@media (max-width: 768px) {
+  #classicformpage .navbar:not(.top-nav-collapse) {
+    /* background: #424f95 !important; */
+  }
+  h6 {
+    display: none;
+  }
+  hr {
+    display: none;
+  }
+  .h1-responsive {
+    display: none;
+  }
+  .signInBtn {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
+#classicformpage label {
+  color: #fff !important;
+}
