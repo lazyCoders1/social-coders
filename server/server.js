@@ -9,6 +9,7 @@ const { SERVER_PORT, CONNECTION_STRING, SECRET } = process.env;
 const authCtrl = require("./controllers/authCtrl");
 const postCtrl = require("./controllers/postController");
 const commentCtrl = require("./controllers/commentController");
+const profileCtrl = require('./controllers/profileCtrl')
 
 // Middleware
 const auth = require("./middleware/authMiddleware");
@@ -46,10 +47,9 @@ app.post("/api/comments", /* auth.usersOnly */ commentCtrl.addComment);
 app.delete("/api/comments/:id", commentCtrl.deleteComment);
 app.patch("/api/comments/:id", commentCtrl.updateComment);
 
-//*******AUTHENTICATION*******//
-app.post("/auth/register", authCtrl.register);
-app.post("/auth/login", authCtrl.login);
-app.delete("/auth/logout", authCtrl.logout);
+//Profile Endpoints
+app.get('/api/profile/:id', profileCtrl.getProfile);
+app.put('/api/profile/:id', profileCtrl.updateProfile);
 
 massive(CONNECTION_STRING).then(database => {
   app.set("db", database);
