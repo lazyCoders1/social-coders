@@ -3,7 +3,7 @@ const initialState = {
   email: "",
   name: "",
   id: "",
-  profile_img: "",
+  profile_pic: "",
   //!CREATE_POST
   createInput: "",
   createTitle: "",
