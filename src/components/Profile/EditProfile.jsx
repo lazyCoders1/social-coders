@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBInput, MDBAnimation, MDBBtn } from 'mdbreact';
+import { MDBInput, MDBAnimation, MDBBtn, MDBIcon } from 'mdbreact';
 import './editProfile.scss'
 
 class EditProfile extends Component {
@@ -60,6 +60,7 @@ class EditProfile extends Component {
                         />
                         <MDBInput label="State" />
                     </div>
+                        <MDBIcon/>
                         <MDBInput label="LinkedIn" icon='link' style={{
                         width:'30vw',    
                 }}
