@@ -27,7 +27,7 @@ const Channels = () => {
               <MDBCardText>
                 This channel focuses solely on JavaScript code.
               </MDBCardText>
-              <MDBBtn href="#/">Go!</MDBBtn>
+              <MDBBtn href="#/javascript">Go!</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
@@ -43,7 +43,7 @@ const Channels = () => {
               <MDBCardText>
                 This channel focuses solely on CSS code.
               </MDBCardText>
-              <MDBBtn href="#">Go!</MDBBtn>
+              <MDBBtn href="#/css">Go!</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
@@ -55,12 +55,12 @@ const Channels = () => {
               waves
             />
             <MDBCardBody>
-              <MDBCardTitle>Public</MDBCardTitle>
+              <MDBCardTitle>Other</MDBCardTitle>
               <MDBCardText>
                 This channel allows users to post any code they want to show off
                 or to browse code already posted.
               </MDBCardText>
-              <MDBBtn href="#">Go!</MDBBtn>
+              <MDBBtn href="#/public">Go!</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
