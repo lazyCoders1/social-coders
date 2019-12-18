@@ -1,3 +1,5 @@
+
+
 .user-post-container {
     height: auto;
     width: 60vw;
@@ -41,9 +43,26 @@
             font-size: 1.4rem;
         }
         .about-container {
-            margin-left: 100px;
+            margin-left: 30px;
+            margin-bottom: 0;
+            .about {
+                margin: 10px;
+            }
+            .address {
+                margin: 10px 10px 0px 10px;
+            }
         }
     }
+            .edit {
+                display: flex;
+                justify-content: flex-end;
+                .edit-pen {
+                    margin: 0 20px 10px 10px;
+                    font-size: 1.5rem;
+                    height: 30px;
+                    width: 30px;
+                }
+            }
   
 }
 
