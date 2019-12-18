@@ -1,7 +1,7 @@
 {
   "name": "social-coders",
   "main": "server/server.js",
-  "proxy": "http://localhost:4446",
+  "proxy": "http://localhost:4444",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
