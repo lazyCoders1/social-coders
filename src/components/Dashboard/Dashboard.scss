@@ -1,0 +1,22 @@
+.footer {
+  display: flex;
+  justify-content: center;
+}
+.devs {
+  max-height: 16vh;
+  border-radius: 3%;
+  padding: 0.5rem;
+  display: 'flex';
+  flex-direction: 'row';
+  margin: '0 auto';
+  align-content: center;
+  color: #2bbbad;
+}
+
+#landingPic {
+  transition: transform 2s;
+}
+
+#landingPic:hover {
+  transform: scale(1.03);
+}
