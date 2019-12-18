@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import './profile.scss'
+import EditProfile from './EditProfile';
+import {MDBIcon} from 'mdbreact'
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: []
+            posts: [],
+            toggle: false
         }
     }
 
@@ -19,6 +22,12 @@ class Profile extends Component {
         console.log(res.data)
         this.setState({
             posts: res.data
+        })
+    }
+
+    toggle = () => {
+        this.setState({
+            toggle: !this.state.toggle
         })
     }
     
@@ -44,12 +53,16 @@ class Profile extends Component {
                             	<h4>This is the sub header</h4>
                             </div>
                             <div className="about-container">
-                                <div>about</div>
-                                <div>address</div>
+                                <div className='about'>A brief description about me. lorem ipsum yada yada la di da.</div>
+                                <div className='address'>Salt Lake City, UT</div>
                             </div>
                         </div>
+                            <div className="edit">
+                                <MDBIcon icon="pen" onClick={()=> this.toggle()} className='edit-pen'/>
+                            </div>
                 </div>
                 {usersPosts}
+                {this.state.toggle ? <EditProfile toggle={this.toggle}/> : null}
             </div>
         );
     }
