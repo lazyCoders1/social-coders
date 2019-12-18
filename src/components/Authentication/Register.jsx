@@ -40,9 +40,22 @@ class Register extends Component {
   };
 
   render() {
-    return (
-      <div className="register">
-        <input
+    return <div className="register">
+      <h1>Register</h1>
+    </div>;
+  }
+}
+
+const mapDispatchToProps = {
+  updateUserInfo
+};
+
+export default connect(null, mapDispatchToProps)(Register);
+
+
+//! cody's code
+{
+  /* <input
           className="input"
           value={this.state.email}
           onChange={e => this.handleChange("email", e.target.value)}
@@ -73,14 +86,5 @@ class Register extends Component {
         <button onClick={() => this.register()}>Register!</button>
         <h4 onClick={() => this.props.toggle()}>
           Already have an account? Login here
-        </h4>
-      </div>
-    );
-  }
+        </h4> */
 }
-
-const mapDispatchToProps = {
-  updateUserInfo
-};
-
-export default connect(null, mapDispatchToProps)(Register);
