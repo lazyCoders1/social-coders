@@ -111,7 +111,7 @@ export class Header extends Component {
                         <MDBDropdownItem href="#/favorites">
                           Favorites
                         </MDBDropdownItem>
-                        <MDBDropdownItem onClick={this.logout} href="#/">
+                        <MDBDropdownItem onClick={this.logout} href="/">
                           SignOut
                         </MDBDropdownItem>
                       </MDBDropdownMenu>
