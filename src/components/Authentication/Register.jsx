@@ -71,11 +71,12 @@ class Register extends Component {
             <MDBContainer>
               <MDBRow>
                 {/* SIGN IN HERE SECTION */}
-                <MDBCol md="6" sm="4" className="mb-4">
+                <MDBCol md="6" md="4" className="mb-4">
                   <MDBAnimation
                     type="fadeInLeft"
                     delay=".3s"
                     // className="signInBtn white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
+                    className="white-text text-center "
                   >
                     <MDBCard id="sign-up-card">
                       <MDBCardBody className="white-text">
