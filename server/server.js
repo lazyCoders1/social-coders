@@ -40,7 +40,7 @@ app.delete('/api/meetups', meetCtrl.deleteMeetup)
 app.get('/api/meetups', meetCtrl.getMeetups)
 
 // Post Endpoints
-app.get('/api/posts', postCtrl.getAllPosts)
+app.get('/api/posts', postCtrl.getPosts)
 app.get('/api/posts/:id', postCtrl.getOnePost)
 app.get('/api/user/posts/:id', postCtrl.getUsersPosts)
 
