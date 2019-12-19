@@ -1,19 +1,23 @@
-#sign-up .view {
+#sign-up {
+  .view {
   background-image: url("../../assets/./laptop.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  }
+  h6 {
+    line-height: 1.7;
+  }
+  #sign-up-card {
+    background-color: rgba(90, 90, 90, 0.808);
+    // background-color: rgba(0, 0, 0, 0.808);
+    height: auto;
+  }
 }
 
 
-#sign-up-card {
-  background-color: rgba(0, 0, 0, 0.808);
-  height: auto; 
-}
 
-#classicformpage h6 {
-  line-height: 1.7;
-}
+
 
 /* #classicformpage .navbar {
   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;

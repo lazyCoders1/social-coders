@@ -71,34 +71,35 @@ class Register extends Component {
             <MDBContainer>
               <MDBRow>
                 {/* SIGN IN HERE SECTION */}
-                <MDBCol md="6" xl="5" className="mb-4">
+                <MDBCol md="6" sm="4" className="mb-4">
                   <MDBAnimation
                     type="fadeInLeft"
-                    // type="fadeInRight"
                     delay=".3s"
-                    className="signInBtn white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
+                    // className="signInBtn white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                   >
                     <MDBCard id="sign-up-card">
-                      {/* <MDBCardBody className="white-text"> */}
-                      <h1 className="h1-responsive font-weight-bold">
-                        Already have a Account? Sign In Bellow
-                      </h1>
-                      <hr className="hr-light" />
-                      <h6 className="mb-4">
-                        <p>Quote</p>
-                        “I choose a lazy person to do a hard job. Because a lazy
-                        person will find an easy way to do it.” ~ Bill Gates
-                      </h6>
-                      <Link to="/login">
-                        <MDBBtn outline color="white">
-                          Sign In
-                        </MDBBtn>
-                      </Link>
-                      {/* </MDBCardBody> */}
+                      <MDBCardBody className="white-text">
+                        <h1 className="h1-responsive font-weight-bold">
+                          Already have a Account? Sign In Below
+                        </h1>
+                        <hr className="hr-light" />
+                        <h6 className="mb-4">
+                          <p>Quote</p>
+                          “I choose a lazy person to do a hard job. Because a
+                          lazy person will find an easy way to do it.” ~ Bill
+                          Gates
+                        </h6>
+                        <Link to="/login">
+                          <MDBBtn outline color="white">
+                            Sign In
+                          </MDBBtn>
+                        </Link>
+                      </MDBCardBody>
                     </MDBCard>
                   </MDBAnimation>
                 </MDBCol>
-                {/* END: SIGN IN HERE SECTION */}
+                {/* ------------END: SIGN IN HERE SECTION */}
+
                 {/* REGISTER INPUT FILED */}
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBAnimation

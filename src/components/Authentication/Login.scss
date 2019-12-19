@@ -1,19 +1,20 @@
-#signin .view {
-  background-image: url("../../assets/./laptop.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
+#signin {
+  .view {
+    background-image: url("../../assets/./laptop.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+  }
 }
-
-
 #classic-card {
   background-color: rgba(0, 0, 0, 0.808);
   height: auto;
 }
 
-#classicformpage h6 {
-  line-height: 1.7;
-}
+
+// #classicformpage h6 {
+//   line-height: 1.7;
+// }
 
 /* #classicformpage .navbar {
   transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
@@ -28,6 +29,11 @@
   #classicformpage .navbar:not(.top-nav-collapse) {
     /* background: #424f95 !important; */
   }
+  // #classic-card {
+  //   background-color: none !important;
+  //   height: auto;
+  // }
+  
   h6 {
     display: none;
   }
