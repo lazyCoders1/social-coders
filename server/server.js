@@ -9,6 +9,7 @@ const { SERVER_PORT, CONNECTION_STRING, SECRET } = process.env
 const authCtrl = require('./controllers/authCtrl')
 const postCtrl = require('./controllers/postController')
 const commentCtrl = require('./controllers/commentController')
+const profileCtrl = require('./controllers/profileCtrl')
 const meetCtrl = require('./controllers/meetUpsController')
 
 // Middleware
@@ -53,10 +54,23 @@ app.post('/api/comments', /* auth.usersOnly */ commentCtrl.addComment)
 app.delete('/api/comments/:id', commentCtrl.deleteComment)
 app.patch('/api/comments/:id', commentCtrl.updateComment)
 
-//*******AUTHENTICATION*******//
-app.post('/auth/register', authCtrl.register)
-app.post('/auth/login', authCtrl.login)
-app.delete('/auth/logout', authCtrl.logout)
+// Post Endpoints
+app.get('/api/posts/:category', postCtrl.getPosts)
+app.get('/api/posts/:id', postCtrl.getOnePost)
+app.get('/api/user/posts/:id', postCtrl.getUsersPosts)
+app.post('/api/posts', auth.usersOnly, postCtrl.addPost)
+app.delete('/api/posts/:id', postCtrl.deletePost)
+app.patch('/api/posts/:id', postCtrl.updatePost)
+
+// Comment Endpoints
+app.get('/api/comments/:id', commentCtrl.getComments)
+app.post('/api/comments', auth.usersOnly, commentCtrl.addComment)
+app.delete('/api/comments/:id', commentCtrl.deleteComment)
+app.patch('/api/comments/:id', commentCtrl.updateComment)
+
+//Profile Endpoints
+app.get('/api/profile/:id', profileCtrl.getProfile)
+app.put('/api/profile/:id', profileCtrl.updateProfile)
 
 massive(CONNECTION_STRING).then(database => {
   app.set('db', database)

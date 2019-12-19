@@ -1,5 +1,28 @@
 .md-form {
     margin: 5px;
+    label {
+        font-size: .8rem;
+    }
+    .fa-image {
+        font-size: 1rem;
+    }
+    .fa-user {
+        font-size: 1rem;
+    }
+    .fa-heading {
+        font-size: 1rem;
+    }
+    .fa-link {
+        font-size: 1rem;
+    }
+    .fa-code-branch {
+        font-size: 1rem;
+    }
+}
+
+input.form-control {
+    margin: 5px;
+    padding: 5px;
 }
 
 .back {
@@ -14,5 +37,6 @@
     text-align: center;
     cursor: pointer;
   }
+
 
   
