@@ -7,10 +7,7 @@
   "dependencies": {
     "@material-ui/core": "^4.8.0",
     "@material-ui/icons": "^4.5.1",
-<<<<<<< HEAD
     "@material-ui/utils": "^4.7.1",
-=======
->>>>>>> cc2d3acc734a580874fe5b3bc6f399de48a2c6d5
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.1.2",
