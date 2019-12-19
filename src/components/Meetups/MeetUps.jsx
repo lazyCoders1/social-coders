@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react'
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
 import Geocode from 'react-geocode'
 import axios from 'axios'
 import Profile from '../Profile/Profile'
-
-Geocode.setApiKey(process.env.GOOGLE_API_KEY)
-Geocode.enableDebug()
-Geocode.fromAddress('Dev Mountain').then(res => {
-  const { lat, lng } = res.results[0].geometry.location
-  console.log(lat, lng)
-})
 
 class MeetUps extends Component {
   constructor() {
@@ -23,8 +16,18 @@ class MeetUps extends Component {
       street: '',
       city: '',
       state: '',
-      zipcode: ''
+      zipcode: '',
+      isOpen: false
     }
+    Geocode.setApiKey(process.env.GOOGLE_API_KEY)
+    Geocode.enableDebug()
+  }
+
+  findLocation = address => {
+    Geocode.fromAddress(address).then(res => {
+      const { lat, lng } = res.results[0].geometry.location
+      console.log(lat, lng)
+    })
   }
 
   getMeetups = () => {
@@ -46,7 +49,20 @@ class MeetUps extends Component {
         console.log(err)
       })
   }
+
+  handleToggleOpen = () => {
+    this.setState({
+      isOpen: true
+    })
+  }
+
+  handleToggleClose = () => {
+    this.setState({
+      isOpen: false
+    })
+  }
   render() {
+    const address = `${this.state.street}, ${this.state.city}, ${this.state.state} ${this.state.zipcode} `
     const mapStyles = {
       width: '30vw',
       height: '40vh',
@@ -60,7 +76,17 @@ class MeetUps extends Component {
           style={mapStyles}
           initialCenter={{ lat: 47.444, lng: -122.176 }}
         >
-          <Marker position={{ lat: 47.444, lng: -122.176 }} />
+          <Marker
+            position={{ lat: 47.444, lng: -122.176 }}
+            label="test"
+            onClick={() => this.handleToggleOpen()}
+          >
+            {this.state.isOpen && (
+              <InfoWindow>
+                <h1>testi test</h1>
+              </InfoWindow>
+            )}
+          </Marker>
         </Map>
       </div>
     )
