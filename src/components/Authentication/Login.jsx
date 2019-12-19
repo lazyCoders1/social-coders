@@ -152,7 +152,7 @@ class Login extends Component {
                     Don't have an account?
                   </h1>
                   <hr className="hr-light" />
-                  <h6 className="mb-4">
+                  <h6 className="h6-login mb-4">
                     <p>Quote</p>
                     “I choose a lazy person to do a hard job. Because a lazy person will find an easy way to do it.” ~
                     Bill Gates

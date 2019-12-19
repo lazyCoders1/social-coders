@@ -78,13 +78,13 @@ class Register extends Component {
                     // className="signInBtn white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                     className="white-text text-center "
                   >
-                    <MDBCard id="sign-up-card">
+                    <MDBCard className="sign-up-card-btn">
                       <MDBCardBody className="white-text">
                         <h1 className="h1-responsive font-weight-bold">
                           Already have a Account? Sign In Below
                         </h1>
                         <hr className="hr-light" />
-                        <h6 className="mb-4">
+                        <h6 className="h6 mb-4">
                           <p>Quote</p>
                           “I choose a lazy person to do a hard job. Because a
                           lazy person will find an easy way to do it.” ~ Bill
@@ -108,7 +108,7 @@ class Register extends Component {
                     // type="fadeInLeft"
                     delay=".3s"
                   >
-                    <MDBCard id="sign-up-card">
+                    <MDBCard className="sign-up-card">
                       <MDBCardBody className="white-text">
                         <h3 className="text-center">
                           <MDBIcon icon="user" /> Sign Up:

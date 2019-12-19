@@ -1,6 +1,10 @@
 #signin {
   .view {
-    background-image: url("../../assets/./laptop.jpg");
+    // background-image: url("../../assets/./laptop.jpg");
+    // background-image: url("../../assets/./laptopShoe.jpg");
+    // background-image: url("../../assets/./appleCode.jpg");
+    background-image: url("../../assets/./laptop2.jpg");
+    
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
@@ -34,7 +38,7 @@
   //   height: auto;
   // }
   
-  h6 {
+  .h6-login {
     display: none;
   }
   hr {
