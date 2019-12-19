@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MDBInput, MDBAnimation, MDBBtn, MDBIcon } from "mdbreact";
 import "./editProfile.scss";
-import axios from 'axios'
+import axios from "axios";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -18,24 +18,56 @@ class EditProfile extends Component {
     };
   }
 
+  componentDidMount = () => {
+    const profile = this.props.profile;
+    this.setState({
+      name: profile.name,
+      profile_pic: profile.profile_pic,
+      cover_photo: profile.cover_photo,
+      headline: profile.headline,
+      city: profile.city,
+      state: profile.state,
+      linked_in: profile.linked_in,
+      github: profile.github
+    });
+  };
+
   handleChange = (key, value) => {
-    
+    console.log(this.props.profile);
     this.setState({
       [key]: value
     });
   };
-  
+
   handleEdit = () => {
-    console.log(this.props.match.params.id)
-    let { name, profile_pic, cover_photo, headline, city, state, linked_in, github} = this.state
+    let {
+      name,
+      profile_pic,
+      cover_photo,
+      headline,
+      city,
+      state,
+      linked_in,
+      github
+    } = this.state;
     if (name) {
-        let profile = {name, profile_pic, cover_photo, headline, city, state, linked_in, github}
-        axios.put(`/api/profile/${this.props.match.params.id}`, profile)
-        .then(this.props.toggle())
+      let profile = {
+        name,
+        profile_pic,
+        cover_photo,
+        headline,
+        city,
+        state,
+        linked_in,
+        github
+      };
+      axios
+        .put(`/api/profile/${this.props.id}`, profile)
+        .then(this.props.getProfile(), this.props.toggle());
     } else {
-        alert('The name input needs a value')
+      alert("The name input needs a value");
     }
-}
+  };
 
   render() {
     return (
@@ -153,7 +185,7 @@ class EditProfile extends Component {
               style={{ width: "28vw", margin: "0 0 8px 30px", padding: "2px" }}
             />
             <MDBBtn
-              onClick={()=> this.handleEdit()}
+              onClick={() => this.handleEdit()}
               color="warning"
               style={{
                 width: "150px",

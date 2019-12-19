@@ -30,17 +30,22 @@
     box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.376);
     margin-top: 20px;
 
-    .cover-photo {
-        background-image: url('https://images.pexels.com/photos/949587/pexels-photo-949587.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500');
-        background-size: cover;
-        background-position: center;
-        height: 250px;
-    }
     .header-container {
+        margin: 0 auto;
+        // margin-top: 40px;
         display: flex;
-        margin: 35px 0 0 30px;
+        width: 55vw;
+        justify-content: space-between;
+        align-items: center;
         h4 {
             font-size: 1.4rem;
+        }
+        .connect {
+            display: flex;
+            flex-direction: column;
+            font-size: 1.5rem;
+            margin: 10px;
+            color: black;
         }
         .about-container {
             margin-left: 30px;
@@ -56,11 +61,13 @@
             .edit {
                 display: flex;
                 justify-content: flex-end;
+                align-items: center;
+                width: 55vw;
+                margin: 0 auto;
                 .edit-pen {
-                    margin: 0 20px 10px 10px;
+                    margin: 10px;
                     font-size: 1.5rem;
-                    height: 30px;
-                    width: 30px;
+                    cursor: pointer;
                 }
             }
   
