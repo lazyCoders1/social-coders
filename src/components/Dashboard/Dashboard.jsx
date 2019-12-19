@@ -9,8 +9,10 @@ import {
   MDBCardTitle,
   MDBJumbotron,
   MDBCol,
-  MDBView
+  MDBView,
+  MDBAnimation
 } from 'mdbreact'
+import 'animate.css/animate.min.css'
 
 class Dashboard extends Component {
   render() {
@@ -20,7 +22,7 @@ class Dashboard extends Component {
           className="topHalf"
           style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
-          <MDBContainer style={{ margin: '3rem' }}>
+          {/* <MDBContainer style={{ margin: '3rem' }}>
             <MDBJumbotron
               style={{
                 borderRadius: '2%',
@@ -55,7 +57,12 @@ class Dashboard extends Component {
                 </MDBCardTitle>
               </MDBCol>
             </MDBJumbotron>
-          </MDBContainer>
+          </MDBContainer> */}
+          <div className="bg">
+            <MDBAnimation type="fadeInLeftBig" delay=".5s">
+              <h1 className="landingText">DEVELOP CREATIVELY</h1>
+            </MDBAnimation>
+          </div>
         </header>
 
         <MDBRow

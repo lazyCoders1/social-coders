@@ -43,5 +43,14 @@ module.exports = {
     res.status(200).send({
       location: result.data.results[0].geometry.location
     })
+  },
+  deleteMeetup: async (req, res) => {
+    const { user_id } = req.session.user
+    const db = await req.app.get('db')
+    db.deleteMeetup(user_id).then(res => res.status(200).send(res))
+  },
+  getMeetups: async (req, res) => {
+    const db = await req.app.get('db')
+    db.getMeetups().then(res => res.status(200).send(res))
   }
 }
