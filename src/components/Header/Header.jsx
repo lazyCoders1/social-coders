@@ -119,12 +119,16 @@ export class Header extends Component {
                   </MDBNavItem>
                 ) : (
                   <div style={{ display: "flex" }}>
-                    <MDBBtn color="warning" size="sm">
-                      SignUp
-                    </MDBBtn>
-                    <MDBBtn color="warning" size="sm">
-                      SignIn
-                    </MDBBtn>
+                    <a href="#/login">
+                      <MDBBtn color="warning" size="sm">
+                        SignUp
+                      </MDBBtn>
+                    </a>
+                    <a href="#/register">
+                      <MDBBtn color="warning" size="sm">
+                        SignIn
+                      </MDBBtn>
+                    </a>
                   </div>
                 )}
               </MDBNavbarNav>
