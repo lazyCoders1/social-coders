@@ -3,6 +3,7 @@ import axios from "axios";
 import "./profile.scss";
 import EditProfile from "./EditProfile";
 import { MDBIcon } from "mdbreact";
+import Post from '../Posts/Post'
 
 class Profile extends Component {
   constructor(props) {
@@ -59,13 +60,11 @@ class Profile extends Component {
 
   render() {
     const el = this.state;
-    const usersPosts = this.state.posts.map((el, i) => {
+    const usersPosts = this.state.posts.map((post, i) => {
       return (
-        <div className="user-post-container" key={el.id}>
-          <h1 className="h1">{el.title}</h1>
-          <img className="img" src={el.img} alt="article image" />
-          <p className="p">{el.content}</p>
-        </div>
+        <Post
+        post={post}
+        />
       );
     });
     return (
