@@ -36,7 +36,7 @@ app.delete('/auth/logout', authCtrl.logout)
 //Meet Up Endpoints
 app.get('/api/google/location', meetCtrl.getLocation)
 app.post('/api/meetups', meetCtrl.addMeetUp)
-app.delete('/api/meetups', meetCtrl.deleteMeetup)
+app.delete('/api/meetups/:id', meetCtrl.deleteMeetup)
 app.get('/api/meetups', meetCtrl.getMeetups)
 
 // Post Endpoints
@@ -71,6 +71,7 @@ app.patch('/api/comments/:id', commentCtrl.updateComment)
 //Profile Endpoints
 app.get('/api/profile/:id', profileCtrl.getProfile)
 app.put('/api/profile/:id', profileCtrl.updateProfile)
+app.post('/api/favorites/:id', profileCtrl.addFavorite)
 
 massive(CONNECTION_STRING).then(database => {
   app.set('db', database)
