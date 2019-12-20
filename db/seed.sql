@@ -55,4 +55,10 @@ create table meetups(
   city varchar(50),
   state varchar(2),
   zipcode integer
-)
+);
+alter table meetups 
+alter column date 
+set data type varchar(25);
+
+alter table meetups 
+add column time varchar(15);
