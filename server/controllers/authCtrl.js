@@ -59,5 +59,12 @@ module.exports = {
     req.session.destroy();
     res.status(200).send({ message: "Logged Out!" });
     console.log("session Destroyed", req.session);
+  },
+  loggedIn: (req, res) => {
+    if (req.session.user) {
+      res.status(200).send({ user: req.session.user })
+    } else {
+      res.status(401).send({ message: 'Please log in or register.' })
+    }
   }
 };

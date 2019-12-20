@@ -32,6 +32,7 @@ app.use(
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
+app.get('/auth/me', authCtrl.loggedIn)
 
 //Meet Up Endpoints
 app.get('/api/google/location', meetCtrl.getLocation)
