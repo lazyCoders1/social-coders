@@ -33,7 +33,7 @@ class EditProfile extends Component {
   };
 
   handleChange = (key, value) => {
-    console.log(this.props.profile);
+    // console.log(this.props.profile);
     this.setState({
       [key]: value
     });
