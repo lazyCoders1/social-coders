@@ -24,7 +24,8 @@ create table sc_posts (
   title text,
   img text,
   content text,
-  author_id integer references sc_users(id)
+  author_id integer references sc_users(id),
+  category varchar(15)
 );
 
 create table sc_comments (

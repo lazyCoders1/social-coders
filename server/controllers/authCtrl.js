@@ -39,7 +39,7 @@ module.exports = {
       return res.status(401).send({ message: "password incorrect" });
     }
     req.session.user = { id, email, name };
-    // console.log(req)
+    console.log(req.session.user)
     res.status(200).send({
       // message: {
       //   icon: "success",
@@ -53,9 +53,11 @@ module.exports = {
       message: `Hello ${req.session.user.name}, welcome back to Social Coders!`,
       user: req.session.user
     });
+    console.log("User on session", req.session);
   },
   logout: (req, res) => {
     req.session.destroy();
     res.status(200).send({ message: "Logged Out!" });
+    console.log("session Destroyed", req.session);
   }
 };
