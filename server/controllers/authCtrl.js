@@ -39,7 +39,7 @@ module.exports = {
       return res.status(401).send({ message: "password incorrect" });
     }
     req.session.user = { id, email, name };
-    // console.log(req)
+    console.log(req.session.user)
     res.status(200).send({
       // message: {
       //   icon: "success",
