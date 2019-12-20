@@ -113,7 +113,7 @@ export class Header extends Component {
                         <MDBDropdownItem href="#/favorites">
                           Favorites
                         </MDBDropdownItem>
-                        <MDBDropdownItem onClick={this.logout} href="#/">
+                        <MDBDropdownItem onClick={this.logout} href="/">
                           SignOut
                         </MDBDropdownItem>
                       </MDBDropdownMenu>
@@ -122,12 +122,12 @@ export class Header extends Component {
                 ) : (
                   <div style={{ display: "flex" }}>
                     <a href="#/login">
-                      <MDBBtn color="warning" size="sm">
+                      <MDBBtn color="white" size="sm">
                         SignUp
                       </MDBBtn>
                     </a>
                     <a href="#/register">
-                      <MDBBtn color="warning" size="sm">
+                      <MDBBtn color="white" size="sm">
                         SignIn
                       </MDBBtn>
                     </a>

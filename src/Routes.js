@@ -17,7 +17,6 @@ import CSS from './components/CSS/CSS'
 import Public from './components/Public/Public'
 import Post from './components/Posts/Post';
 
-
 export default (
   <Switch>
     <Route exact path="/" component={Dashboard}></Route>
@@ -25,7 +24,7 @@ export default (
     <Route path="/chat" component={Chat}></Route>
     <Route path="/meetups" component={MeetUpsDash}></Route>
     <Route path="/createpost" component={CreatePost}></Route>
-    <Route path="/userposts" component={UserPost}></Route>
+    <Route path="/post_details/:id" component={PostDetails}></Route>
     <Route path="/profile/:id" component={Profile}></Route>
     <Route path="/favorites" component={Favorites}></Route>
     <Route path="/startups" component={Startups}></Route>
