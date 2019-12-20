@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Create from "../Posts/CreatePost";
-import parse from 'html-react-parser'
 import './JavaScript.css'
+import Post from '../Posts/Post'
 
 class JavaScript extends Component {
   state = {
@@ -17,8 +17,6 @@ class JavaScript extends Component {
     this.getPosts();
   }
 
-  component
-
   getPosts = () => {
     const { category } = this.state;
     axios
@@ -31,16 +29,10 @@ class JavaScript extends Component {
 
   render() {
     const mapPosts = this.state.posts.map(post => (
-      <div 
-      style={{
-        margin: '30px', 
-        lineHeight: '1.3', 
-        border: '1px solid black', 
-        padding: '7px'
-      }} 
-      key={post.id}>
-        {parse(post.content)}
-      </div>
+      <Post
+      key={post.id}
+      post={post}
+      />
     ));
     return (
       <>
