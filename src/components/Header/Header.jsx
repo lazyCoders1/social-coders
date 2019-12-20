@@ -55,9 +55,9 @@ export class Header extends Component {
           {/* <MDBNavbar color="grey lighten-5" dark expand="md"> */}
           <MDBNavbarBrand>
             <a href="#/">
-            <strong className="white-text" style={{ cursor: "pointer" }}>
-              Social Coders
-            </strong>
+              <strong className="white-text" style={{ cursor: "pointer" }}>
+                Social Coders
+              </strong>
             </a>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
@@ -121,12 +121,13 @@ export class Header extends Component {
                   </MDBNavItem>
                 ) : (
                   <div style={{ display: "flex" }}>
-                    <a href="#/login">
+                    <a href="#/register">
                       <MDBBtn color="white" size="sm">
                         SignUp
                       </MDBBtn>
                     </a>
-                    <a href="#/register">
+
+                    <a href="#/login">
                       <MDBBtn color="white" size="sm">
                         SignIn
                       </MDBBtn>
