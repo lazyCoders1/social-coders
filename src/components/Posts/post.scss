@@ -13,7 +13,7 @@
         position: absolute;
         top: 10px;
         left: 70px;
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
     .time {
         position: absolute;
@@ -21,8 +21,14 @@
         left: 70px;
         font-size: 1rem;
     }
+    .title {
+        text-align: left;
+        margin-left: 250px;
+        font-weight: 400;
+        font-size: 1.8rem;
+    }
     .post-content {
-        padding-top: 80px;
+        padding-top: 40px;
         padding-bottom: 20px;
         width: 100%;
         text-align: left;

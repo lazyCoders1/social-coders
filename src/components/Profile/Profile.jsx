@@ -9,6 +9,7 @@ class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      user_id: 0,
       name: "",
       profile_pic: "",
       cover_photo: "",
@@ -31,6 +32,7 @@ class Profile extends Component {
     const res = await axios.get(`/api/profile/${this.props.match.params.id}`);
     // console.log(res.data[0].name)
     this.setState({
+      user_id: res.data[0].id,
       name: res.data[0].name,
       profile_pic: res.data[0].profile_pic,
       cover_photo: res.data[0].cover_photo,
@@ -62,9 +64,13 @@ class Profile extends Component {
     const el = this.state;
     const usersPosts = this.state.posts.map((post, i) => {
       return (
-        <Post
-        post={post}
-        />
+        <div key={post.id}>
+          <Post
+          id={this.props.match.params.id}
+          post={post}
+          profile={this.state}
+          />
+        </div>
       );
     });
     return (
