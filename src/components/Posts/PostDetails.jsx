@@ -8,7 +8,7 @@ import {
   clearState
 } from "../../Reduxs/reducer";
 // import axios from "axios";
-
+// import { Link } from "react-router-dom"
 import {
   MDBRow,
   MDBCol,
@@ -23,7 +23,7 @@ import {
   MDBIcon,
   MDBInput
 } from "mdbreact";
-import "./PostDetails.scss"
+import "./PostDetails.scss";
 // import Comment from "../Comments/Comment";
 
 export class PostDetails extends Component {
@@ -57,14 +57,61 @@ export class PostDetails extends Component {
                         {/* {console.log("hit", this.state.post)} */}
                       </MDBCardTitle>
 
-                      <MDBCardText className="card-text">{this.state.post.content}
-                      <p>Lorem ipsum dolor amet leggings fashion axe skateboard meditation. Chia cornhole kombucha small batch fam affogato vape kale chips marfa pok pok raclette meditation everyday carry readymade. Wolf tofu pitchfork vinyl mumblecore glossier hoodie sriracha ethical. Flannel pitchfork ennui disrupt, selvage photo booth glossier green juice chartreuse 3 wolf moon kogi. Ramps retro humblebrag listicle flexitarian sustainable gastropub.Lorem ipsum dolor amet leggings fashion axe skateboard meditation. Chia cornhole kombucha small batch fam affogato vape kale chips marfa pok pok raclette meditation everyday carry readymade. Wolf tofu pitchfork vinyl mumblecore glossier hoodie sriracha ethical. Flannel pitchfork ennui disrupt, selvage photo booth glossier green juice chartreuse 3 wolf moon kogi. Ramps retro humblebrag listicle flexitarian sustainable gastropub.Lorem ipsum dolor amet leggings fashion axe skateboard meditation. Chia cornhole kombucha small batch fam affogato vape kale chips marfa pok pok raclette meditation everyday carry readymade. Wolf tofu pitchfork vinyl mumblecore glossier hoodie sriracha ethical. Flannel pitchfork ennui disrupt, selvage photo booth glossier green juice chartreuse 3 wolf moon kogi. Ramps retro humblebrag listicle flexitarian sustainable gastropub.
-
-PBR&B lo-fi vape tumeric man braid, snackwave gentrify. Vice gochujang swag copper mug art party. Intelligentsia sustainable XOXO lumbersexual YOLO, tbh master cleanse cliche drinking vinegar vegan snackwave occupy VHS man braid. Vexillologist 90's chillwave heirloom kitsch direct trade, vinyl flannel franzen chia occupy listicle.
-
-90's pok pok street art raclette listicle semiotics banjo hella farm-to-table affogato chia VHS. Schlitz poke chambray cardigan. Readymade normcore deep v, tumblr food truck offal edison bulb letterpress. Ennui tofu occupy af polaroid live-edge blog. Kombucha heirloom ennui, synth neutra farm-to-table craft beer hexagon kickstarter jean shorts twee offal palo santo kogi authentic. Shabby chic yr biodiesel pitchfork. Fashion axe master cleanse edison bulb paleo.
-
-Shabby chic fixie tumeric, activated charcoal blog DIY seitan authentic art party bushwick church-key thundercats. Chicharrones blue bottle affogato pug tbh beard, pitchfork swag tousled 90's gastropub meh banjo kitsch forage. Master cleanse pickled drinking vinegar asymmetrical. Sustainable gentrify glossier squid 3 wolf moon chillwave you probably haven't heard of them kale chips chambray tattooed. Kickstarter thundercats stumptown truffaut, semiotics shabby chic drinking vinegar retro XOXO VHS bushwick.</p>
+                      <MDBCardText className="card-text">
+                        {this.state.post.content}
+                        <p>
+                          Lorem ipsum dolor amet leggings fashion axe skateboard
+                          meditation. Chia cornhole kombucha small batch fam
+                          affogato vape kale chips marfa pok pok raclette
+                          meditation everyday carry readymade. Wolf tofu
+                          pitchfork vinyl mumblecore glossier hoodie sriracha
+                          ethical. Flannel pitchfork ennui disrupt, selvage
+                          photo booth glossier green juice chartreuse 3 wolf
+                          moon kogi. Ramps retro humblebrag listicle flexitarian
+                          sustainable gastropub.Lorem ipsum dolor amet leggings
+                          fashion axe skateboard meditation. Chia cornhole
+                          kombucha small batch fam affogato vape kale chips
+                          marfa pok pok raclette meditation everyday carry
+                          readymade. Wolf tofu pitchfork vinyl mumblecore
+                          glossier hoodie sriracha ethical. Flannel pitchfork
+                          ennui disrupt, selvage photo booth glossier green
+                          juice chartreuse 3 wolf moon kogi. Ramps retro
+                          humblebrag listicle flexitarian sustainable
+                          gastropub.Lorem ipsum dolor amet leggings fashion axe
+                          skateboard meditation. Chia cornhole kombucha small
+                          batch fam affogato vape kale chips marfa pok pok
+                          raclette meditation everyday carry readymade. Wolf
+                          tofu pitchfork vinyl mumblecore glossier hoodie
+                          sriracha ethical. Flannel pitchfork ennui disrupt,
+                          selvage photo booth glossier green juice chartreuse 3
+                          wolf moon kogi. Ramps retro humblebrag listicle
+                          flexitarian sustainable gastropub. PBR&B lo-fi vape
+                          tumeric man braid, snackwave gentrify. Vice gochujang
+                          swag copper mug art party. Intelligentsia sustainable
+                          XOXO lumbersexual YOLO, tbh master cleanse cliche
+                          drinking vinegar vegan snackwave occupy VHS man braid.
+                          Vexillologist 90's chillwave heirloom kitsch direct
+                          trade, vinyl flannel franzen chia occupy listicle.
+                          90's pok pok street art raclette listicle semiotics
+                          banjo hella farm-to-table affogato chia VHS. Schlitz
+                          poke chambray cardigan. Readymade normcore deep v,
+                          tumblr food truck offal edison bulb letterpress. Ennui
+                          tofu occupy af polaroid live-edge blog. Kombucha
+                          heirloom ennui, synth neutra farm-to-table craft beer
+                          hexagon kickstarter jean shorts twee offal palo santo
+                          kogi authentic. Shabby chic yr biodiesel pitchfork.
+                          Fashion axe master cleanse edison bulb paleo. Shabby
+                          chic fixie tumeric, activated charcoal blog DIY seitan
+                          authentic art party bushwick church-key thundercats.
+                          Chicharrones blue bottle affogato pug tbh beard,
+                          pitchfork swag tousled 90's gastropub meh banjo kitsch
+                          forage. Master cleanse pickled drinking vinegar
+                          asymmetrical. Sustainable gentrify glossier squid 3
+                          wolf moon chillwave you probably haven't heard of them
+                          kale chips chambray tattooed. Kickstarter thundercats
+                          stumptown truffaut, semiotics shabby chic drinking
+                          vinegar retro XOXO VHS bushwick.
+                        </p>
                       </MDBCardText>
                     </MDBCardBody>
                   ) : (
@@ -137,7 +184,7 @@ Shabby chic fixie tumeric, activated charcoal blog DIY seitan authentic art part
                       <button onClick={this.increase}>
                         <MDBIcon icon="arrow-alt-circle-up" />
                       </button>
-                      <br/>
+                      <br />
                       {/* <input
                         className="quantity"
                         name="quantity"
@@ -145,15 +192,14 @@ Shabby chic fixie tumeric, activated charcoal blog DIY seitan authentic art part
                         onChange={() => console.log("change")}
                         type="number"
                       /> */}
-                      <br/>
+                      <br />
                       <button onClick={this.decrease}>
                         <MDBIcon icon="arrow-alt-circle-down" />
                       </button>
                     </div>
-                    
-                    <button>
-                      <i className="fas fa-share"> Share</i>
-                    </button>
+
+                    <i className="fas fa-share"> Share</i>
+
                     <i className="fas fa-bookmark"> Save</i>
                     <button
                       className="edit-btn"
