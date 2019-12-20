@@ -23,7 +23,8 @@ class CreatePost extends Component {
           img: "",
           content: ""
         });
-        this.props.getPosts();
+        this.props.profilePosts()
+        this.props.getPosts()
       })
       .catch(err => console.log(err));
   };
