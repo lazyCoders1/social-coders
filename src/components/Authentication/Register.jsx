@@ -177,7 +177,7 @@ class Register extends Component {
                         <div className="text-center mt-4 black-text">
                           <MDBBtn
                             onClick={() => this.register()}
-                            color="indigo"
+                            color="default"
                           >
                             Sign Up
                           </MDBBtn>

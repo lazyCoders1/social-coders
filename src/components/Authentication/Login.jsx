@@ -110,7 +110,7 @@ class Login extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn size="sm" onClick={this.login} color="indigo">
+                          <MDBBtn size="sm" onClick={this.login} color="default">
                             Sign In
                           </MDBBtn>
                           <hr className="hr-light" />
