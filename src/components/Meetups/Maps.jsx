@@ -1,35 +1,10 @@
 import React, { Component } from 'react'
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react'
-import Geocode from 'react-geocode'
+
 import axios from 'axios'
 import Profile from '../Profile/Profile'
 
 class MeetUps extends Component {
-  constructor() {
-    super()
-
-    this.state = {
-      title: '',
-      img: '',
-      description: '',
-      date: '',
-      street: '',
-      city: '',
-      state: '',
-      zipcode: '',
-      isOpen: false
-    }
-    Geocode.setApiKey(process.env.GOOGLE_API_KEY)
-    Geocode.enableDebug()
-  }
-
-  findLocation = address => {
-    Geocode.fromAddress(address).then(res => {
-      const { lat, lng } = res.results[0].geometry.location
-      console.log(lat, lng)
-    })
-  }
-
   getMeetups = () => {
     axios
       .get('/api/meetups')
@@ -50,19 +25,8 @@ class MeetUps extends Component {
       })
   }
 
-  handleToggleOpen = () => {
-    this.setState({
-      isOpen: true
-    })
-  }
-
-  handleToggleClose = () => {
-    this.setState({
-      isOpen: false
-    })
-  }
   render() {
-    const address = `${this.state.street}, ${this.state.city}, ${this.state.state} ${this.state.zipcode} `
+    //const address = `${this.state.street}, ${this.state.city}, ${this.state.state} ${this.state.zipcode} `
     const mapStyles = {
       width: '30vw',
       height: '40vh',
@@ -76,16 +40,10 @@ class MeetUps extends Component {
           style={mapStyles}
           initialCenter={{ lat: 47.444, lng: -122.176 }}
         >
-          <Marker
-            position={{ lat: 47.444, lng: -122.176 }}
-            label="test"
-            onClick={() => this.handleToggleOpen()}
-          >
-            {this.state.isOpen && (
-              <InfoWindow>
-                <h1>testi test</h1>
-              </InfoWindow>
-            )}
+          <Marker position={{ lat: 47.444, lng: -122.176 }} label="test">
+            <InfoWindow>
+              <h1>testi test</h1>
+            </InfoWindow>
           </Marker>
         </Map>
       </div>

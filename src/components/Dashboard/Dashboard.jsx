@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 import './Dashboard.scss'
 import {
   MDBCard,
-  MDBContainer,
   MDBRow,
   MDBIcon,
   MDBCardImage,
   MDBCardTitle,
-  MDBJumbotron,
-  MDBCol,
-  MDBView,
-  MDBAnimation
+  MDBCol
 } from 'mdbreact'
 import 'animate.css/animate.min.css'
 import ScrollAnimation from 'react-animate-on-scroll'
@@ -23,42 +19,6 @@ class Dashboard extends Component {
           className="topHalf"
           style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
-          {/* <MDBContainer style={{ margin: '3rem' }}>
-            <MDBJumbotron
-              style={{
-                borderRadius: '2%',
-                width: '90.2vw',
-                height: '100vh',
-                padding: 0
-              }}
-            >
-              <MDBCol
-                className="text-white text-center py-5 px-4 my-5"
-                id="landingPic"
-                style={{
-                  margin: '0 auto',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '90.2vw',
-                  height: '100vh',
-                  padding: 0,
-                  borderRadius: '2%',
-                  backgroundSize: '90vw 111vh',
-                  backgroundImage: `url(https://images.unsplash.com/photo-1493159815322-8ab88f5234aa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)`
-                }}
-                hover
-                zoom
-              >
-                <MDBCardTitle
-                  style={{ fontSize: '5rem', maxWidth: '26rem' }}
-                  className="h1-responsive pt-3 m-5 font-bold"
-                >
-                  Develop Socially
-                </MDBCardTitle>
-              </MDBCol>
-            </MDBJumbotron>
-          </MDBContainer> */}
           <div className="bg">
             <ScrollAnimation animateIn="fadeInLeft" delay=".8s">
               <h1 className="landingText">DEVELOP CREATIVELY</h1>

@@ -36,7 +36,7 @@ app.delete('/auth/logout', authCtrl.logout)
 //Meet Up Endpoints
 app.get('/api/google/location', meetCtrl.getLocation)
 app.post('/api/meetups', meetCtrl.addMeetUp)
-app.delete('/api/meetups', meetCtrl.deleteMeetup)
+app.delete('/api/meetups/:id', meetCtrl.deleteMeetup)
 app.get('/api/meetups', meetCtrl.getMeetups)
 
 // Post Endpoints
