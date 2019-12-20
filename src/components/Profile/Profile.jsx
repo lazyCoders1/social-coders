@@ -132,7 +132,7 @@ class Profile extends Component {
           </div>
         </div>
         <CreatePost
-        profilePosts={this.getUsersPosts}/>
+        posts={this.getUsersPosts}/>
         {usersPosts}
         {this.state.toggle ? (
           <EditProfile
