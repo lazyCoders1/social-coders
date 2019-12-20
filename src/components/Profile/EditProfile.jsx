@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBInput, MDBAnimation, MDBBtn, MDBIcon } from "mdbreact";
+import { MDBInput, MDBAnimation, MDBBtn } from "mdbreact";
 import "./editProfile.scss";
 import axios from "axios";
 
@@ -33,7 +33,7 @@ class EditProfile extends Component {
   };
 
   handleChange = (key, value) => {
-    console.log(this.props.profile);
+    // console.log(this.props.profile);
     this.setState({
       [key]: value
     });

@@ -54,9 +54,11 @@ export class Header extends Component {
         >
           {/* <MDBNavbar color="grey lighten-5" dark expand="md"> */}
           <MDBNavbarBrand>
+            <a href="#/">
             <strong className="white-text" style={{ cursor: "pointer" }}>
               Social Coders
             </strong>
+            </a>
           </MDBNavbarBrand>
           <MDBNavbarToggler onClick={this.toggleCollapse} />
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
@@ -105,7 +107,7 @@ export class Header extends Component {
                         <MDBIcon icon="user" />
                       </MDBDropdownToggle>
                       <MDBDropdownMenu right className="dropdown-default">
-                        <MDBDropdownItem href="#/profile">
+                        <MDBDropdownItem href={`#/profile/${this.props.id}`}>
                           Profile
                         </MDBDropdownItem>
                         <MDBDropdownItem href="#/favorites">
