@@ -1,0 +1,2 @@
+insert into favorites (user_id, name, profile_pic, post_id, title, img, content, author_id, category)
+values (${user_id}, ${name}, ${profile_pic}, ${id}, ${title}, ${img}, ${content}, ${author_id}, ${category})
