@@ -24,7 +24,8 @@ create table sc_posts (
   title text,
   img text,
   content text,
-  author_id integer references sc_users(id)
+  author_id integer references sc_users(id),
+  category varchar(15)
 );
 
 create table sc_comments (
@@ -55,4 +56,10 @@ create table meetups(
   city varchar(50),
   state varchar(2),
   zipcode integer
-)
+);
+alter table meetups 
+alter column date 
+set data type varchar(25);
+
+alter table meetups 
+add column time varchar(15);
