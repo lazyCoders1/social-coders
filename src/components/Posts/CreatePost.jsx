@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 class CreatePost extends Component {
   state = {
@@ -15,6 +17,12 @@ class CreatePost extends Component {
   addPost = () => {
     const { id: author_id } = this.props;
     const { title, img, content, category } = this.state;
+    if(!category) {
+      return Swal.fire({
+        title: 'Please select a category.',
+        icon: 'error'
+      })
+    }
     axios
       .post("/api/posts", { title, img, content, author_id, category })
       .then(res => {
@@ -23,8 +31,7 @@ class CreatePost extends Component {
           img: "",
           content: ""
         });
-        this.props.profilePosts()
-        this.props.getPosts()
+        this.props.getPosts();
       })
       .catch(err => console.log(err));
   };
@@ -74,12 +81,16 @@ class CreatePost extends Component {
             value={this.state.img}
             type="text"
           />
-          <select onChange={this.handleInput} name="category" id="">
-            <option value=""></option>
-            <option value="JavaScript">JavaScript</option>
-            <option value="CSS">CSS</option>
-            <option value="Other">Other</option>
-          </select>
+          {this.props.location.pathname !== "/javascript" &&
+            this.props.location.pathname !== "/css" &&
+            this.props.location.pathname !== "/public" && (
+              <select onChange={this.handleInput} name="category" id="">
+                <option value=""></option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="CSS">CSS</option>
+                <option value="Other">Other</option>
+              </select>
+            )}
           <ReactQuill
             value={this.state.content}
             onChange={this.handleChange}
@@ -97,4 +108,4 @@ function mapStateToProps(reduxState) {
   return { id };
 }
 
-export default connect(mapStateToProps)(CreatePost);
+export default withRouter(connect(mapStateToProps)(CreatePost));

@@ -29,6 +29,11 @@ class Profile extends Component {
     this.getProfile();
   };
 
+  componentDidUpdate() {
+    this.getUsersPosts()
+  }
+  
+
   getProfile = async () => {
     const res = await axios.get(`/api/profile/${this.props.match.params.id}`);
     // console.log(res.data[0].name)
@@ -50,7 +55,8 @@ class Profile extends Component {
   .then(res => {
     this.setState({
       posts: res.data
-    }) 
+    })
+    // this.getUsersPosts()
   })
   };
 
