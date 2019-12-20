@@ -86,7 +86,7 @@ class Profile extends Component {
             }}
           />
           <div className="profile-pic">
-            <img
+            <div
               style={{
                 backgroundImage: `url('${el.profile_pic}')`,
                 backgroundSize: "cover",

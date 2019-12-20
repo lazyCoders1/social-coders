@@ -11,10 +11,10 @@ class Post extends Component {
         let {id, title, img, content, author_id, category} = this.props.post
         let {user_id, name, profile_pic} = this.props.profile
         let user = {user_id, name, profile_pic}
-        console.log(user)
+        // console.log(user)
         let post = {id, title, img, content, author_id, category}
         let favoritePost = {...user, ...post}
-        console.log(favoritePost)
+        // console.log(favoritePost)
             axios.post(`/api/favorites/${this.props.post.id}`, favoritePost)
             .then(toast("Post added to favorites!"))
     }
@@ -24,7 +24,7 @@ class Post extends Component {
     const user = this.props.profile;
     return (
       <div key={post.id} className="post-card">
-        <img
+        <div
           style={{
             backgroundImage: `url(${user.profile_pic})`,
             backgroundSize: "cover",
@@ -41,7 +41,7 @@ class Post extends Component {
         <h4 className="time">12 hrs</h4>
   <h4 className='title'>{post.title}</h4>
         <div className="post-content">{post.content}</div>
-        <img className="post-picture" src={`${post.img}`} />
+        <img className="post-picture" src={`${post.img}`} alt='' />
         <h5 className="likes">43 likes</h5>
         <div className="icons">
           <div className="icon-box">

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBInput, MDBAnimation, MDBBtn, MDBIcon } from "mdbreact";
+import { MDBInput, MDBAnimation, MDBBtn } from "mdbreact";
 import "./editProfile.scss";
 import axios from "axios";
 

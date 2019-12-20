@@ -9,7 +9,7 @@ module.exports = {
       },
 
       getProfile: async (req, res, next) => {
-        console.log('get profile hit')
+        // console.log('get profile hit')
         const db = req.app.get("db");
         const { id } = req.params;
         const result = await db.get_profile(id);
@@ -18,7 +18,7 @@ module.exports = {
         // console.log(req.session.sc_user.id)
       },
       addFavorite: (req, res) => {
-        console.log('favorite hit')
+        // console.log('favorite hit')
         const db =req.app.get('db')
         const {id} = req.params
         const {user_id, title, img, content, author_id, category, name, profile_pic} = req.body
