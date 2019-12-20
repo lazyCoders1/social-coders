@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Channels from './components/Channels/Channel'
@@ -14,6 +15,8 @@ import Register from './components/Authentication/Register'
 import JavaScript from './components/JavaScript/JavaScript'
 import CSS from './components/CSS/CSS'
 import Public from './components/Public/Public'
+import Post from './components/Posts/Post';
+
 
 export default (
   <Switch>
@@ -31,5 +34,6 @@ export default (
     <Route path="/javascript" component={JavaScript}></Route>
     <Route path="/css" component={CSS}></Route>
     <Route path="/public" component={Public}></Route>
+    <Route path="/post" component={Post}/>
   </Switch>
 )
