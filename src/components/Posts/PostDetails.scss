@@ -1,61 +1,60 @@
+#post-details {
+  
+  // Use code bellow if you add content next to post
+  // width: 800px; 
+  
+  .postText {
+    display: block;
+    display: -webkit-box;
+    max-width: 100%;
+    height: 60px;
+    margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  // .postContent {
+  //   /* width: 450px; */
+  //   position: relative;
+  //   padding-bottom: 25px;
+  // }
+  .postContainer {
+    padding-top: 115px;
+    padding-bottom: 125px;
+    overflow: scroll;
+  }
+
+  .post-details-card {
+    // margin: 50px;
+    background-color: ghostwhite;
+  }
+  .card-text{
+    line-height: 1.5;
+  }
+
+
+  /* !FOOTER BAR */
+
+  .footer-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    font-size: small;
+    background-color: ghostwhite;
+  }
+}
+
 /*! THE POST CONTENT */
-.postText {
-  display: block;
-  display: -webkit-box;
-  max-width: 100%;
-  height: 60px;
-  margin: 0 auto;
-  font-size: 14px;
-  line-height: 1.5;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
-#postPage {
-  /* width: 800px; */
-  /* display: flex;
-  justify-content: center; */
-}
-
-#postPage .card-footer {
-  background-color: #ffffffb2;
-  /* color: red !important;
-  font-size: larger; */
-}
-
-.postContent {
-  /* width: 450px; */
-  position: relative;
-  padding-bottom: 25px;
-}
-.postContainer {
-  padding-top: 115px;
-  padding-bottom: 125px;
-  overflow: scroll;
-}
-
-/* !Dashboard Create Post */
-.postCard {
-  margin: 50px;
-}
 /* ! */
 
-/* !FOOTER BAR */
-
-.footerBar {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  align-content: stretch;
-  font-size: small;
-}
-/* ! */
-
-#postPage label {
+#post-details label {
   /* color: rgb(255, 255, 255) !important;
   font-weight: bolder; */
   /* background-color: none !important; */

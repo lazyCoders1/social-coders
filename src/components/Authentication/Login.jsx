@@ -77,7 +77,7 @@ class Login extends Component {
                     type="fadeInLeft"
                     delay=".3s"
                   >
-                    <MDBCard id="classic-card">
+                    <MDBCard className="sign-in-card">
                       <MDBCardBody className="white-text">
                         <h3 className="text-center">
                           <MDBIcon icon="user" /> Sign In:
@@ -110,20 +110,22 @@ class Login extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn onClick={this.login} color="indigo">
+                          <MDBBtn size="sm" onClick={this.login} color="indigo">
                             Sign In
                           </MDBBtn>
                           <hr className="hr-light" />
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">
                               <MDBIcon
+                                size="lg"
                                 fab
-                                icon="twitter"
+                                icon="google"
                                 className="white-text"
                               />
                             </a>
                             <a href="#!" className="p-2 m-2">
                               <MDBIcon
+                                size="lg"
                                 fab
                                 icon="linkedin"
                                 className="white-text"
@@ -131,8 +133,9 @@ class Login extends Component {
                             </a>
                             <a href="#!" className="p-2 m-2">
                               <MDBIcon
+                                size="lg"
                                 fab
-                                icon="instagram"
+                                icon="github"
                                 className="white-text"
                               />
                             </a>
@@ -148,20 +151,24 @@ class Login extends Component {
                   delay=".3s"
                   className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                 >
-                  <h1 className="h1-responsive font-weight-bold">
-                    Don't have an account?
-                  </h1>
-                  <hr className="hr-light" />
-                  <h6 className="h6-login mb-4">
-                    <p>Quote</p>
-                    “I choose a lazy person to do a hard job. Because a lazy person will find an easy way to do it.” ~
-                    Bill Gates
-                  </h6>
-                  <Link to="/Register">
-                    <MDBBtn outline color="white">
-                      Sign Up
-                    </MDBBtn>
-                  </Link>
+                  <MDBCard className="sign-in-card-btn">
+                    <MDBCardBody className="white-text">
+                      <h1 className="h1-responsive font-weight-bold">
+                        Don't have an account?
+                      </h1>
+                      <hr className="hr-light" />
+                      <h6 className="h6-login mb-4">
+                        <p>Quote</p>
+                        “I choose a lazy person to do a hard job. Because a lazy
+                        person will find an easy way to do it.” ~ Bill Gates
+                      </h6>
+                      <Link to="/Register">
+                        <MDBBtn size="sm" color="white">
+                          Sign Up
+                        </MDBBtn>
+                      </Link>
+                    </MDBCardBody>
+                  </MDBCard>
                 </MDBAnimation>
               </MDBRow>
             </MDBContainer>

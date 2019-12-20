@@ -42,21 +42,30 @@ export class PostDetails extends Component {
     const { updateComment, updatePostInput, updatePostTitle } = this.props;
     const { isEditing } = this.state;
     return (
-      <div id="postPage">
+      <div id="post-details">
         <MDBView className="postContainer">
           <MDBContainer>
             <MDBRow>
               <MDBCol>
-                <MDBCard className="shadow-box-example">
+                <MDBCard className="post-details-card shadow-box-example">
                   {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
                   {!isEditing ? (
                     <MDBCardBody>
                       <MDBCardTitle tag="h5">
                         {this.state.post.title}
+                        <h3>What is Javascript?</h3>
                         {/* {console.log("hit", this.state.post)} */}
                       </MDBCardTitle>
 
-                      <MDBCardText>{this.state.post.content}</MDBCardText>
+                      <MDBCardText className="card-text">{this.state.post.content}
+                      <p>Lorem ipsum dolor amet leggings fashion axe skateboard meditation. Chia cornhole kombucha small batch fam affogato vape kale chips marfa pok pok raclette meditation everyday carry readymade. Wolf tofu pitchfork vinyl mumblecore glossier hoodie sriracha ethical. Flannel pitchfork ennui disrupt, selvage photo booth glossier green juice chartreuse 3 wolf moon kogi. Ramps retro humblebrag listicle flexitarian sustainable gastropub.Lorem ipsum dolor amet leggings fashion axe skateboard meditation. Chia cornhole kombucha small batch fam affogato vape kale chips marfa pok pok raclette meditation everyday carry readymade. Wolf tofu pitchfork vinyl mumblecore glossier hoodie sriracha ethical. Flannel pitchfork ennui disrupt, selvage photo booth glossier green juice chartreuse 3 wolf moon kogi. Ramps retro humblebrag listicle flexitarian sustainable gastropub.Lorem ipsum dolor amet leggings fashion axe skateboard meditation. Chia cornhole kombucha small batch fam affogato vape kale chips marfa pok pok raclette meditation everyday carry readymade. Wolf tofu pitchfork vinyl mumblecore glossier hoodie sriracha ethical. Flannel pitchfork ennui disrupt, selvage photo booth glossier green juice chartreuse 3 wolf moon kogi. Ramps retro humblebrag listicle flexitarian sustainable gastropub.
+
+PBR&B lo-fi vape tumeric man braid, snackwave gentrify. Vice gochujang swag copper mug art party. Intelligentsia sustainable XOXO lumbersexual YOLO, tbh master cleanse cliche drinking vinegar vegan snackwave occupy VHS man braid. Vexillologist 90's chillwave heirloom kitsch direct trade, vinyl flannel franzen chia occupy listicle.
+
+90's pok pok street art raclette listicle semiotics banjo hella farm-to-table affogato chia VHS. Schlitz poke chambray cardigan. Readymade normcore deep v, tumblr food truck offal edison bulb letterpress. Ennui tofu occupy af polaroid live-edge blog. Kombucha heirloom ennui, synth neutra farm-to-table craft beer hexagon kickstarter jean shorts twee offal palo santo kogi authentic. Shabby chic yr biodiesel pitchfork. Fashion axe master cleanse edison bulb paleo.
+
+Shabby chic fixie tumeric, activated charcoal blog DIY seitan authentic art party bushwick church-key thundercats. Chicharrones blue bottle affogato pug tbh beard, pitchfork swag tousled 90's gastropub meh banjo kitsch forage. Master cleanse pickled drinking vinegar asymmetrical. Sustainable gentrify glossier squid 3 wolf moon chillwave you probably haven't heard of them kale chips chambray tattooed. Kickstarter thundercats stumptown truffaut, semiotics shabby chic drinking vinegar retro XOXO VHS bushwick.</p>
+                      </MDBCardText>
                     </MDBCardBody>
                   ) : (
                     <MDBCardBody>
@@ -85,7 +94,7 @@ export class PostDetails extends Component {
                       </MDBCardTitle>
                       <MDBBtn
                         onClick={() => this.editPost()}
-                        color="indigo"
+                        color="default"
                         className="post-btn"
                         size="sm"
                       >
@@ -97,7 +106,7 @@ export class PostDetails extends Component {
                             isEditing: false
                           })
                         }
-                        color="indigo"
+                        color="default"
                         className="cancel"
                         size="sm"
                       >
@@ -123,25 +132,25 @@ export class PostDetails extends Component {
 
                   {/*! COMMENTS */}
 
-                  <MDBCardFooter className="footerBar">
+                  <MDBCardFooter className="footer-bar">
                     <div className="def-number-input number-input">
                       <button onClick={this.increase}>
                         <MDBIcon icon="arrow-alt-circle-up" />
                       </button>
                       <br/>
-                      <input
+                      {/* <input
                         className="quantity"
                         name="quantity"
                         value={this.state.value}
                         onChange={() => console.log("change")}
                         type="number"
-                      />
+                      /> */}
                       <br/>
                       <button onClick={this.decrease}>
                         <MDBIcon icon="arrow-alt-circle-down" />
                       </button>
                     </div>
-
+                    
                     <button>
                       <i className="fas fa-share"> Share</i>
                     </button>

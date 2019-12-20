@@ -57,10 +57,10 @@ class Register extends Component {
   };
 
   //! REACTSTRAP MDB-REACT
-  toggleCollapse = collapseID => () =>
-    this.setState(prevState => ({
-      collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-    }));
+  // toggleCollapse = collapseID => () =>
+  //   this.setState(prevState => ({
+  //     collapseID: prevState.collapseID !== collapseID ? collapseID : ""
+  //   }));
   //! ******
 
   render() {
@@ -71,7 +71,7 @@ class Register extends Component {
             <MDBContainer>
               <MDBRow>
                 {/* SIGN IN HERE SECTION */}
-                <MDBCol md="6" md="4" className="mb-4">
+                <MDBCol md="6" className="mb-4">
                   <MDBAnimation
                     type="fadeInLeft"
                     delay=".3s"
@@ -185,13 +185,15 @@ class Register extends Component {
                           <div className="text-center d-flex justify-content-center white-label">
                             <a href="#!" className="p-2 m-2">
                               <MDBIcon
+                                size="lg"
                                 fab
-                                icon="twitter"
+                                icon="google"
                                 className="white-text"
                               />
                             </a>
                             <a href="#!" className="p-2 m-2">
                               <MDBIcon
+                                size="lg"
                                 fab
                                 icon="linkedin"
                                 className="white-text"
@@ -199,8 +201,10 @@ class Register extends Component {
                             </a>
                             <a href="#!" className="p-2 m-2">
                               <MDBIcon
+                                
+                                size="lg"
                                 fab
-                                icon="instagram"
+                                icon="github"
                                 className="white-text"
                               />
                             </a>
