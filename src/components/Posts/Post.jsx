@@ -1,32 +1,43 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { MDBIcon } from "mdbreact";
 import "./post.scss";
-import axios from 'axios'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import axios from "axios";
+import parse from "html-react-parser";
+import Swal from "sweetalert2";
 
 class Post extends Component {
-    
-    addFavorite = () => {
-        let {id, title, img, content, author_id, category} = this.props.post
-        let {user_id, name, profile_pic} = this.props.profile
-        let user = {user_id, name, profile_pic}
-        // console.log(user)
-        let post = {id, title, img, content, author_id, category}
-        let favoritePost = {...user, ...post}
-        // console.log(favoritePost)
-            axios.post(`/api/favorites/${this.props.post.id}`, favoritePost)
-            .then(toast("Post added to favorites!"))
-    }
-    
+  addFavorite = () => {
+    const { id } = this.props;
+    const { id: post_id } = this.props.post;
+    axios
+      .post(`/api/favorites/${id}`, { post_id })
+      .then(res =>
+        Swal.fire({
+          title: res.data.message,
+          icon: "success",
+          timer: 1000,
+          showConfirmButton: false
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  deletePost = () => {
+    const { id } = this.props.post;
+    axios
+      .delete(`/api/posts/${id}`)
+      .then(res => console.log(res.data.message))
+      .catch(err => console.log(err));
+  };
+
   render() {
-    const post = this.props.post;
-    const user = this.props.profile;
+    const { title, img, content, name, profile_pic } = this.props.post;
     return (
-      <div key={post.id} className="post-card">
+      <div style={{ background: "#f8f8ff" }} className="post-card">
         <div
           style={{
-            backgroundImage: `url(${user.profile_pic})`,
+            backgroundImage: `url(${profile_pic})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             position: "absolute",
@@ -37,23 +48,29 @@ class Post extends Component {
             left: "10px"
           }}
         />
-        <h2 className="users-name">{user.name}</h2>
+        <h2 className="users-name">{name}</h2>
         <h4 className="time">12 hrs</h4>
-  <h4 className='title'>{post.title}</h4>
-        <div className="post-content">{post.content}</div>
-        <img className="post-picture" src={`${post.img}`} alt='' />
+        <h4 className="title">{title}</h4>
+        <div className="post-content">{parse(content)}</div>
+        <img className="post-picture" src={`${img}`} alt="" />
         <h5 className="likes">43 likes</h5>
         <div className="icons">
           <div className="icon-box">
             <i className="fas fa-heart"></i>
             <MDBIcon far icon="comment-alt" />
             <MDBIcon icon="share" />
+            <i onClick={this.deletePost} className="fas fa-ellipsis-h"></i>
           </div>
-          <i className="fas fa-star" onClick={() => this.addFavorite()}></i>
+          <i className="fas fa-star" onClick={this.addFavorite}></i>
         </div>
       </div>
     );
   }
 }
 
-export default Post;
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
+}
+
+export default connect(mapStateToProps)(Post);

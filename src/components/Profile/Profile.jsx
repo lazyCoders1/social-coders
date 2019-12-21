@@ -4,6 +4,7 @@ import "./profile.scss";
 import EditProfile from "./EditProfile";
 import { MDBIcon } from "mdbreact";
 import Post from '../Posts/Post'
+import CreatePost from './../Posts/CreatePost';
 
 class Profile extends Component {
   constructor(props) {
@@ -28,6 +29,11 @@ class Profile extends Component {
     this.getProfile();
   };
 
+  componentDidUpdate() {
+    this.getUsersPosts()
+  }
+  
+
   getProfile = async () => {
     const res = await axios.get(`/api/profile/${this.props.match.params.id}`);
     // console.log(res.data[0].name)
@@ -44,14 +50,14 @@ class Profile extends Component {
     });
   };
 
-  getUsersPosts = async () => {
-    const res = await axios.get(
-      `/api/user/posts/${this.props.match.params.id}`
-    );
-    // console.log(res.data);
+  getUsersPosts = () => {
+  axios.get(`/api/user/posts/${this.props.match.params.id}`)
+  .then(res => {
     this.setState({
       posts: res.data
-    });
+    })
+    // this.getUsersPosts()
+  })
   };
 
   toggle = () => {
@@ -131,7 +137,9 @@ class Profile extends Component {
             </a>
           </div>
         </div>
-        ;{usersPosts}
+        <CreatePost
+        posts={this.getUsersPosts}/>
+        {usersPosts}
         {this.state.toggle ? (
           <EditProfile
             key={this.props.location.key}
