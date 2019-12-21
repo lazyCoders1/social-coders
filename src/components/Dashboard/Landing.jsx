@@ -3,13 +3,14 @@ import axios from "axios";
 import Create from "../Posts/CreatePost";
 // import "./JavaScript.css";
 import Post from "../Posts/Post";
-
+import './Landing.scss'
 class Landing extends Component {
   state = {
     posts: [],
     title: "",
     img: "",
-    content: ""
+    content: "",
+    toggle: false
   };
 
   componentDidMount() {
@@ -26,13 +27,20 @@ class Landing extends Component {
       .catch(err => console.log(err));
   };
 
+  toggle = () => {
+    this.setState({
+      toggle: !this.state.toggle
+    })
+  }
+
   render() {
     const mapPosts = this.state.posts.map(post => (
       <Post key={post.id} post={post} />
     ));
     return (
       <>
-        <Create getPosts={this.getPosts} />
+        {this.state.toggle ? <Create toggle={this.toggle} getPosts={this.getPosts} /> : null}
+        <div className='input' onClick={this.toggle}>Create post...</div>
         {mapPosts}
       </>
     );

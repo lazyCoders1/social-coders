@@ -63,7 +63,7 @@ class EditProfile extends Component {
       };
       axios
         .put(`/api/profile/${this.props.id}`, profile)
-        .then(this.props.getProfile(), this.props.toggle());
+        .then(this.props.getProfile(), this.props.toggleTwo());
     } else {
       alert("The name input needs a value");
     }
@@ -83,7 +83,7 @@ class EditProfile extends Component {
         <MDBAnimation
           type="fadeIn"
           style={{
-            zIndex: "20"
+            zIndex: "40"
           }}
         >
           <div
@@ -121,7 +121,7 @@ class EditProfile extends Component {
           >
             {/* <div style={{margin: 'auto'}}> */}
 
-            <div onClick={() => this.props.toggle()} className="back">
+            <div onClick={() => this.props.toggleTwo()} className="back">
               X
             </div>
             <MDBInput
