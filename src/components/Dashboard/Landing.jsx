@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Create from "../Posts/CreatePost";
+// import "./JavaScript.css";
 import Post from "../Posts/Post";
 
-class CSS extends Component {
+class Landing extends Component {
   state = {
     posts: [],
     title: "",
     img: "",
-    content: "",
-    category: "CSS"
+    content: ""
   };
 
   componentDidMount() {
@@ -17,10 +17,10 @@ class CSS extends Component {
   }
 
   getPosts = () => {
-    const { category } = this.state;
     axios
-      .get(`/api/posts/${category}`)
+      .get(`/api/posts`)
       .then(res => {
+          console.log(res.data)
         this.setState({ posts: res.data });
       })
       .catch(err => console.log(err));
@@ -32,11 +32,11 @@ class CSS extends Component {
     ));
     return (
       <>
-        <Create category={this.state.category} />
+        <Create getPosts={this.getPosts} />
         {mapPosts}
       </>
     );
   }
 }
 
-export default CSS;
+export default Landing;

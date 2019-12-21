@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Create from "../Posts/CreatePost";
-import './JavaScript.css'
-import Post from '../Posts/Post'
+import "./JavaScript.css";
+import Post from "../Posts/Post";
 
 class JavaScript extends Component {
   state = {
@@ -29,17 +29,11 @@ class JavaScript extends Component {
 
   render() {
     const mapPosts = this.state.posts.map(post => (
-      <Post
-      key={post.id}
-      post={post}
-      />
+      <Post key={post.id} post={post} />
     ));
     return (
       <>
-        <Create 
-        getPosts={this.getPosts} 
-        category={this.state.category} 
-        />
+        <Create getPosts={this.getPosts} category={this.state.category} />
         {mapPosts}
       </>
     );
