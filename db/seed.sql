@@ -59,13 +59,15 @@ create table meetups(
   title varchar(25),
   img text,
   description varchar,
-  date TIMESTAMP, 
+  time varchar(32),
+  date varchar(35), 
   user_id integer references sc_users(id),
   street varchar(120),
   city varchar(50),
-  state varchar(2),
-  zipcode integer
+  state varchar(30),
+  zipcode varchar(45)
 );
+
 alter table meetups 
 alter column date 
 set data type varchar(25);
