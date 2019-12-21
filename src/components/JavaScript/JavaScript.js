@@ -17,6 +17,10 @@ class JavaScript extends Component {
     this.getPosts();
   }
 
+  componentDidUpdate() {
+    this.getPosts()
+  }
+  
   getPosts = () => {
     const { category } = this.state;
     axios

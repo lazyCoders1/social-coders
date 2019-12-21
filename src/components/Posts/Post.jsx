@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import { MDBIcon } from "mdbreact";
 import "./post.scss";
 import axios from "axios";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import parse from "html-react-parser";
+import Swal from "sweetalert2";
 
 class Post extends Component {
   addFavorite = () => {
@@ -13,14 +12,29 @@ class Post extends Component {
     const { id: post_id } = this.props.post;
     axios
       .post(`/api/favorites/${id}`, { post_id })
-      .then(toast("Post added to favorites!"))
+      .then(res =>
+        Swal.fire({
+          title: res.data.message,
+          icon: "success",
+          timer: 1000,
+          showConfirmButton: false
+        })
+      )
+      .catch(err => console.log(err));
+  };
+
+  deletePost = () => {
+    const { id } = this.props.post;
+    axios
+      .delete(`/api/posts/${id}`)
+      .then(res => console.log(res.data.message))
       .catch(err => console.log(err));
   };
 
   render() {
     const { title, img, content, name, profile_pic } = this.props.post;
     return (
-      <div className="post-card">
+      <div style={{ background: "#f8f8ff" }} className="post-card">
         <div
           style={{
             backgroundImage: `url(${profile_pic})`,
@@ -45,8 +59,9 @@ class Post extends Component {
             <i className="fas fa-heart"></i>
             <MDBIcon far icon="comment-alt" />
             <MDBIcon icon="share" />
+            <i onClick={this.deletePost} className="fas fa-ellipsis-h"></i>
           </div>
-          <i className="fas fa-star" onClick={() => this.addFavorite()}></i>
+          <i className="fas fa-star" onClick={this.addFavorite}></i>
         </div>
       </div>
     );
