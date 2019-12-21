@@ -137,12 +137,12 @@ export class Header extends Component {
                   <div style={{ display: "flex" }}>
                     <a href="#/register">
                       <MDBBtn color="white" size="sm">
-                        SignUp
+                        SignIn
                       </MDBBtn>
                     </a>
                     <a href="#/login">
                       <MDBBtn color="white" size="sm">
-                        SignIn
+                        SignUp
                       </MDBBtn>
                     </a>
                   </div>
