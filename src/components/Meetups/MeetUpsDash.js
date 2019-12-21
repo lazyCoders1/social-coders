@@ -34,14 +34,14 @@ export default class CreateMeetUps extends Component {
     })
   }
 
-  submitPost = () => {
-    axios
-      .post('/api/meetups')
-      .then(res => {
-        alert(res.data.message)
-      })
-      .catch(err => alert(err.res.data.message))
-  }
+  // submitPost = () => {
+  //   axios
+  //     .post('/api/meetups')
+  //     .then(res => {
+  //       alert(res.data.message)
+  //     })
+  //     .catch(err => alert(err.res.data.message))
+  // }
   deletePost = id => {
     axios
       .delete(`api/meetups/${id}`)
@@ -57,16 +57,15 @@ export default class CreateMeetUps extends Component {
       toggle: !this.state.toggle
     })
   }
+  handleChange = e => {
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
   render() {
     // console.log(this.state.meetUpPosts)
     const meetUp = this.state.meetUpPosts.map(el => {
       return <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
-    })
-    const postMeetUp = this.state.meetUpPosts.map(el => {
-      return (
-        <PostMeetUp key={el.id} meetUpPost={el} postMeetUp={this.submitPost} />
-      )
     })
 
     return (
@@ -76,7 +75,20 @@ export default class CreateMeetUps extends Component {
           add a meetup??
         </MDBBtn>
         {meetUp}
-        {this.state.toggle ? postMeetUp : null}
+        {this.state.toggle ? (
+          // this.state.meetUpPosts.map(el => {
+          //     console.log(el)
+          //     return (
+          //       <PostMeetUp
+          //         key={el.id}
+          //         meetUpPost={el}
+          //         postMeetUp={this.submitPost}
+          //         handleChange={this.handleChange}
+          //       />
+          //     )
+          //   })
+          <PostMeetUp />
+        ) : null}
       </div>
     )
   }

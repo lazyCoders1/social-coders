@@ -8,23 +8,27 @@ module.exports = {
       title,
       img,
       description,
+      time,
       date,
       street,
       city,
       state,
       zipcode
     } = req.body
+    console.log(req.session)
+    //const { id } = req.session.user
     const db = await req.app.get('db')
-    const meetUp = await db.add_meetup(
+    const meetUp = await db.add_meetup([
       title,
       img,
       description,
+      time,
       date,
       street,
       city,
       state,
       zipcode
-    )
+    ])
     if (meetUp[0]) {
       res.status(201).send({ message: 'Meet Up created!', data: meetUp })
     } else {
