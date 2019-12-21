@@ -16,10 +16,12 @@ import CSS from "./components/CSS/CSS";
 import Public from "./components/Public/Public";
 import Post from "./components/Posts/Post";
 import PostDetails from './components/Posts/PostDetails'
+import Landing from './components/Dashboard/Landing';
 
 export default (
   <Switch>
-    <Route exact path="/" component={Dashboard}></Route>
+    <Route exact path= "/" component={Landing}/>
+    <Route path="/dashboard" component={Dashboard}></Route>
     <Route path="/channels" component={Channels}></Route>
     <Route path="/chat" component={Chat}></Route>
     <Route path="/meetups" component={MeetUpsDash}></Route>

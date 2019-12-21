@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Create from "../Posts/CreatePost";
+import Post from "../Posts/Post";
 
 class Public extends Component {
   state = {
@@ -15,6 +16,10 @@ class Public extends Component {
     this.getPosts();
   }
 
+  componentDidUpdate() {
+    this.getPosts()
+  }
+
   getPosts = () => {
     const { category } = this.state;
     axios
@@ -27,7 +32,7 @@ class Public extends Component {
 
   render() {
     const mapPosts = this.state.posts.map(post => (
-      <div key={post.id}>{this.state.category}</div>
+      <Post key={post.id} post={post} />
     ));
     return (
       <>

@@ -2,10 +2,10 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
   register: async (req, res) => {
-    console.log("hit authCtrl register");
+    // console.log("hit authCtrl register");
     const db = req.app.get("db");
     const { email, password, name } = req.body;
-    console.log("authCtrl, register", req.body);
+    // console.log("authCtrl, register", req.body);
     const found = await db.find_user([email]);
     // console.log(found)
     if (+found[0].count !== 0) {
@@ -22,7 +22,7 @@ module.exports = {
       // message: `Hello ${req.session.user.name}, welcome to Social Coders!`,
       user: req.session.user
     });
-    console.log(req.session);
+    // console.log(req.session);
   },
   login: async (req, res) => {
     const db = req.app.get("db");
@@ -39,7 +39,7 @@ module.exports = {
       return res.status(401).send({ message: "password incorrect" });
     }
     req.session.user = { id, email, name };
-    console.log(req.session.user)
+    // console.log(req.session.user)
     res.status(200).send({
       // message: {
       //   icon: "success",
@@ -53,11 +53,18 @@ module.exports = {
       message: `Hello ${req.session.user.name}, welcome back to Social Coders!`,
       user: req.session.user
     });
-    console.log("User on session", req.session);
+    // console.log("User on session", req.session);
   },
   logout: (req, res) => {
     req.session.destroy();
     res.status(200).send({ message: "Logged Out!" });
-    console.log("session Destroyed", req.session);
+    // console.log("session Destroyed", req.session);
+  },
+  loggedIn: (req, res) => {
+    if (req.session.user) {
+      res.status(200).send({ user: req.session.user })
+    } else {
+      res.status(401).send({ message: 'Please log in or register.' })
+    }
   }
 };

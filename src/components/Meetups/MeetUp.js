@@ -42,11 +42,12 @@ export default function MeetUpsDash(props) {
           style={{ height: '2rem' }}
           color="warning"
           size="sm"
-          onClick={() => el.deletePost(el.id)}
+          onClick={() => props.deletePost(el.id)}
         >
           X
         </MDBBtn>
       </MDBContainer>
+      <hr />
     </div>
   )
 }

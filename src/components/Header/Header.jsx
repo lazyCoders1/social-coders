@@ -18,11 +18,25 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { updateUserInfo } from "../../Reduxs/reducer";
 
 export class Header extends Component {
   state = {
     isOpen: false
   };
+
+  componentDidMount() {
+    this.getMe();
+  }
+
+  getMe() {
+    axios
+      .get("/auth/me")
+      .then(res => {
+        this.props.updateUserInfo(res.data.user);
+      })
+      .catch(err => console.log(err));
+  }
 
   logout = () => {
     axios
@@ -121,12 +135,12 @@ export class Header extends Component {
                   </MDBNavItem>
                 ) : (
                   <div style={{ display: "flex" }}>
-                    <a href="#/login">
+                    <a href="#/register">
                       <MDBBtn color="white" size="sm">
                         SignIn
                       </MDBBtn>
                     </a>
-                    <a href="#/register">
+                    <a href="#/login">
                       <MDBBtn color="white" size="sm">
                         SignUp
                       </MDBBtn>
@@ -147,4 +161,8 @@ function mapStateToProps(reduxState) {
   return { id };
 }
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = {
+  updateUserInfo
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -32,6 +32,7 @@ app.use(
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 app.delete('/auth/logout', authCtrl.logout)
+app.get('/auth/me', authCtrl.loggedIn)
 
 //Meet Up Endpoints
 app.get('/api/google/location', meetCtrl.getLocation)
@@ -46,6 +47,7 @@ app.delete('/api/comments/:id', commentCtrl.deleteComment)
 app.patch('/api/comments/:id', commentCtrl.updateComment)
 
 // Post Endpoints
+app.get('/api/posts', postCtrl.getAllPosts)
 app.get('/api/posts/:category', postCtrl.getPosts)
 app.get('/api/posts/:id', postCtrl.getOnePost)
 app.get('/api/user/posts/:id', postCtrl.getUsersPosts)
