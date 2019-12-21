@@ -47,6 +47,7 @@ app.delete('/api/comments/:id', commentCtrl.deleteComment)
 app.patch('/api/comments/:id', commentCtrl.updateComment)
 
 // Post Endpoints
+app.get('/api/posts', postCtrl.getAllPosts)
 app.get('/api/posts/:category', postCtrl.getPosts)
 app.get('/api/posts/:id', postCtrl.getOnePost)
 app.get('/api/user/posts/:id', postCtrl.getUsersPosts)
