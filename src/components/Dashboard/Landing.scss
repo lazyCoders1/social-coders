@@ -1,0 +1,16 @@
+.input {
+    width: 720px;
+    background: rgba(248, 248, 255, 0.801);
+    margin: 10px auto;
+    margin-top: 30px;
+    border: .3px solid rgb(99, 99, 99);
+    padding: 6px;
+    border-radius: 5px;
+    display: block;
+    font-size: 1.1rem;
+    text-align: left;
+}
+.input:hover {
+    outline: none;
+    box-shadow: 0 0 5px #2BBBAD;
+}

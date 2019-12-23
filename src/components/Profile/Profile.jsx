@@ -4,7 +4,7 @@ import "./profile.scss";
 import EditProfile from "./EditProfile";
 import { MDBIcon } from "mdbreact";
 import Post from '../Posts/Post'
-import CreatePost from './../Posts/CreatePost';
+import Create from './../Posts/CreatePost';
 
 class Profile extends Component {
   constructor(props) {
@@ -20,17 +20,18 @@ class Profile extends Component {
       linked_in: "",
       github: "",
       posts: [],
-      toggle: false
+      toggle: false,
+      toggleTwo: false
     };
   }
 
   componentDidMount = () => {
-    this.getUsersPosts();
+    this.getPosts();
     this.getProfile();
   };
 
   componentDidUpdate() {
-    this.getUsersPosts()
+    this.getPosts()
   }
   
 
@@ -50,7 +51,7 @@ class Profile extends Component {
     });
   };
 
-  getUsersPosts = () => {
+  getPosts = () => {
   axios.get(`/api/user/posts/${this.props.match.params.id}`)
   .then(res => {
     this.setState({
@@ -60,11 +61,17 @@ class Profile extends Component {
   })
   };
 
+  toggleTwo = () => {
+    this.setState({
+      toggleTwo: !this.state.toggleTwo
+    });
+  };
+
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    });
-  };
+    })
+  }
 
   render() {
     const el = this.state;
@@ -88,7 +95,8 @@ class Profile extends Component {
               backgroundImage: `url('${el.cover_photo}')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              height: "250px"
+              height: "250px",
+              position: 'relative'
             }}
           />
           <div className="profile-pic">
@@ -108,7 +116,7 @@ class Profile extends Component {
           <div className="edit">
             <MDBIcon
               icon="pen"
-              onClick={() => this.toggle()}
+              onClick={() => this.toggleTwo()}
               className="edit-pen"
             />
           </div>
@@ -137,14 +145,14 @@ class Profile extends Component {
             </a>
           </div>
         </div>
-        <CreatePost
-        posts={this.getUsersPosts}/>
+        {this.state.toggle ? <Create toggle={this.toggle} getPosts={this.getPosts} /> : null}
+        <div className='input' onClick={this.toggle}>Create post...</div>
         {usersPosts}
-        {this.state.toggle ? (
+        {this.state.toggleTwo ? (
           <EditProfile
             key={this.props.location.key}
             id={this.props.match.params.id}
-            toggle={this.toggle}
+            toggleTwo={this.toggleTwo}
             getProfile={this.getProfile}
             profile={this.state}
           />

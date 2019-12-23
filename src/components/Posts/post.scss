@@ -2,14 +2,15 @@
     width: 720px;
     height: 100%;
     margin: 20px auto;
-    box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.376);
-    border: .5px solid rgba(68, 68, 68, 0.479);
+    box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
+    // border: .5px solid rgba(68, 68, 68, 0.479);
     border-radius: 5px;
     position: relative;
     display: block;
     text-align: center;
     padding: 10px;
     background: ghostwhite;
+    z-index: -1;
     .users-name {
         position: absolute;
         top: 10px;
