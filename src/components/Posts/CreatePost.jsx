@@ -4,24 +4,27 @@ import { withRouter } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import "./CreatePost.scss";
+import { MDBBtn, MDBIcon, MDBAnimation } from "mdbreact";
 
 class CreatePost extends Component {
   state = {
     title: "",
     img: "",
     content: "",
-    category: this.props.category
+    category: this.props.category,
+    
   };
 
   addPost = () => {
     const { id: author_id } = this.props;
     const { title, img, content, category } = this.state;
-    if(!category) {
+    if (!category) {
       return Swal.fire({
-        title: 'Please select a category.',
-        icon: 'error'
-      })
+        title: "Please select a category.",
+        icon: "error"
+      });
     }
     axios
       .post("/api/posts", { title, img, content, author_id, category })
@@ -61,8 +64,25 @@ class CreatePost extends Component {
     };
     return (
       <div>
-        <div>
-          <h1>Create a Post</h1>
+        <MDBAnimation
+          type="fadeIn"
+          style={{
+            zIndex: "20"
+          }}
+        >
+      <div className='blur'>
+        <div className="create-post-container">
+          <div className='cancel' onClick={this.props.toggle}>X</div>
+          {this.props.location.pathname !== "/javascript" &&
+            this.props.location.pathname !== "/css" &&
+            this.props.location.pathname !== "/public" && (
+              <select onChange={this.handleInput} name="category" id="">
+                <option value=""></option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="CSS">CSS</option>
+                <option value="Other">Other</option>
+              </select>
+            )}
           <input
             placeholder="Title..."
             name="title"
@@ -81,24 +101,24 @@ class CreatePost extends Component {
             value={this.state.img}
             type="text"
           />
-          {this.props.location.pathname !== "/javascript" &&
-            this.props.location.pathname !== "/css" &&
-            this.props.location.pathname !== "/public" && (
-              <select onChange={this.handleInput} name="category" id="">
-                <option value=""></option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="CSS">CSS</option>
-                <option value="Other">Other</option>
-              </select>
-            )}
           <ReactQuill
+            style={{
+              borderRadius: "5px",
+              border: ".5px solid rgb(192, 192, 192)"
+            }}
+            className="textbox"
             value={this.state.content}
             onChange={this.handleChange}
             modules={modules}
           />
-          <button onClick={this.addPost}>Post</button>
+          <MDBBtn className='post-button' outline color="default" size="sm" onClick={this.addPost}>
+            Post
+            <MDBIcon icon="pencil-alt" className="ml-2" />
+          </MDBBtn>
         </div>
       </div>
+      </MDBAnimation>
+    </div>
     );
   }
 }

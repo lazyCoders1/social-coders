@@ -1,40 +1,23 @@
 
-
-.user-post-container {
-    height: auto;
-    width: 60vw;
-    padding: 20px;
-    margin: 0 auto;
-    .h1 {
-        font-size: 1.5rem;
-        
-    }
-    .img {
-        height: 200px;
-        width: 400px;
-        margin: 15px 0 20px 0;
-    }
-    .p {
-        font-size: 1rem;
-    }
-}
-
-.top-margin {
-    padding-top: 80px;
-}
+// .top-margin {
+//     padding-top: 80px;
+// }
 
 .user-profile-container {
-    width: 60vw;
+    width: 720px;
     height: 400px;
     margin: auto;
     box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.376);
     margin-top: 20px;
+    border-radius: 7px;
+    position: relative;
+    background: ghostwhite;
 
     .header-container {
         margin: 0 auto;
         // margin-top: 40px;
         display: flex;
-        width: 55vw;
+        width: 680px;
         justify-content: space-between;
         align-items: center;
         h4 {
@@ -79,7 +62,7 @@
     border-radius: 50%;
     border: 3px solid rgba(255, 255, 255, 0.972);
     position: absolute;
-    top: 180px;
+    top: 100px;
     margin: 25px;
     display: flex;
     justify-content: center;

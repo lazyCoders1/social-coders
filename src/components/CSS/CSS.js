@@ -9,7 +9,8 @@ class CSS extends Component {
     title: "",
     img: "",
     content: "",
-    category: "CSS"
+    category: "CSS",
+    toggle: false
   };
 
   componentDidMount() {
@@ -30,13 +31,20 @@ class CSS extends Component {
       .catch(err => console.log(err));
   };
 
+  toggle = () => {
+    this.setState({
+      toggle: !this.state.toggle
+    })
+  }
+
   render() {
     const mapPosts = this.state.posts.map(post => (
       <Post key={post.id} post={post} />
     ));
     return (
       <>
-        <Create category={this.state.category} />
+         {this.state.toggle ? <Create toggle={this.toggle} getPosts={this.getPosts} category={this.state.category} /> : null}
+        <div className='input' onClick={this.toggle}>Create post...</div>
         {mapPosts}
       </>
     );
