@@ -2,5 +2,7 @@ pre, code {
   background: lightgray;
   font-family: 'Courier New', Courier, monospace;
   width: 50%;
-  color: black
+  color: black;
+  overflow: visible;
+  margin: 7px
 }

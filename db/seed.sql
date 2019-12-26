@@ -82,6 +82,6 @@ post_id int references sc_posts(id)
 );
 
 insert into sc_favs (user_id, post_id)
-values(25, 1),
-(25, 2),
-(25, 3)
+values(1, 18),
+(1, 19),
+(1, 20)

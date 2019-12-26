@@ -13,8 +13,7 @@ class CreatePost extends Component {
     title: "",
     img: "",
     content: "",
-    category: this.props.category,
-    
+    category: this.props.category
   };
 
   addPost = () => {
@@ -70,55 +69,66 @@ class CreatePost extends Component {
             zIndex: "20"
           }}
         >
-      <div className='blur'>
-        <div className="create-post-container">
-          <div className='cancel' onClick={this.props.toggle}>X</div>
-          {this.props.location.pathname !== "/javascript" &&
-            this.props.location.pathname !== "/css" &&
-            this.props.location.pathname !== "/public" && (
-              <select onChange={this.handleInput} name="category" id="">
-                <option value=""></option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="CSS">CSS</option>
-                <option value="Other">Other</option>
-              </select>
-            )}
-          <input
-            placeholder="Title..."
-            name="title"
-            size="100"
-            autoComplete="off"
-            onChange={this.handleInput}
-            value={this.state.title}
-            type="text"
-          />
-          <input
-            placeholder="Image (optional)..."
-            name="img"
-            size="100"
-            autoComplete="off"
-            onChange={this.handleInput}
-            value={this.state.img}
-            type="text"
-          />
-          <ReactQuill
-            style={{
-              borderRadius: "5px",
-              border: ".5px solid rgb(192, 192, 192)"
-            }}
-            className="textbox"
-            value={this.state.content}
-            onChange={this.handleChange}
-            modules={modules}
-          />
-          <MDBBtn className='post-button' outline color="default" size="sm" onClick={this.addPost}>
-            Post
-            <MDBIcon icon="pencil-alt" className="ml-2" />
-          </MDBBtn>
-        </div>
+          <div className="blur">
+            <div className="create-post-container">
+              <div className="cancel" onClick={this.props.toggle}>
+                X
+              </div>
+              {this.props.location.pathname !== "/javascript" &&
+                this.props.location.pathname !== "/css" &&
+                this.props.location.pathname !== "/public" && (
+                  <select onChange={this.handleInput} name="category" id="">
+                    <option value=""></option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="CSS">CSS</option>
+                    <option value="Other">Other</option>
+                  </select>
+                )}
+              <input
+                placeholder="Title..."
+                name="title"
+                size="100"
+                autoComplete="off"
+                onChange={this.handleInput}
+                value={this.state.title}
+                type="text"
+              />
+              <input
+                placeholder="Image (optional)..."
+                name="img"
+                size="100"
+                autoComplete="off"
+                onChange={this.handleInput}
+                value={this.state.img}
+                type="text"
+              />
+              <ReactQuill
+                style={{
+                  borderRadius: "5px",
+                  border: ".5px solid rgb(192, 192, 192)"
+                }}
+                className="textbox"
+                value={this.state.content}
+                onChange={this.handleChange}
+                modules={modules}
+              />
+              <MDBBtn
+                className="post-button"
+                outline
+                color="default"
+                size="sm"
+                onClick={() => {
+                  this.addPost();
+                  this.props.toggle();
+                }}
+              >
+                Post
+                <MDBIcon icon="pencil-alt" className="ml-2" />
+              </MDBBtn>
+            </div>
+          </div>
+        </MDBAnimation>
       </div>
-      </MDBAnimation>
-    </div>
     );
   }
 }

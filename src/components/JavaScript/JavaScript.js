@@ -18,10 +18,12 @@ class JavaScript extends Component {
     this.getPosts();
   }
 
-  componentDidUpdate() {
-    this.getPosts()
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.posts.length !== this.state.posts.length) {
+      this.getPosts();
+    }
   }
-  
+
   getPosts = () => {
     const { category } = this.state;
     axios
@@ -35,8 +37,8 @@ class JavaScript extends Component {
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    })
-  }
+    });
+  };
 
   render() {
     const mapPosts = this.state.posts.map(post => (
@@ -44,8 +46,16 @@ class JavaScript extends Component {
     ));
     return (
       <>
-        {this.state.toggle ? <Create toggle={this.toggle} getPosts={this.getPosts} category={this.state.category} /> : null}
-        <div className='input' onClick={this.toggle}>Create post...</div>
+        {this.state.toggle ? (
+          <Create
+            toggle={this.toggle}
+            getPosts={this.getPosts}
+            category={this.state.category}
+          />
+        ) : null}
+        <div className="input" onClick={this.toggle}>
+          Create post...
+        </div>
         {mapPosts}
       </>
     );

@@ -16,12 +16,18 @@ class Landing extends Component {
   componentDidMount() {
     this.getPosts();
   }
+  
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.posts.length !== this.state.posts.length) {
+      this.getPosts();
+    }
+  }
 
   getPosts = () => {
     axios
       .get(`/api/posts`)
       .then(res => {
-          console.log(res.data)
+          // console.log(res.data)
         this.setState({ posts: res.data });
       })
       .catch(err => console.log(err));
