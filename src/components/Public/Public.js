@@ -16,8 +16,10 @@ class Public extends Component {
     this.getPosts();
   }
 
-  componentDidUpdate() {
-    this.getPosts()
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.posts.length !== this.state.posts.length) {
+      this.getPosts();
+    }
   }
 
   getPosts = () => {

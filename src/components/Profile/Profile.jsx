@@ -3,8 +3,8 @@ import axios from "axios";
 import "./profile.scss";
 import EditProfile from "./EditProfile";
 import { MDBIcon } from "mdbreact";
-import Post from '../Posts/Post'
-import Create from './../Posts/CreatePost';
+import Post from "../Posts/Post";
+import Create from "./../Posts/CreatePost";
 
 class Profile extends Component {
   constructor(props) {
@@ -30,10 +30,11 @@ class Profile extends Component {
     this.getProfile();
   };
 
-  componentDidUpdate() {
-    this.getPosts()
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.posts.length !== this.state.posts.length) {
+      this.getPosts();
+    }
   }
-  
 
   getProfile = async () => {
     const res = await axios.get(`/api/profile/${this.props.match.params.id}`);
@@ -52,13 +53,12 @@ class Profile extends Component {
   };
 
   getPosts = () => {
-  axios.get(`/api/user/posts/${this.props.match.params.id}`)
-  .then(res => {
-    this.setState({
-      posts: res.data
-    })
-    // this.getUsersPosts()
-  })
+    axios.get(`/api/user/posts/${this.props.match.params.id}`).then(res => {
+      this.setState({
+        posts: res.data
+      });
+      // this.getUsersPosts()
+    });
   };
 
   toggleTwo = () => {
@@ -70,8 +70,8 @@ class Profile extends Component {
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    })
-  }
+    });
+  };
 
   render() {
     const el = this.state;
@@ -79,9 +79,9 @@ class Profile extends Component {
       return (
         <div key={post.id}>
           <Post
-          id={this.props.match.params.id}
-          post={post}
-          profile={this.state}
+            id={this.props.match.params.id}
+            post={post}
+            profile={this.state}
           />
         </div>
       );
@@ -96,7 +96,7 @@ class Profile extends Component {
               backgroundSize: "cover",
               backgroundPosition: "center",
               height: "250px",
-              position: 'relative'
+              position: "relative"
             }}
           />
           <div className="profile-pic">
@@ -145,8 +145,12 @@ class Profile extends Component {
             </a>
           </div>
         </div>
-        {this.state.toggle ? <Create toggle={this.toggle} getPosts={this.getPosts} /> : null}
-        <div className='input' onClick={this.toggle}>Create post...</div>
+        {this.state.toggle ? (
+          <Create toggle={this.toggle} getPosts={this.getPosts} />
+        ) : null}
+        <div className="input" onClick={this.toggle}>
+          Create post...
+        </div>
         {usersPosts}
         {this.state.toggleTwo ? (
           <EditProfile
