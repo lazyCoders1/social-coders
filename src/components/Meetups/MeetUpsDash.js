@@ -69,11 +69,11 @@ export default class CreateMeetUps extends Component {
     })
 
     return (
-      <div>
-        <h1>meetupjunk</h1>
-        <MDBBtn color="warning" size="sm" onClick={() => this.toggle()}>
+      <div className="d-flex  justify-content-center align-content-around flex-wrap bd-highlight example-parent">
+        {/* <h1>meetupjunk</h1> */}
+        {/* <MDBBtn color="warning" size="sm" onClick={() => this.toggle()}>
           add a meetup??
-        </MDBBtn>
+        </MDBBtn> */}
         {meetUp}
         {this.state.toggle ? (
           // this.state.meetUpPosts.map(el => {

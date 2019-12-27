@@ -512,6 +512,10 @@ function mapStateToProps(reduxState) {
 
 export default withRouter(connect(mapStateToProps)(CreatePost));
 
+
+
+<!-- ! -->
+
 // <div>
 //   <div>
 //     <h1>Create a Post</h1>

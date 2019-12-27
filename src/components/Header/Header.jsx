@@ -60,6 +60,7 @@ export class Header extends Component {
     return (
       <Router>
         <MDBNavbar
+          // fixed="top"
           className="position-sticky"
           color="default-color"
           dark
