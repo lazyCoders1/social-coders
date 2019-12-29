@@ -1,42 +1,75 @@
+.profile-form {
+  width: 450px;
+  height: 520px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -260px;
+  margin-left: -225px;
+  border-radius: 10px;
+  z-index: 11;
+  box-shadow: 5px 5px 5px -3px rgba(29, 29, 29, 0.5);
+  display: block;
+}
+
+.MDBInput {
+  width: 100%
+}
+
 .md-form {
-    margin: 5px;
-    label {
-        font-size: .8rem;
-    }
-    .fa-image {
-        font-size: 1rem;
-    }
-    .fa-user {
-        font-size: 1rem;
-    }
-    .fa-heading {
-        font-size: 1rem;
-    }
-    .fa-link {
-        font-size: 1rem;
-    }
-    .fa-code-branch {
-        font-size: 1rem;
-    }
+  margin: 5px;
+  label {
+    font-size: 0.8rem;
+  }
+  .fa-image {
+    font-size: 1rem;
+  }
+  .fa-user {
+    font-size: 1rem;
+  }
+  .fa-heading {
+    font-size: 1rem;
+  }
+  .fa-link {
+    font-size: 1rem;
+  }
+  .fa-code-branch {
+    font-size: 1rem;
+  }
 }
 
 input.form-control {
-    margin: 5px;
-    padding: 5px;
+  margin: 20px !important;
+  margin-left: 30px !important;
+  padding: 5px;
 }
 
 .back {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 1.5rem;
-    height: 30px;
-    width: 30px;
-    font-weight: 700;
-    // background-color: red;
-    text-align: center;
-    cursor: pointer;
-  }
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 1.5rem;
+  height: 30px;
+  width: 30px;
+  font-weight: 700;
+  // background-color: red;
+  text-align: center;
+  cursor: pointer;
+}
 
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  
+@media (max-width: 465px) {
+    .profile-form {
+        width: 100vw;
+        margin: 0;
+        left: 0;
+        top: 100px;
+    }
+}

@@ -113,37 +113,27 @@ class Profile extends Component {
               }}
             />
           </div>
-          <div className="edit">
-            <MDBIcon
-              icon="pen"
-              onClick={() => this.toggleTwo()}
-              className="edit-pen"
-            />
-          </div>
-
-          <div className="header-container">
-            <div className="name-container">
+          <div className="info-container">
+            <div className="info">
               <h3>{el.name}</h3>
+              <h4>{el.headline}</h4>
+              <div className="address">{el.city + ", " + el.state}</div>
             </div>
-            <div className="about-container">
-              <div className="address">{el.city}</div>
+            <div className="links">
+                <MDBIcon
+                  icon="pen"
+                  onClick={() => this.toggleTwo()}
+                  className="edit-pen"
+                />
+                <a className="github" href={`${el.github}`}>
+                  <MDBIcon fab icon="github" />
+                </a>
+                <a className="linkedin" href={`${el.linked_in}`}>
+                  <MDBIcon fab icon="linkedin" />
+                </a>
             </div>
-            <a className="connect" href={`${el.linked_in}`}>
-              <MDBIcon fab icon="linkedin" />
-            </a>
           </div>
 
-          <div className="header-container">
-            <div className="name-container">
-              <h4>{el.headline}</h4>
-            </div>
-            <div className="about-container">
-              <div className="address">{el.state}</div>
-            </div>
-            <a className="connect" href={`${el.github}`}>
-              <MDBIcon fab icon="github" />
-            </a>
-          </div>
         </div>
         {this.state.toggle ? (
           <Create toggle={this.toggle} getPosts={this.getPosts} />
