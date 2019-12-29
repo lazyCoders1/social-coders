@@ -1,6 +1,7 @@
 .blur {
     height: 100%;
     width: 100%;
+    top: 0;
     position: fixed;
     -webkit-backdrop-filter: blur(2px);
     backdrop-filter: blur(2px);
@@ -19,7 +20,7 @@
     border-radius: 5px;
     padding: 20px;
     padding-top: 35px;
-    top: 0%;
+    top: 110px;
     left: 50%;
     margin-left: -360px;
     z-index: 20;
@@ -50,7 +51,7 @@
     }
     
     input {
-        width: 680px;
+        width: 100%;
         background: rgba(248, 248, 255, 0.801);
         margin: 5px 0;
         border: .3px solid rgb(99, 99, 99);
@@ -63,7 +64,7 @@
         box-shadow: 0 0 10px #E1E2E1;
     }
     .textbox {
-        width: 680px;
+        width: 100%;
         margin: 5px 0;
         border-radius: 2px;
         border: .3px solid rgb(99, 99, 99);
@@ -72,10 +73,23 @@
 
     .post-button {
         position: relative;
-        left: 585px;
+        left: 85%;
         top: 6px;
         font-size: .9rem;
         padding: 5px 15px;
     }
     
+}
+
+@media (max-width: 710px) {
+    .create-post-container {
+        width: 100vw;
+        top: 110px;
+        left: 0;
+        margin-top: 0;
+        margin-left: 0;
+        .post-button{
+            left: 70%;
+        }
+    }
 }
