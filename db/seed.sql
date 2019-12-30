@@ -85,3 +85,10 @@ insert into sc_favs (user_id, post_id)
 values(1, 18),
 (1, 19),
 (1, 20)
+
+select * from sc_posts sp
+join sc_users su on (su.id=sp.author_id)
+where title like '%Who%'
+or content like '%Who%'
+or category like '%Who%'
+or name like '%Who%';

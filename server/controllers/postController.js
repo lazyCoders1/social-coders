@@ -10,6 +10,12 @@ module.exports = {
     const posts = await db.get_posts(category);
     res.status(200).send(posts);
   },
+  searchPost: async (req, res) => {
+    const db = req.app.get("db");
+    const { search } = req.body;
+    const posts = await db.search_posts(search);
+    res.status(200).send(posts);
+  },
   getOnePost: async (req, res) => {
     const db = req.app.get("db");
     const { id } = req.params;
