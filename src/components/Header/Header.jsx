@@ -61,7 +61,8 @@ export class Header extends Component {
     return (
       <Router>
         <MDBNavbar
-          className="position-sticky"
+          // fixed="top"
+          // className="position-sticky"
           color="default-color"
           dark
           expand="md"
@@ -82,7 +83,6 @@ export class Header extends Component {
                 <MDBFormInline waves>
                   <div className="md-form my-0">
                     <input
-                      className="form-control mr-sm-2"
                       type="text"
                       placeholder="Search"
                       aria-label="Search"

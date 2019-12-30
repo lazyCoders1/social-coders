@@ -1,53 +1,66 @@
-import React from 'react'
+import React from "react";
 import {
-  MDBBtn,
+  // MDBBtn,
   MDBCard,
-  MDBContainer,
+  // MDBContainer,
   MDBCardBody,
   MDBCardImage,
-  MDBCardTitle
-} from 'mdbreact'
+  MDBCardTitle,
+  // MDBNavbarNav,
+  // MDBCardFooter,
+  MDBCardText,
+  // MDBBox,
+  MDBCol
+} from "mdbreact";
+import { Link } from "react-router-dom";
+import "./MeetUps.scss";
 
 export default function MeetUpsDash(props) {
-  const el = props.meetUpPost
+  const el = props.meetUpPost;
   return (
-    <div key={el.id}>
-      <MDBContainer
-        style={{
-          display: 'flex',
-          justifyContent: 'center'
-        }}
-      >
-        <MDBCard
-          style={{
-            width: '75vw',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center'
-          }}
-        >
-          <MDBCardTitle>Title: {el.title}</MDBCardTitle>
-          <MDBCardImage src={el.img} />
-          <MDBCardBody>
-            <h3>Date: {el.date} </h3>
-            <h3>Time: {el.time}</h3>
-            <h3>Description: {el.description} </h3>
-            <h3>Street: {el.street} </h3>
-            <h3>City: {el.city}</h3>
-            <h3>State: {el.state} </h3>
-            <h3>Zipcode: {el.zipcode}</h3>
-          </MDBCardBody>
-        </MDBCard>
-        <MDBBtn
-          style={{ height: '2rem' }}
-          color="warning"
-          size="sm"
-          onClick={() => props.deletePost(el.id)}
-        >
-          X
-        </MDBBtn>
-      </MDBContainer>
-      <hr />
+    <div id="meetups" key={el.id}>
+      <MDBCol>
+        <Link>
+          <MDBCard className="meetup-cards shadow-box-example hoverable">
+            {/* <MDBNavbarNav right>
+                <MDBBtn
+                  style={{ height: "2rem" }}
+                  color="warning"
+                  size="sm"
+                  onClick={() => props.deletePost(el.id)}
+                >
+                  X
+                </MDBBtn>
+              </MDBNavbarNav> */}
+
+            <MDBCardImage className="img-fluid" src={el.img} waves />
+            <MDBCardBody className="meetup-content">
+              <MDBCardText className="text-uppercase font-weight-bolder blue-text">
+                {el.date}, {el.time}{" "}
+              </MDBCardText>
+              <MDBCardTitle>{el.title}</MDBCardTitle>
+              {/* <MDBCardText>Time:</MDBCardText> */}
+              <MDBCardText>Description: {el.description} </MDBCardText>
+              <MDBCardText>Street: {el.street} </MDBCardText>
+              <MDBCardText>City: {el.city}</MDBCardText>
+              <MDBCardText>State: {el.state} </MDBCardText>
+              <MDBCardText>Zipcode: {el.zipcode}</MDBCardText>
+            </MDBCardBody>
+            {/* <MDBCardFooter className="footer-bar">
+                <p>Last updated 1 min ago</p>
+                <Link>
+                  <button>
+                    <i className="fas fa-comment-alt"> Comment</i>
+                  </button>
+                </Link>
+                <button>
+                  <i className="fas fa-share"> Share</i>
+                </button>
+                <i className="fas fa-bookmark"> Save</i>
+              </MDBCardFooter> */}
+          </MDBCard>
+        </Link>
+      </MDBCol>
     </div>
-  )
+  );
 }

@@ -53,7 +53,7 @@ create table chatroom_junction (
   user_id int references sc_users(id),
   chatroom_id int references chatroom(id)
 );
-
+--? Meetups SCEMA
 create table meetups(
   id serial primary key,
   title varchar(25),
