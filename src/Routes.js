@@ -17,6 +17,8 @@ import Public from "./components/Public/Public";
 import Post from "./components/Posts/Post";
 import PostDetails from './components/Posts/PostDetails'
 import Landing from './components/Dashboard/Landing';
+import MeetUpDetails from "./components/Meetups/MeetUpDetails";
+
 
 export default (
   <Switch>
@@ -25,7 +27,7 @@ export default (
     <Route path="/channels" component={Channels}></Route>
     <Route path="/chat" component={Chat}></Route>
     <Route path="/meetups" component={MeetUpsDash}></Route>
-    <Route path="/meetups/:id" component={MeetUpsDash}></Route>
+    <Route path="/meetup_details/:id" component={MeetUpDetails}></Route>
     <Route path="/createpost" component={CreatePost}></Route>
     <Route path="/post_details/:id" component={PostDetails}></Route>
     <Route path="/profile/:id" component={Profile}></Route>
