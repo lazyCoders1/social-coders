@@ -5,6 +5,7 @@ import "./post.scss";
 import axios from "axios";
 import parse from "html-react-parser";
 import Swal from "sweetalert2";
+import { withRouter } from "react-router-dom";
 
 class Post extends Component {
   addFavorite = () => {
@@ -41,9 +42,13 @@ class Post extends Component {
   };
 
   render() {
-    const { title, img, content, name, profile_pic } = this.props.post;
+    const { id, title, img, content, name, profile_pic } = this.props.post;
     return (
-      <div style={{ background: "#f8f8ff" }} className="post-card">
+      <div
+        onClick={() => this.props.history.push(`/post_details/${id}`)}
+        style={{ background: "#f8f8ff" }}
+        className="post-card"
+      >
         <div
           style={{
             backgroundImage: `url(${profile_pic})`,
@@ -82,4 +87,4 @@ function mapStateToProps(reduxState) {
   return { id };
 }
 
-export default connect(mapStateToProps)(Post);
+export default withRouter(connect(mapStateToProps)(Post));
