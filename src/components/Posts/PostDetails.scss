@@ -22,14 +22,19 @@
   //   padding-bottom: 25px;
   // }
   .postContainer {
-    padding-top: 115px;
+    padding-top: 65px;
     padding-bottom: 125px;
-    overflow: scroll;
   }
 
   .post-details-card {
     // margin: 50px;
     background-color: ghostwhite;
+  }
+  .post-link {
+    color: #848383
+  }
+  .post-link:hover {
+    text-decoration: underline;
   }
   .card-text{
     line-height: 1.5;

@@ -104,7 +104,7 @@ export class Header extends Component {
                         JavaScript
                       </MDBDropdownItem>
                       <MDBDropdownItem href="#/css">CSS</MDBDropdownItem>
-                      <MDBDropdownItem href="#/public">Public</MDBDropdownItem>
+                      <MDBDropdownItem href="#/public">Other</MDBDropdownItem>
                       <MDBDropdownItem href="#/meetups">
                         Meetups
                       </MDBDropdownItem>

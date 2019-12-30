@@ -6,9 +6,6 @@ import Post from "../Posts/Post";
 class CSS extends Component {
   state = {
     posts: [],
-    title: "",
-    img: "",
-    content: "",
     category: "CSS",
     toggle: false
   };

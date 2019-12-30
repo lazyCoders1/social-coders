@@ -20,7 +20,7 @@ module.exports = {
     const db = req.app.get("db");
     const { id } = req.params;
     const post = await db.get_post(id);
-    res.status(200).send(post);
+    res.status(200).send(post[0]);
   },
   getUsersPosts: async (req, res) => {
     const db = req.app.get("db");
