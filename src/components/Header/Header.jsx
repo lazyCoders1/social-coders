@@ -22,7 +22,7 @@ import { updateUserInfo } from "../../Reduxs/reducer";
 
 export class Header extends Component {
   state = {
-    isOpen: false
+    isOpen: false,
   };
 
   componentDidMount() {
@@ -56,6 +56,7 @@ export class Header extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
 
+
   render() {
     return (
       <Router>
@@ -85,6 +86,7 @@ export class Header extends Component {
                       type="text"
                       placeholder="Search"
                       aria-label="Search"
+                      
                     />
                   </div>
                 </MDBFormInline>
@@ -157,8 +159,8 @@ export class Header extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  const { id } = reduxState;
-  return { id };
+  const { id, posts } = reduxState;
+  return { id, posts };
 }
 
 const mapDispatchToProps = {

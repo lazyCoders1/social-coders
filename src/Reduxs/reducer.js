@@ -4,6 +4,7 @@ const initialState = {
   name: "",
   id: "",
   profile_pic: "",
+  posts: [],
   //!CREATE_POST
   createInput: "",
   createTitle: "",
@@ -12,6 +13,7 @@ const initialState = {
 
 // ACTION CONSTANTS
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
+const UPDATE_POSTS = "UPDATE_POSTS";
 const UPDATE_POST_INPUT = "UPDATE_POST_INPUT";
 const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
 const UPDATE_COMMENT = "UPDATE_COMMENT";
@@ -24,7 +26,9 @@ function reducer(state = initialState, action) {
 
     //!PROFILE_IMG
     //!---------
-    //!CREATE_POST
+    case UPDATE_POSTS:
+      return Object.assign({}, state, {posts: action.payload})
+      //!CREATE_POST
 
     case UPDATE_POST_INPUT:
       return Object.assign({}, state, { createInput: action.payload });
@@ -51,6 +55,13 @@ export function updateUserInfo(userObj) {
     type: UPDATE_USER_INFO,
     payload: userObj
   };
+}
+// GET DASHBOARD POSTS//
+export function updatePosts(postObj) {
+  return {
+    type: UPDATE_POSTS,
+    payload: postObj
+  }
 }
 //!CREATE_POST
 export function updatePostInput(createInput) {
