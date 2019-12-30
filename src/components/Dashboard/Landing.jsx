@@ -5,7 +5,7 @@ import Create from "../Posts/CreatePost";
 import { connect } from "react-redux";
 import { updatePosts } from '../../Reduxs/reducer'
 import Post from "../Posts/Post";
-import './Landing.scss'
+import "./Landing.scss";
 class Landing extends Component {
   state = {
     posts: [],
@@ -21,7 +21,7 @@ class Landing extends Component {
     this.getPosts();
     
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.posts.length !== this.state.posts.length) {
       this.getPosts();
@@ -43,8 +43,8 @@ class Landing extends Component {
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    })
-  }
+    });
+  };
 
   handleChange = event => {
     this.setState({search: event.target.value})
