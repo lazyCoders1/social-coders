@@ -1,0 +1,25 @@
+.newPost {
+  background: rgba(248, 248, 255, 0.925);
+  width: 720px;
+  margin: auto;
+  position: fixed;
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 35px;
+  top: 110px;
+  left: 50%;
+  margin-left: -360px;
+  z-index: 20;
+}
+
+.cancel {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding: 10px;
+  cursor: pointer;
+}
