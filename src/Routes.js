@@ -25,6 +25,7 @@ export default (
     <Route path="/channels" component={Channels}></Route>
     <Route path="/chat" component={Chat}></Route>
     <Route path="/meetups" component={MeetUpsDash}></Route>
+    <Route path="/meetups/:id" component={MeetUpsDash}></Route>
     <Route path="/createpost" component={CreatePost}></Route>
     <Route path="/post_details/:id" component={PostDetails}></Route>
     <Route path="/profile/:id" component={Profile}></Route>
