@@ -17,7 +17,19 @@
 }
 
 .search {
-    margin-top: 80px;
+    position: fixed;
+    top: 12px; 
+    left: 180px;
+    z-index: 10;
+    border: none;
+    border-bottom: 1px solid ghostwhite;
+    background-color: rgba(255, 255, 255, 0);
+    color: ghostwhite;
+}
+
+.search:focus {
+    outline: none;
+    box-shadow: 0 5px 5px -5px ghostwhite;
 }
 
 @media (max-width: 740px) {

@@ -13,8 +13,7 @@ class Landing extends Component {
     img: "",
     content: "",
     toggle: false,
-    search: "",
-    filteredPosts: []
+    search: ""
   };
 
   componentDidMount() {
@@ -64,6 +63,7 @@ class Landing extends Component {
       <>
         <input
           className="search"
+          placeholder="Search..."
           type="text"
           onChange={this.handleChange}
           value={this.state.search}
