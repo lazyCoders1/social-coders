@@ -23,3 +23,13 @@
   padding: 10px;
   cursor: pointer;
 }
+
+@media (max-width: 760px) {
+  .newPost {
+    width: 80vw;
+    height: 90vh;
+    margin: 0;
+    left: 2.5rem;
+    top: 40px;
+  }
+}
