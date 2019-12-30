@@ -21,7 +21,8 @@ class Profile extends Component {
       github: "",
       posts: [],
       toggle: false,
-      toggleTwo: false
+      toggleTwo: false,
+      search: ""
     };
   }
 
@@ -73,21 +74,35 @@ class Profile extends Component {
     });
   };
 
+  handleChange = event => {
+    this.setState({ search: event.target.value });
+  };
+
   render() {
     const el = this.state;
-    const usersPosts = this.state.posts.map((post, i) => {
-      return (
-        <div key={post.id}>
+
+    let filterByValue = this.state.posts.filter(o => {
+      return Object.keys(o).some(k => {
+        return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
+      })
+    })
+    const usersPosts = filterByValue.map((post, i) => (
           <Post
             id={this.props.match.params.id}
             post={post}
             profile={this.state}
+            key={post.id}
           />
-        </div>
-      );
-    });
+    ));
     return (
-      <div>
+      <>
+        <input
+          className="search"
+          placeholder="Search..."
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.search}
+        />
         <div className="top-padding" />
         <div key={el.id} className="user-profile-container">
           <div
@@ -151,7 +166,7 @@ class Profile extends Component {
             profile={this.state}
           />
         ) : null}
-      </div>
+      </>
     );
   }
 }
