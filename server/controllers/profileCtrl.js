@@ -39,8 +39,7 @@ module.exports = {
   addFavorite: async (req, res) => {
     // console.log('favorite hit')
     const db = req.app.get("db");
-    const { id: user_id } = req.params;
-    const { post_id } = req.body;
+    const { post_id, user_id } = req.body;
     const check = await db.check_fav({ user_id, post_id });
     if (+check[0].count !== 0) {
       return res.status(409).send({ message: "Already in favorites." });

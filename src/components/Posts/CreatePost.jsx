@@ -35,7 +35,14 @@ class CreatePost extends Component {
         });
         this.props.getPosts();
       })
-      .catch(err => console.log(err));
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1200
+        })
+      );
   };
 
   handleChange = value => {
@@ -62,7 +69,7 @@ class CreatePost extends Component {
       ]
     };
     return (
-      <div>
+      <>
         <MDBAnimation
           type="fadeIn"
           style={{
@@ -128,7 +135,7 @@ class CreatePost extends Component {
             </div>
           </div>
         </MDBAnimation>
-      </div>
+      </>
     );
   }
 }

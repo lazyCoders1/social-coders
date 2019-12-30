@@ -23,15 +23,11 @@ import {
 } from "mdbreact";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      password: "",
-      toggle: false
-    };
-  }
+  state = {
+    email: "",
+    password: "",
+    toggle: false
+  };
 
   handleChange = (key, value) => {
     this.setState({ [key]: value });
@@ -43,13 +39,21 @@ class Login extends Component {
       .post("/auth/login", { email, password })
       .then(res => {
         this.props.updateUserInfo(res.data.user);
-        console.log(res.data.user);
-        Swal.fire(res.data.message);
+        Swal.fire({
+          title: res.data.message,
+          text: "Welcome back to Social Coders!",
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1200
+        });
         this.props.history.push("/");
       })
       .catch(err => {
         console.log(err);
-        Swal.fire(err.response.data.message);
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error"
+        });
       });
   };
 
@@ -110,7 +114,11 @@ class Login extends Component {
                           />
                         </form>
                         <div className="text-center mt-4 black-text">
-                          <MDBBtn size="sm" onClick={this.login} color="default">
+                          <MDBBtn
+                            size="sm"
+                            onClick={this.login}
+                            color="default"
+                          >
                             Sign In
                           </MDBBtn>
                           <hr className="hr-light" />

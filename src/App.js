@@ -6,7 +6,7 @@ import "./index.css"
 
 function App() {
   return (
-    <div className="app-contanier">
+    <div className="app-container">
       <Header />
       {Routes}
     </div>

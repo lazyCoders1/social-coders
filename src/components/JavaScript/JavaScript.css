@@ -1,8 +1,14 @@
 pre, code {
   background: lightgray;
   font-family: 'Courier New', Courier, monospace;
-  width: 50%;
+  /* width: 50%; */
   color: black;
-  overflow: visible;
-  margin: 7px
+  overflow-y: hidden;
+  /* overflow: hidden; */
+  margin: 3px;
+  padding: 3px;
+  line-height: 1.1;
+}
+p {
+  line-height: 1.2;
 }

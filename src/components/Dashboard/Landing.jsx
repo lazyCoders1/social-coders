@@ -3,7 +3,7 @@ import axios from "axios";
 import Create from "../Posts/CreatePost";
 // import "./JavaScript.css";
 import Post from "../Posts/Post";
-import './Landing.scss'
+import "./Landing.scss";
 class Landing extends Component {
   state = {
     posts: [],
@@ -16,7 +16,7 @@ class Landing extends Component {
   componentDidMount() {
     this.getPosts();
   }
-  
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.posts.length !== this.state.posts.length) {
       this.getPosts();
@@ -27,7 +27,6 @@ class Landing extends Component {
     axios
       .get(`/api/posts`)
       .then(res => {
-          // console.log(res.data)
         this.setState({ posts: res.data });
       })
       .catch(err => console.log(err));
@@ -36,8 +35,8 @@ class Landing extends Component {
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    })
-  }
+    });
+  };
 
   render() {
     const mapPosts = this.state.posts.map(post => (
@@ -45,8 +44,12 @@ class Landing extends Component {
     ));
     return (
       <>
-        {this.state.toggle ? <Create toggle={this.toggle} getPosts={this.getPosts} /> : null}
-        <div className='input' onClick={this.toggle}>Create post...</div>
+        {this.state.toggle ? (
+          <Create toggle={this.toggle} getPosts={this.getPosts} />
+        ) : null}
+        <div className="input" onClick={this.toggle}>
+          Create post...
+        </div>
         {mapPosts}
       </>
     );

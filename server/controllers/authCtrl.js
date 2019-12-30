@@ -18,7 +18,7 @@ module.exports = {
     db.add_hash({ hash, id: id[0].id });
     req.session.user = { id: id[0].id, email, name };
     res.status(201).send({
-      message: `Thanks for Signing Up ${req.session.user.name}, Please sgin in!`,
+      message: `Thanks for Signing Up ${req.session.user.name}, Please sign in!`,
       // message: `Hello ${req.session.user.name}, welcome to Social Coders!`,
       user: req.session.user
     });
@@ -50,7 +50,7 @@ module.exports = {
       // },
       // user: req.session.user
 
-      message: `Hello ${req.session.user.name}, welcome back to Social Coders!`,
+      message: `Hello ${req.session.user.name},`,
       user: req.session.user
     });
     // console.log("User on session", req.session);
