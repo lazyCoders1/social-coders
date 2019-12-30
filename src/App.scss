@@ -1,9 +1,22 @@
 .App {
   text-align: center;
 }
-@import './reset';
+@import "./reset";
 
 body {
-  background-color: #E1E2E1;
+  background-color: #e1e2e1;
+}
+.app-container {
+  position: relative;
+  z-index: -2;
 }
 
+#root {
+  position: relative;
+  z-index: -3;
+}
+
+body {
+  position: relative;
+  z-index: -4;
+}

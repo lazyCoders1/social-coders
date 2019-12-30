@@ -8,26 +8,35 @@ import Swal from "sweetalert2";
 
 class Post extends Component {
   addFavorite = () => {
-    const { id } = this.props;
+    const { id: user_id } = this.props;
     const { id: post_id } = this.props.post;
     axios
-      .post(`/api/favorites/${id}`, { post_id })
+      .post(`/api/favorites`, { post_id, user_id })
       .then(res =>
         Swal.fire({
           title: res.data.message,
           icon: "success",
           timer: 1000,
-          showConfirmButton: false
+          showConfirmButton: false,
+          position: "top-end"
         })
       )
-      .catch(err => console.log(err));
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false,
+          position: "top-end"
+        })
+      );
   };
 
   deletePost = () => {
     const { id } = this.props.post;
     axios
       .delete(`/api/posts/${id}`)
-      .then(res => console.log(res.data.message))
+      .then(res => document.location.reload())
       .catch(err => console.log(err));
   };
 
