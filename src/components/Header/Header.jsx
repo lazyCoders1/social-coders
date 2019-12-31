@@ -81,14 +81,14 @@ export class Header extends Component {
             <MDBNavbarNav left>
               <MDBNavItem>
                 <MDBFormInline waves>
-                  <div className="md-form my-0">
+                  {/* <div className="md-form my-0">
                     <input
                       type="text"
                       placeholder="Search"
                       aria-label="Search"
                       
                     />
-                  </div>
+                  </div> */}
                 </MDBFormInline>
               </MDBNavItem>
             </MDBNavbarNav>

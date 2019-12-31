@@ -1,0 +1,71 @@
+#meetup-post-details {
+  .postContainer {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    // overflow: scroll;
+  }
+
+  .post-details-card {
+    // margin: 50px;
+    background-color: ghostwhite;
+
+    .meetup_img_card {
+      width: 50vw;
+      height: 30vh;
+    }
+
+    @media (max-width: 768px) {
+      .meetup_img_card {
+        width: 100vw;
+      }
+      .meetup-details {
+        padding-top: 50px;
+      }
+    }
+    // @media (min-width: 768px) {
+    //   .meetup_img_card {
+    //     width: 45vw;
+    //   }
+    // }
+    // .meetup_img_card {
+    //   padding: 20px;
+    //   width: 25vw;
+    //   height: 25vh;
+    // }
+  }
+  .card-text {
+    line-height: 1.5;
+  }
+
+  /* !FOOTER BAR */
+
+  .footer-bar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    font-size: small;
+    background-color: ghostwhite;
+  }
+}
+
+/*! THE POST CONTENT */
+
+/* ! */
+
+#post-details label {
+  /* color: rgb(255, 255, 255) !important;
+  font-weight: bolder; */
+  /* background-color: none !important; */
+
+  /* font-family: Arial; */
+}
+
+/* .md-form.md-outline .form-control {
+  padding: 1.25rem 1rem;
+} */
+/* .card .card-body .card-text{
+  text-overflow: ellipsis !important;
+} */

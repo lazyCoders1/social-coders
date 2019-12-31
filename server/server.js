@@ -48,6 +48,9 @@ app.get("/api/user/posts/:id", postCtrl.getUsersPosts);
 app.post("/api/posts", auth.usersOnly, postCtrl.addPost);
 app.delete("/api/posts/:id", postCtrl.deletePost);
 app.patch("/api/posts/:id", postCtrl.updatePost);
+app.post("/api/liked", auth.usersOnly, postCtrl.addLike);
+app.get("/api/likes/:post_id", postCtrl.getLikes);
+app.post("/api/unlike", auth.usersOnly, postCtrl.deleteLike)
 
 // Comment Endpoints
 app.get("/api/comments/:id", commentCtrl.getComments);

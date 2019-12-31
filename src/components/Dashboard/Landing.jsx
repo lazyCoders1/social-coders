@@ -13,8 +13,8 @@ class Landing extends Component {
     img: "",
     content: "",
     toggle: false,
-    search: "",
-    filteredPosts: []
+    search: ""
+
   };
 
   componentDidMount() {
@@ -31,6 +31,7 @@ class Landing extends Component {
     axios
       .get(`/api/posts`)
       .then(res => {
+        // console.log(res.data)
         this.setState({ posts: res.data });
         this.props.updatePosts(res.data);
       })
@@ -48,23 +49,21 @@ class Landing extends Component {
   };
 
   render() {
-    //  let filterByValue = this.props.posts.filter(o =>
-    //       console.log(Object.values(o)))
-    //       .indexOf(this.state.search) > -1)
-    // .some(
-    //   k => console.log(k.includes(this.state.search))))
-    // o[k].toLowerCase().includes(this.state.search.toLowerCase())));
-
-    let filterByValue = this.props.posts.filter(el => {
-      return el.title.toLowerCase().includes(this.state.search.toLowerCase());
-    });
+    let filterByValue = this.props.posts.filter(o => {
+      return Object.keys(o).some(k => {
+        return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
+      })
+    })
+  
     const mapPosts = filterByValue.map(post => (
       <Post key={post.id} post={post} />
     ));
-
+    
     return (
       <>
         <input
+          className="search"
+          placeholder="Search..."
           type="text"
           onChange={this.handleChange}
           value={this.state.search}

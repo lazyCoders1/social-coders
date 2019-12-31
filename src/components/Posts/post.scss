@@ -51,17 +51,26 @@
     height: 330px;
     width: auto;
   }
+  .likes {
+    text-align: left;
+  }
   .icons {
     display: flex;
     justify-content: space-between;
     font-size: 1.5rem;
-    padding-top: 30px;
+    padding-top: 10px;
     padding-bottom: 5px;
     .icon-box {
       width: 150px;
       display: flex;
       justify-content: space-between;
       padding-top: 5px;
+      .heart-purple {
+        color: black;
+      }
+      .heart-red {
+        color: red;
+      }
     }
   }
 }
