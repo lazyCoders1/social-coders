@@ -27,7 +27,7 @@ import "./MeetUpDetails.scss";
 // import MeetUpsDash from "./MeetUp";
 // import Comment from "../Comments/Comment";
 
-export class MeetUpsDetails extends Component {
+export class MeetUpDetails extends Component {
   constructor() {
     super();
     this.state = {
@@ -40,8 +40,8 @@ export class MeetUpsDetails extends Component {
   }
 
   render() {
-    const { updateComment, updatePostInput, updatePostTitle } = this.props;
     const { isEditing } = this.state;
+    // const el = props.meetUpPost;
     return (
       <div id="meetup-post-details">
         <MDBView className="postContainer">
@@ -82,48 +82,15 @@ export class MeetUpsDetails extends Component {
                           </div>
                         </div>
                         <div className="meetup-details">
-                        <hr/>
+                          <hr />
                           <MDBCardTitle>
-                            {this.state.post.Details}
+                            {/* {this.state.post.title} */}
+                            {this.props.title}
                             Details
                             {/* {console.log("hit", this.state.post)} */}
                           </MDBCardTitle>
                           <MDBCardText className="card-text">
-                            {this.state.post.content}
-                            Lorem ipsum dolor amet leggings fashion axe
-                            skateboard meditation. Chia cornhole kombucha small
-                            batch fam affogato vape kale chips marfa pok pok
-                            raclette meditation everyday carry readymade. Wolf
-                            tofu pitchfork vinyl mumblecore glossier hoodie
-                            sriracha ethical. Flannel pitchfork ennui disrupt,
-                            selvage photo booth glossier green juice chartreuse
-                            3 wolf moon kogi. Ramps retro humblebrag listicle
-                            flexitarian sustainable gastropub.Lorem ipsum dolor
-                            amet leggings fashion axe skateboard meditation.
-                            Chia cornhole kombucha small batch fam affogato vape
-                            kale chips marfa pok pok raclette meditation
-                            everyday carry readymade. Wolf tofu pitchfork vinyl
-                            mumblecore glossier hoodie sriracha ethical. Flannel
-                            pitchfork ennui disrupt, selvage photo booth
-                            glossier green juice chartreuse 3 wolf moon kogi.
-                            Ramps retro humblebrag listicle flexitarian
-                            sustainable gastropub.Lorem ipsum dolor amet
-                            leggings fashion axe skateboard meditation. Chia
-                            cornhole kombucha small batch fam affogato vape kale
-                            chips marfa pok pok raclette meditation everyday
-                            carry readymade. Wolf tofu pitchfork vinyl
-                            mumblecore glossier hoodie sriracha ethical. Flannel
-                            pitchfork ennui disrupt, selvage photo booth
-                            glossier green juice chartreuse 3 wolf moon kogi.
-                            Ramps retro humblebrag listicle flexitarian
-                            sustainable gastropub. PBR&B lo-fi vape tumeric man
-                            braid, snackwave gentrify. Vice gochujang swag
-                            copper mug art party. Intelligentsia sustainable
-                            XOXO lumbersexual YOLO, tbh master cleanse cliche
-                            drinking vinegar vegan snackwave occupy VHS man
-                            braid. Vexillologist 90's chillwave heirloom kitsch
-                            direct trade, vinyl flannel franzen chia occupy
-                            listicle.
+                            {this.state.post.description}
                           </MDBCardText>
                         </div>
                       </div>
@@ -257,4 +224,4 @@ export default connect(mapStateToProps, {
   updatePostTitle,
   updateUserInfo,
   clearState
-})(MeetUpsDetails);
+})(MeetUpDetails);

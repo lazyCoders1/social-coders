@@ -8,16 +8,34 @@ const initialState = {
   //!CREATE_POST
   createInput: "",
   createTitle: "",
-  createComment: ""
+  createComment: "",
+  //!MEETUPS
+  meetupTitle: "",
+  meetupImg: "",
+  meetupDate: "",
+  meetupDescription: "",
+  meetupStreet: "",
+  meetupCity: "",
+  meetupState: "",
+  meetupZipcode: ""
 };
 
-// ACTION CONSTANTS
+//?ACTION CONSTANTS
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 const UPDATE_POSTS = "UPDATE_POSTS";
 const UPDATE_POST_INPUT = "UPDATE_POST_INPUT";
 const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
 const UPDATE_COMMENT = "UPDATE_COMMENT";
 const CLEAR_STATE = "CLEAR_STATE";
+//!MEETUPS
+const MEETUP_TITLE = "MEETUP_TITLE";
+const MEETUP_IMG = "MEETUP_IMG";
+const MEETUP_DATE = "MEETUP_DATE";
+const MEETUP_DESCRIPTION = "MEETUP_DESCRIPTION";
+const MEETUP_STREET = "MEETUP_STREET";
+const MEETUP_CITY = "MEETUP_CITY";
+const MEETUP_STATE = "MEETUP_STATE";
+const MEETUP_ZIPCODE = "MEETUP_ZIPCODE";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -27,8 +45,8 @@ function reducer(state = initialState, action) {
     //!PROFILE_IMG
     //!---------
     case UPDATE_POSTS:
-      return Object.assign({}, state, {posts: action.payload})
-      //!CREATE_POST
+      return Object.assign({}, state, { posts: action.payload });
+    //!CREATE_POST
 
     case UPDATE_POST_INPUT:
       return Object.assign({}, state, { createInput: action.payload });
@@ -46,6 +64,32 @@ function reducer(state = initialState, action) {
     //!--------
     default:
       return state;
+    //!MEETUPS
+    case MEETUP_TITLE:
+      return Object.assign({}, state, { meetupTitle: action.payload });
+
+    case MEETUP_IMG:
+      return Object.assign({}, state, { meetupImg: action.payload });
+
+    case MEETUP_DATE:
+      return Object.assign({}, state, { meetupDate: action.payload });
+
+    case MEETUP_DESCRIPTION:
+      return Object.assign({}, state, { meetupDescription: action.payload });
+
+    case MEETUP_STREET:
+      return Object.assign({}, state, { meetupStreet: action.payload });
+
+    case MEETUP_CITY:
+      return Object.assign({}, state, { meetupCity: action.payload });
+
+    case MEETUP_STATE:
+      return Object.assign({}, state, { meetupState: action.payload });
+
+    case MEETUP_ZIPCODE:
+      return Object.assign({}, state, { meetupZipcode: action.payload });
+
+    //!--------
   }
 }
 
@@ -61,7 +105,7 @@ export function updatePosts(postObj) {
   return {
     type: UPDATE_POSTS,
     payload: postObj
-  }
+  };
 }
 //!CREATE_POST
 export function updatePostInput(createInput) {
@@ -90,4 +134,56 @@ export function updateComment(createComment) {
   };
 }
 //!--------
+
+//!MEETUPS
+export function meetupTitle(createMeetupTitle) {
+  return {
+    type: MEETUP_TITLE,
+    payload: createMeetupTitle
+  };
+}
+export function meetupImg(createMeetupImg) {
+  return {
+    type: MEETUP_IMG,
+    payload: createMeetupImg
+  };
+}
+export function meetupDate(createMeetupDate) {
+  return {
+    type: MEETUP_DATE,
+    payload: createMeetupDate
+  };
+}
+export function meetupDescription(createMeetupDescription) {
+  return {
+    type: MEETUP_DESCRIPTION,
+    payload: createMeetupDescription
+  };
+}
+export function meetupStreet(createMeetupStreet) {
+  return {
+    type: MEETUP_STREET,
+    payload: createMeetupStreet
+  };
+}
+export function meetupCity(createMeetupCity) {
+  return {
+    type: MEETUP_CITY,
+    payload: createMeetupCity
+  };
+}
+export function meetupState(createMeetupState) {
+  return {
+    type: MEETUP_STATE,
+    payload: createMeetupState
+  };
+}
+export function meetupZipcode(createMeetupZipcode) {
+  return {
+    type: MEETUP_ZIPCODE,
+    payload: createMeetupZipcode
+  };
+}
+//!--------
+
 export default reducer;
