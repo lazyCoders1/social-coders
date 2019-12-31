@@ -13,6 +13,7 @@
 .create-post-container {
     background: rgba(248, 248, 255, 0.925);
     width: 720px;
+    height: 480px;
     margin: auto;
     position: fixed;
     margin-top: 20px;
@@ -79,12 +80,14 @@
         border-radius: 2px;
         border: .3px solid rgb(99, 99, 99);
         background: rgba(248, 248, 255, 0.801);
+        // overflow-y: scroll;
+        height: 220px;
     }
 
     .post-button {
         position: relative;
         left: 85%;
-        top: 6px;
+        top: 43px;
         font-size: .9rem;
         padding: 5px 15px;
     }

@@ -8,6 +8,26 @@ import Swal from "sweetalert2";
 import { withRouter } from "react-router-dom";
 
 class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      likes: 0,
+      liked: false
+    };
+  }
+
+  componentDidMount = () => {
+    this.getLikes();
+  };
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.liked !== this.state.liked) {
+      console.log(this.state.likes);
+      this.getLikes();
+      // console.log(this.state.posts)
+    }
+  };
+
   addFavorite = () => {
     const { id: user_id } = this.props;
     const { id: post_id } = this.props.post;
@@ -33,6 +53,32 @@ class Post extends Component {
       );
   };
 
+  addLike = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.props.post;
+    axios
+      .post(`/api/liked`, { post_id, user_id })
+      .then(this.setState({ liked: !this.state.liked }));
+  };
+
+  deleteLike = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.props.post;
+    axios
+      .post(`/api/unlike`, { post_id, user_id })
+      .then(this.setState({ liked: !this.state.liked }));
+  };
+  
+
+  getLikes = () => {
+    axios.get(`api/likes/${this.props.post.id}`).then(res => {
+      // console.log(res.data[0].count)
+      this.setState({
+        likes: res.data[0].count
+      });
+    });
+  };
+
   deletePost = () => {
     const { id } = this.props.post;
     axios
@@ -42,14 +88,19 @@ class Post extends Component {
   };
 
   render() {
-    const { id, title, img, content, name, profile_pic } = this.props.post;
+    const {
+      id,
+      title,
+      img,
+      content,
+      name,
+      profile_pic,
+      author_id
+    } = this.props.post;
     return (
-      <div
-        onClick={() => this.props.history.push(`/post_details/${id}`)}
-        style={{ background: "#f8f8ff" }}
-        className="post-card"
-      >
+      <div style={{ background: "#f8f8ff" }} className="post-card">
         <div
+          onClick={() => this.props.history.push(`/profile/${author_id}`)}
           style={{
             backgroundImage: `url(${profile_pic})`,
             backgroundSize: "cover",
@@ -62,16 +113,29 @@ class Post extends Component {
             left: "10px"
           }}
         />
-        <h2 className="users-name">{name}</h2>
-        <h4 className="time">12 hrs</h4>
-        <h4 className="title">{title}</h4>
-        <div className="post-content">{parse(content)}</div>
-        <img className="post-picture" src={`${img}`} alt="" />
-        <h5 className="likes">43 likes</h5>
+        <div
+          className="clickable"
+          onClick={() => this.props.history.push(`/post_details/${id}`)}
+        >
+          <h2 className="users-name">{name}</h2>
+          <h4 className="time">12 hrs</h4>
+          <h4 className="title">{title}</h4>
+          <div className="post-content">{parse(content)}</div>
+          <img className="post-picture" src={`${img}`} alt="" />
+          <h5 className="likes">{this.state.likes} likes</h5>
+        </div>
         <div className="icons">
           <div className="icon-box">
-            <i className="fas fa-heart"></i>
-            <MDBIcon far icon="comment-alt" />
+            <i
+              className={`fas fa-heart ${this.state.liked ? "heart-red" : "heart-purple"}`}
+              onClick={!this.state.liked ? this.addLike : this.deleteLike}
+            ></i>
+            
+            <MDBIcon
+              far
+              icon="comment-alt"
+              onClick={() => this.props.history.push(`/post_details/${id}`)}
+            />
             <MDBIcon icon="share" />
             <i onClick={this.deletePost} className="fas fa-ellipsis-h"></i>
           </div>
