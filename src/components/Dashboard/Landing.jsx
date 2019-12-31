@@ -63,7 +63,7 @@ class Landing extends Component {
     let filterByValue = this.props.posts.filter((el) => {
       return el.title.toLowerCase().includes(this.state.search.toLowerCase())
     })
-    console.log(this.props.posts)
+    console.log("LandingProps",this.props.posts)
           const mapPosts = filterByValue.map(post => (
             <Post key={post.id} post={post} />
           ));

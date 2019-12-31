@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateMeetupPosts } from "../../Reduxs/reducer";
 import Geocode from "react-geocode";
 import axios from "axios";
 import MeetUp from "./MeetUp";
+
 import {
   MDBJumbotron,
   MDBBtn,
@@ -13,9 +16,8 @@ import {
   MDBInput
 } from "mdbreact";
 import "./MeetUpsDash.scss";
-import { MeetUpDetails } from "./MeetUpDetails";
 
-export default class CreateMeetUps extends Component {
+export class CreateMeetUps extends Component {
   constructor() {
     super();
 
@@ -93,6 +95,7 @@ export default class CreateMeetUps extends Component {
   getPosts = () => {
     axios.get("/api/meetups").then(res => {
       this.setState({ meetUpPosts: res.data });
+      this.props.updateMeetupPosts(res.data);
       console.log("getPosts (MeetUpsDash.js) ", res.data);
     });
   };
@@ -134,16 +137,6 @@ export default class CreateMeetUps extends Component {
     const meetUp = this.state.meetUpPosts.map(el => {
       return (
         <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
-      );
-    });
-
-    const meetUpDetials = this.state.meetUpPosts.map(el => {
-      return (
-        <MeetUpDetails
-          key={el.id}
-          meetUpPost={el}
-          deletePost={this.deletePost}
-        />
       );
     });
 
@@ -298,9 +291,19 @@ export default class CreateMeetUps extends Component {
           add a meetup??
         </MDBBtn> */}
           {meetUp}
-          {/* {meetUpDetials} */}
         </div>
       </div>
     );
   }
 }
+
+function mapStateToProps(reduxState) {
+  const { meetupPosts } = reduxState;
+  return { meetupPosts };
+}
+
+const mapDispatchToProps = {
+  updateMeetupPosts
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateMeetUps);

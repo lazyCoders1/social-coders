@@ -17,7 +17,8 @@ const initialState = {
   meetupStreet: "",
   meetupCity: "",
   meetupState: "",
-  meetupZipcode: ""
+  meetupZipcode: "",
+  meetupPosts: []
 };
 
 //?ACTION CONSTANTS
@@ -36,6 +37,7 @@ const MEETUP_STREET = "MEETUP_STREET";
 const MEETUP_CITY = "MEETUP_CITY";
 const MEETUP_STATE = "MEETUP_STATE";
 const MEETUP_ZIPCODE = "MEETUP_ZIPCODE";
+const MEETUP_POST = "MEETUP_POST";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -88,6 +90,9 @@ function reducer(state = initialState, action) {
 
     case MEETUP_ZIPCODE:
       return Object.assign({}, state, { meetupZipcode: action.payload });
+
+    case MEETUP_POST:
+      return Object.assign({}, state, { meetupPosts: action.payload });
 
     //!--------
   }
@@ -182,6 +187,12 @@ export function meetupZipcode(createMeetupZipcode) {
   return {
     type: MEETUP_ZIPCODE,
     payload: createMeetupZipcode
+  };
+}
+export function updateMeetupPosts(createMeetupPosts) {
+  return {
+    type: MEETUP_POST,
+    payload: createMeetupPosts
   };
 }
 //!--------
