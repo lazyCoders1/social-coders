@@ -57,6 +57,7 @@ export default class MeetUpDetails extends Component {
         // postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
         postDetails: postDets[0]
       });
+      
       console.log(this.state.postDetails);
       console.log("getPosts (MeetUpsDetails.js) ", res.data);
     });

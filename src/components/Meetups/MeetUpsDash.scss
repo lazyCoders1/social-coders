@@ -1,3 +1,24 @@
+.header-meetup-dash{
+  .meetup-dash-icon {
+    font-size: 5rem;
+    margin: 1rem;
+    padding: 0;
+    color: white;
+  }
+  .meetups-header-text {
+    font-size: 4rem;
+    color: white;
+  }
+  @media (max-width: 600px) {
+    .meetups-header-text {
+      display: none;
+    }
+    .post-meetup-btn{
+      
+    }
+  }
+}
+
 .newPost {
   background: rgba(248, 248, 255, 0.925);
   width: 720px;

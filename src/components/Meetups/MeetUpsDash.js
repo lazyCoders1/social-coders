@@ -7,13 +7,15 @@ import MeetUp from "./MeetUp";
 import {
   MDBJumbotron,
   MDBBtn,
-  MDBCol,
-  MDBCardTitle,
-  MDBContainer,
+  // MDBCol,
+  // MDBCardTitle,
+  // MDBContainer,
   MDBRow,
   MDBIcon,
   MDBInput
+  // MDBAnimation
 } from "mdbreact";
+import ScrollAnimation from "react-animate-on-scroll";
 import "./MeetUpsDash.scss";
 
 export default class CreateMeetUps extends Component {
@@ -140,48 +142,6 @@ export default class CreateMeetUps extends Component {
 
     return (
       <div>
-        <header
-          style={{
-            display: "flex",
-            justifyContent: "row"
-          }}
-        >
-          <MDBContainer>
-            <MDBRow>
-              <MDBCol>
-                <MDBJumbotron style={{ padding: 0 }}>
-                  <MDBCol
-                    className="text-white text-center py-5 px-4 my-5"
-                    style={{
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
-                      backgroundImage: `url(https://images.unsplash.com/photo-1500021804447-2ca2eaaaabeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)`
-                    }}
-                  >
-                    <MDBCol className="py-5">
-                      <MDBCardTitle
-                        className="h1-responsive pt-3 m-5 font-bold"
-                        style={{ fontSize: "5rem" }}
-                      >
-                        Wanna Meet Up?
-                      </MDBCardTitle>
-                      <MDBBtn
-                        outline
-                        color="white"
-                        className="mb-5"
-                        onClick={() => this.toggle()}
-                      >
-                        <MDBIcon icon="users" className="mr-2"></MDBIcon> Create
-                        a Meet Up
-                      </MDBBtn>
-                    </MDBCol>
-                  </MDBCol>
-                </MDBJumbotron>
-              </MDBCol>
-            </MDBRow>
-          </MDBContainer>
-        </header>
         {this.state.toggle ? (
           <div>
             <div className="blur" />
@@ -283,12 +243,46 @@ export default class CreateMeetUps extends Component {
             </section>
           </div>
         ) : null}
-        <div className="d-flex  justify-content-center align-content-around flex-wrap bd-highlight example-parent">
-          {/* <h1>meetupjunk</h1> */}
-          {/* <MDBBtn color="warning" size="sm" onClick={() => this.toggle()}>
-          add a meetup??
-        </MDBBtn> */}
-          {meetUp}
+        <div className="">
+          <header className="header-meetup-dash">
+            <MDBJumbotron
+              fluid
+              className="jtron"
+              style={{
+                maxHeight: "10rem",
+                padding: ".1rem",
+                backgroundColor: "#34A9DC",
+                margin: "1rem 0 0 0",
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
+                <MDBIcon fab icon="meetup" className="meetup-dash-icon" />
+              </ScrollAnimation>
+              <div className="create">
+                <MDBRow>
+                  <ScrollAnimation className="bounceIn delay-1s">
+                    <p className="meetups-header-text">MEET UPS</p>
+                    {/* {console.log("hit", this.state.post)} */}
+                  </ScrollAnimation>
+                </MDBRow>
+              </div>
+              <ScrollAnimation className="bounceIn delay-1s">
+                <MDBBtn
+                  className="post-meetup-btn"
+                  color="white"
+                  size="sm"
+                  onClick={() => this.toggle()}
+                >
+                  Post MeetUp
+                </MDBBtn>
+              </ScrollAnimation>
+            </MDBJumbotron>
+          </header>
+          <div className="d-flex  justify-content-center align-content-around flex-wrap bd-highlight example-parent">
+            {meetUp}
+          </div>
         </div>
       </div>
     );
