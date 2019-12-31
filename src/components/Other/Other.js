@@ -3,13 +3,11 @@ import axios from "axios";
 import Create from "../Posts/CreatePost";
 import Post from "../Posts/Post";
 
-class Public extends Component {
+class Other extends Component {
   state = {
     posts: [],
-    title: "",
-    img: "",
-    content: "",
-    category: "Other"
+    category: "Other",
+    toggle: false
   };
 
   componentDidMount() {
@@ -32,17 +30,32 @@ class Public extends Component {
       .catch(err => console.log(err));
   };
 
+  toggle = () => {
+    this.setState({
+      toggle: !this.state.toggle
+    });
+  };
+
   render() {
     const mapPosts = this.state.posts.map(post => (
       <Post key={post.id} post={post} />
     ));
     return (
       <>
-        <Create category={this.state.category} />
+        {this.state.toggle ? (
+          <Create
+            toggle={this.toggle}
+            getPosts={this.getPosts}
+            category={this.state.category}
+          />
+        ) : null}
+        <div className="input" onClick={this.toggle}>
+          Create post...
+        </div>
         {mapPosts}
       </>
     );
   }
 }
 
-export default Public;
+export default Other;

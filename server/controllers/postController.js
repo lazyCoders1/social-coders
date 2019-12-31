@@ -20,7 +20,7 @@ module.exports = {
     const db = req.app.get("db");
     const { id } = req.params;
     const post = await db.get_post(id);
-    res.status(200).send(post);
+    res.status(200).send(post[0]);
   },
   getUsersPosts: async (req, res) => {
     const db = req.app.get("db");
@@ -46,5 +46,25 @@ module.exports = {
     const { title, content, img } = req.body;
     db.update_post({ id, title, content, img });
     res.status(202).send({ message: "Changes Saved." });
+  },
+  addLike: async (req, res) => {
+    // console.log('favorite hit')
+    const db = req.app.get("db");
+    const { post_id, user_id } = req.body;
+    await db.add_like({ user_id, post_id });
+    res.status(202).send({ message: "Liked." });
+  },
+  deleteLike: async (req, res) => {
+    // console.log('favorite hit')
+    const db = req.app.get("db");
+    const { post_id, user_id } = req.body;
+    await db.delete_like({ user_id, post_id });
+    res.status(202).send({ message: "Unliked." });
+  },
+  getLikes: async (req, res) => {
+    const db = req.app.get("db");
+    const { post_id } = req.params;
+    const likes = await db.get_likes(post_id);
+    res.status(200).send(likes);
   }
 };

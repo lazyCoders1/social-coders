@@ -8,16 +8,23 @@ const initialState = {
   //!CREATE_POST
   createInput: "",
   createTitle: "",
-  createComment: ""
+  createComment: "",
+  //!MEETUPS
+
+  meetupPosts: []
 };
 
-// ACTION CONSTANTS
+//?ACTION CONSTANTS
 const UPDATE_USER_INFO = "UPDATE_USER_INFO";
 const UPDATE_POSTS = "UPDATE_POSTS";
 const UPDATE_POST_INPUT = "UPDATE_POST_INPUT";
 const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
 const UPDATE_COMMENT = "UPDATE_COMMENT";
 const CLEAR_STATE = "CLEAR_STATE";
+//!MEETUPS
+
+const GET_MEETUP_POSTS = "GET_MEETUP_POSTS";
+const GET_MEETUP_POST_FOR_ID = "GET_MEETUP_POST_FOR_ID";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -27,8 +34,8 @@ function reducer(state = initialState, action) {
     //!PROFILE_IMG
     //!---------
     case UPDATE_POSTS:
-      return Object.assign({}, state, {posts: action.payload})
-      //!CREATE_POST
+      return Object.assign({}, state, { posts: action.payload });
+    //!CREATE_POST
 
     case UPDATE_POST_INPUT:
       return Object.assign({}, state, { createInput: action.payload });
@@ -46,6 +53,15 @@ function reducer(state = initialState, action) {
     //!--------
     default:
       return state;
+    //!MEETUPS
+
+    case GET_MEETUP_POSTS:
+      return state.meetupPosts;
+
+    case GET_MEETUP_POST_FOR_ID:
+      return state.meetupPosts.filter(meetup => meetup.id == action.payload.id);
+
+    //!--------
   }
 }
 
@@ -61,7 +77,7 @@ export function updatePosts(postObj) {
   return {
     type: UPDATE_POSTS,
     payload: postObj
-  }
+  };
 }
 //!CREATE_POST
 export function updatePostInput(createInput) {
@@ -90,4 +106,21 @@ export function updateComment(createComment) {
   };
 }
 //!--------
+
+//!MEETUPS
+
+export function getMeetupPosts() {
+  return {
+    type: GET_MEETUP_POSTS
+  };
+}
+export function getMeetupPostsForId(id) {
+  return {
+    type: GET_MEETUP_POST_FOR_ID,
+    payload: id
+  };
+}
+
+//!--------
+
 export default reducer;

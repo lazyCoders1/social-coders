@@ -13,7 +13,7 @@ import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
 import JavaScript from "./components/JavaScript/JavaScript";
 import CSS from "./components/CSS/CSS";
-import Public from "./components/Public/Public";
+import Other from "./components/Other/Other";
 import Post from "./components/Posts/Post";
 import PostDetails from './components/Posts/PostDetails'
 import Landing from './components/Dashboard/Landing';
@@ -37,7 +37,7 @@ export default (
     <Route path="/register" component={Register}></Route>
     <Route path="/javascript" component={JavaScript}></Route>
     <Route path="/css" component={CSS}></Route>
-    <Route path="/public" component={Public}></Route>
+    <Route path="/other" component={Other}></Route>
     <Route path="/post" component={Post} />
   </Switch>
 );
