@@ -53,12 +53,10 @@ class Landing extends Component {
       return Object.keys(o).some(k => {
         return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
       })
-    })
-  
+    }) 
     const mapPosts = filterByValue.map(post => (
       <Post key={post.id} post={post} />
     ));
-    
     return (
       <>
         <input
