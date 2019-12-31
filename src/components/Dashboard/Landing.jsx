@@ -14,6 +14,7 @@ class Landing extends Component {
     content: "",
     toggle: false,
     search: ""
+
   };
 
   componentDidMount() {
@@ -23,7 +24,6 @@ class Landing extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.posts.length !== this.state.posts.length) {
       this.getPosts();
-      // console.log(this.state.posts)
     }
   }
 

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import parse from "html-react-parser";
 import {
   updateComment,
   updatePostInput,
@@ -7,8 +8,8 @@ import {
   updateUserInfo,
   clearState
 } from "../../Reduxs/reducer";
-// import axios from "axios";
-// import { Link } from "react-router-dom"
+import axios from "axios";
+import { Link } from "react-router-dom";
 import {
   MDBRow,
   MDBCol,
@@ -18,6 +19,7 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
+  MDBCardImage,
   MDBCardText,
   MDBCardFooter,
   MDBIcon,
@@ -27,20 +29,30 @@ import "./PostDetails.scss";
 // import Comment from "../Comments/Comment";
 
 export class PostDetails extends Component {
-  constructor() {
-    super();
-    this.state = {
-      post: {},
-      comments: [],
-      isEditing: false,
-      value: 0
-      // profile_img
-    };
+  state = {
+    post: {},
+    comments: [],
+    isEditing: false,
+    value: 0
+    // profile_img
+  };
+
+  componentDidMount() {
+    this.getPost();
   }
+
+  getPost = () => {
+    const { id } = this.props.match.params;
+    axios.get(`/api/post/${id}`).then(res => {
+      console.log(res.data);
+      this.setState({ post: res.data });
+    });
+  };
 
   render() {
     const { updateComment, updatePostInput, updatePostTitle } = this.props;
     const { isEditing } = this.state;
+    const { title, name, category, content, author_id, img } = this.state.post;
     return (
       <div id="post-details">
         <MDBView className="postContainer">
@@ -51,67 +63,18 @@ export class PostDetails extends Component {
                   {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
                   {!isEditing ? (
                     <MDBCardBody>
+                      <MDBCardText>
+                        Posted by{" "}
+                        <Link className='post-link' to={`/profile/${author_id}`}>{name}</Link> in{" "}
+                        <Link className='post-link' to={`/${category}`}>{category}</Link>
+                      </MDBCardText>
                       <MDBCardTitle tag="h5">
-                        {this.state.post.title}
-                        <h3>What is Javascript?</h3>
+                        <h3> {title} </h3>
                         {/* {console.log("hit", this.state.post)} */}
                       </MDBCardTitle>
-
+                      <MDBCardImage style={{maxHeight: '500px', maxWidth: '500px'}} src={img} />  
                       <MDBCardText className="card-text">
-                        {this.state.post.content}
-                        <p>
-                          Lorem ipsum dolor amet leggings fashion axe skateboard
-                          meditation. Chia cornhole kombucha small batch fam
-                          affogato vape kale chips marfa pok pok raclette
-                          meditation everyday carry readymade. Wolf tofu
-                          pitchfork vinyl mumblecore glossier hoodie sriracha
-                          ethical. Flannel pitchfork ennui disrupt, selvage
-                          photo booth glossier green juice chartreuse 3 wolf
-                          moon kogi. Ramps retro humblebrag listicle flexitarian
-                          sustainable gastropub.Lorem ipsum dolor amet leggings
-                          fashion axe skateboard meditation. Chia cornhole
-                          kombucha small batch fam affogato vape kale chips
-                          marfa pok pok raclette meditation everyday carry
-                          readymade. Wolf tofu pitchfork vinyl mumblecore
-                          glossier hoodie sriracha ethical. Flannel pitchfork
-                          ennui disrupt, selvage photo booth glossier green
-                          juice chartreuse 3 wolf moon kogi. Ramps retro
-                          humblebrag listicle flexitarian sustainable
-                          gastropub.Lorem ipsum dolor amet leggings fashion axe
-                          skateboard meditation. Chia cornhole kombucha small
-                          batch fam affogato vape kale chips marfa pok pok
-                          raclette meditation everyday carry readymade. Wolf
-                          tofu pitchfork vinyl mumblecore glossier hoodie
-                          sriracha ethical. Flannel pitchfork ennui disrupt,
-                          selvage photo booth glossier green juice chartreuse 3
-                          wolf moon kogi. Ramps retro humblebrag listicle
-                          flexitarian sustainable gastropub. PBR&B lo-fi vape
-                          tumeric man braid, snackwave gentrify. Vice gochujang
-                          swag copper mug art party. Intelligentsia sustainable
-                          XOXO lumbersexual YOLO, tbh master cleanse cliche
-                          drinking vinegar vegan snackwave occupy VHS man braid.
-                          Vexillologist 90's chillwave heirloom kitsch direct
-                          trade, vinyl flannel franzen chia occupy listicle.
-                          90's pok pok street art raclette listicle semiotics
-                          banjo hella farm-to-table affogato chia VHS. Schlitz
-                          poke chambray cardigan. Readymade normcore deep v,
-                          tumblr food truck offal edison bulb letterpress. Ennui
-                          tofu occupy af polaroid live-edge blog. Kombucha
-                          heirloom ennui, synth neutra farm-to-table craft beer
-                          hexagon kickstarter jean shorts twee offal palo santo
-                          kogi authentic. Shabby chic yr biodiesel pitchfork.
-                          Fashion axe master cleanse edison bulb paleo. Shabby
-                          chic fixie tumeric, activated charcoal blog DIY seitan
-                          authentic art party bushwick church-key thundercats.
-                          Chicharrones blue bottle affogato pug tbh beard,
-                          pitchfork swag tousled 90's gastropub meh banjo kitsch
-                          forage. Master cleanse pickled drinking vinegar
-                          asymmetrical. Sustainable gentrify glossier squid 3
-                          wolf moon chillwave you probably haven't heard of them
-                          kale chips chambray tattooed. Kickstarter thundercats
-                          stumptown truffaut, semiotics shabby chic drinking
-                          vinegar retro XOXO VHS bushwick.
-                        </p>
+                        {parse(String(content))}
                       </MDBCardText>
                     </MDBCardBody>
                   ) : (
@@ -145,7 +108,7 @@ export class PostDetails extends Component {
                         className="post-btn"
                         size="sm"
                       >
-                        Edit Post
+                        Save Edit
                       </MDBBtn>
                       <MDBBtn
                         onClick={() =>
@@ -197,14 +160,12 @@ export class PostDetails extends Component {
                         <MDBIcon icon="arrow-alt-circle-down" />
                       </button>
                     </div>
-
-                    <i className="fas fa-share"> Share</i>
-
+                    {/* <i className="fas fa-share"> Share</i> */}
                     <i className="fas fa-bookmark"> Save</i>
                     <button
                       className="edit-btn"
                       onClick={() => {
-                        console.log(this.state.post);
+                        // console.log(this.state.post);
                         updatePostInput(this.state.post.content);
                         updatePostTitle(this.state.post.title);
                         this.setState({
@@ -232,7 +193,7 @@ export class PostDetails extends Component {
                         className="form-control"
                         id="exampleFormControlTextarea1"
                         rows="3"
-                        placeholder="Whats are your thoughts?"
+                        placeholder="What are your thoughts?"
                         value={this.props.createComment}
                         name="input"
                         onChange={e => updateComment(e.target.value)}

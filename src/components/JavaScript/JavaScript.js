@@ -7,9 +7,6 @@ import Post from "../Posts/Post";
 class JavaScript extends Component {
   state = {
     posts: [],
-    title: "",
-    img: "",
-    content: "",
     category: "JavaScript",
     toggle: false
   };
