@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {
-  updateComment,
-  updatePostInput,
-  updatePostTitle,
-  updateUserInfo,
-  clearState
-} from "../../Reduxs/reducer";
-// import axios from "axios";
+import { getMeetupPostsForId, updateMeetupPosts } from "../../Reduxs/reducer";
+import axios from "axios";
 // import { Link } from "react-router-dom"
 import {
   MDBRow,
@@ -31,13 +25,41 @@ export class MeetUpDetails extends Component {
   constructor() {
     super();
     this.state = {
-      post: {},
+      postDetails: [
+        {
+          title: ""
+        }
+      ],
       comments: [],
       isEditing: false,
       value: 0
       // profile_img
     };
   }
+
+  componentDidMount() {
+    this.getPosts();
+    // const stuff = this.props.getMeetupPostsForId(this.props.match.params.id);
+    this.setState({
+      postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
+    });
+    // console.log(stuff);
+  }
+  getPosts = () => {
+    axios.get("/api/meetups").then(res => {
+      // this.props.updateMeetupPosts(res.data);
+      const postDets = res.data.filter(
+        meetup => meetup.id == this.props.match.params.id
+      );
+      this.setState({
+        meetUpPosts: res.data,
+        // postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
+        postDetails: postDets[0]
+      });
+      console.log(this.state.postDetails);
+      console.log("getPosts (MeetUpsDetails.js) ", res.data);
+    });
+  };
 
   render() {
     const { isEditing } = this.state;
@@ -64,13 +86,13 @@ export class MeetUpDetails extends Component {
 
                         <div className="meetup-info mt-4">
                           <MDBCardTitle>
-                            {this.state.post.title}
-                            What is Javascript?
+                            {this.state.postDetails.title}
+
                             {/* {console.log("hit", this.state.post)} */}
                           </MDBCardTitle>
                           <div className="">
                             <MDBIcon icon="map-marker-alt" />
-                            1234 st
+                            {this.state.postDetails.street}
                           </div>
                           <div className="users">
                             <MDBIcon icon="users" />
@@ -78,7 +100,7 @@ export class MeetUpDetails extends Component {
                           </div>
                           <div className="organizer">
                             <MDBIcon icon="user-astronaut" />
-                            Harry Poter
+                            Harry Potter
                           </div>
                         </div>
                         <div className="meetup-details">
@@ -90,7 +112,7 @@ export class MeetUpDetails extends Component {
                             {/* {console.log("hit", this.state.post)} */}
                           </MDBCardTitle>
                           <MDBCardText className="card-text">
-                            {this.state.post.description}
+                            {this.state.postDetails.description}
                           </MDBCardText>
                         </div>
                       </div>
@@ -105,7 +127,7 @@ export class MeetUpDetails extends Component {
                           placeholder="Title"
                           value={this.props.createTitle}
                           name="title"
-                          onChange={e => updatePostTitle(e.target.value)}
+                          // onChange={e => updatePostTitle(e.target.value)}
                         />
                         <MDBInput
                           className="edit-content"
@@ -116,7 +138,7 @@ export class MeetUpDetails extends Component {
                           outline
                           value={this.props.createInput}
                           name="input"
-                          onChange={e => updatePostInput(e.target.value)}
+                          // onChange={e => updatePostInput(e.target.value)}
                         ></MDBInput>
                         {/* {console.log("hit", this.state.post)} */}
                       </MDBCardTitle>
@@ -184,14 +206,14 @@ export class MeetUpDetails extends Component {
                     <i className="fas fa-bookmark"> Save</i>
                     <button
                       className="edit-btn"
-                      onClick={() => {
-                        console.log(this.state.post);
-                        updatePostInput(this.state.post.content);
-                        updatePostTitle(this.state.post.title);
-                        this.setState({
-                          isEditing: true
-                        });
-                      }}
+                      // onClick={() => {
+                      //   console.log(this.state.post);
+                      //   updatePostInput(this.state.post.content);
+                      //   updatePostTitle(this.state.post.title);
+                      //   this.setState({
+                      //     isEditing: true
+                      //   });
+                      // }}
                     >
                       <MDBIcon icon="edit" />
                       Edit
@@ -207,21 +229,7 @@ export class MeetUpDetails extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { createComment, createInput, createTitle } = state;
-
-  return {
-    createComment,
-    createInput,
-    createTitle
-    // profile_img
-  };
-}
-
-export default connect(mapStateToProps, {
-  updateComment,
-  updatePostInput,
-  updatePostTitle,
-  updateUserInfo,
-  clearState
+export default connect(null, {
+  getMeetupPostsForId,
+  updateMeetupPosts
 })(MeetUpDetails);

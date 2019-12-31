@@ -38,6 +38,8 @@ const MEETUP_CITY = "MEETUP_CITY";
 const MEETUP_STATE = "MEETUP_STATE";
 const MEETUP_ZIPCODE = "MEETUP_ZIPCODE";
 const MEETUP_POST = "MEETUP_POST";
+const GET_MEETUP_POSTS = "GET_MEETUP_POSTS";
+const GET_MEETUP_POST_FOR_ID = "GET_MEETUP_POST_FOR_ID";
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -93,6 +95,12 @@ function reducer(state = initialState, action) {
 
     case MEETUP_POST:
       return Object.assign({}, state, { meetupPosts: action.payload });
+
+    case GET_MEETUP_POSTS:
+      return state.meetupPosts;
+
+    case GET_MEETUP_POST_FOR_ID:
+      return state.meetupPosts.filter((meetup) => meetup.id == action.payload.id);
 
     //!--------
   }
@@ -195,6 +203,18 @@ export function updateMeetupPosts(createMeetupPosts) {
     payload: createMeetupPosts
   };
 }
+export function getMeetupPosts() {
+  return {
+    type: GET_MEETUP_POSTS
+  };
+}
+export function getMeetupPostsForId(id) {
+  return {
+    type: GET_MEETUP_POST_FOR_ID,
+    payload: id
+  };
+}
+
 //!--------
 
 export default reducer;
