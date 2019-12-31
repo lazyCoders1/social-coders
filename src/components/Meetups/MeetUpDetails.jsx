@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import {
-  updateComment,
-  updatePostInput,
-  updatePostTitle,
-  updateUserInfo,
-  clearState
-} from "../../Reduxs/reducer";
-// import axios from "axios";
+import axios from "axios";
 // import { Link } from "react-router-dom"
 import {
   MDBRow,
@@ -21,17 +13,24 @@ import {
   MDBCardText,
   MDBCardFooter,
   MDBIcon,
-  MDBInput
+  MDBInput,
+  MDBJumbotron,
+  MDBAnimation
 } from "mdbreact";
+import ScrollAnimation from "react-animate-on-scroll";
 import "./MeetUpDetails.scss";
 // import MeetUpsDash from "./MeetUp";
 // import Comment from "../Comments/Comment";
 
-export class MeetUpsDetails extends Component {
+export default class MeetUpDetails extends Component {
   constructor() {
     super();
     this.state = {
-      post: {},
+      postDetails: [
+        {
+          title: ""
+        }
+      ],
       comments: [],
       isEditing: false,
       value: 0
@@ -39,222 +38,245 @@ export class MeetUpsDetails extends Component {
     };
   }
 
+  componentDidMount() {
+    this.getPosts();
+    // const stuff = this.props.getMeetupPostsForId(this.props.match.params.id);
+    // this.setState({
+    //   postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
+    // });
+    // console.log(stuff);
+  }
+  getPosts = () => {
+    axios.get("/api/meetups").then(res => {
+      // this.props.updateMeetupPosts(res.data);
+      const postDets = res.data.filter(
+        meetup => meetup.id == this.props.match.params.id
+      );
+      this.setState({
+        meetUpPosts: res.data,
+        // postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
+        postDetails: postDets[0]
+      });
+      console.log(this.state.postDetails);
+      console.log("getPosts (MeetUpsDetails.js) ", res.data);
+    });
+  };
+
   render() {
-    const { updateComment, updatePostInput, updatePostTitle } = this.props;
     const { isEditing } = this.state;
+    // const el = props.meetUpPost;
     return (
       <div id="meetup-post-details">
-        <MDBView className="postContainer">
-          <MDBContainer>
-            <MDBRow>
-              <MDBCol>
-                <MDBCard className="post-details-card shadow-box-example">
-                  {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
-                  {!isEditing ? (
-                    <MDBCardBody>
-                      {/* <div className="d-flex justify-content"> */}
-                      <div className="d-flex justify-content-around flex-wrap">
-                        <img
-                          className="meetup_img_card rounded img-fluid"
-                          src="https://www.tutorialrepublic.com/lib/images/javascript-illustration.png"
-                          // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6ahKQqrD2owx4mqWUU0hcUbRBY6tCDWtclDUy5BnI3sp8pUuM&s"
-                          // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6ahKQqrD2owx4mqWUU0hcUbRBY6tCDWtclDUy5BnI3sp8pUuM&s"
-                          alt=""
-                        />
+        <MDBView className="post-container">
+          {/* <MDBContainer> */}
+          {/* <MDBRow>
+              <MDBCol> */}
 
-                        <div className="meetup-info mt-4">
-                          <MDBCardTitle>
-                            {this.state.post.title}
-                            What is Javascript?
-                            {/* {console.log("hit", this.state.post)} */}
-                          </MDBCardTitle>
-                          <div className="">
-                            <MDBIcon icon="map-marker-alt" />
-                            1234 st
-                          </div>
-                          <div className="users">
-                            <MDBIcon icon="users" />
-                            25 users
-                          </div>
-                          <div className="organizer">
-                            <MDBIcon icon="user-astronaut" />
-                            Harry Poter
-                          </div>
-                        </div>
-                        <div className="meetup-details">
-                        <hr/>
-                          <MDBCardTitle>
-                            {this.state.post.Details}
-                            Details
-                            {/* {console.log("hit", this.state.post)} */}
-                          </MDBCardTitle>
-                          <MDBCardText className="card-text">
-                            {this.state.post.content}
-                            Lorem ipsum dolor amet leggings fashion axe
-                            skateboard meditation. Chia cornhole kombucha small
-                            batch fam affogato vape kale chips marfa pok pok
-                            raclette meditation everyday carry readymade. Wolf
-                            tofu pitchfork vinyl mumblecore glossier hoodie
-                            sriracha ethical. Flannel pitchfork ennui disrupt,
-                            selvage photo booth glossier green juice chartreuse
-                            3 wolf moon kogi. Ramps retro humblebrag listicle
-                            flexitarian sustainable gastropub.Lorem ipsum dolor
-                            amet leggings fashion axe skateboard meditation.
-                            Chia cornhole kombucha small batch fam affogato vape
-                            kale chips marfa pok pok raclette meditation
-                            everyday carry readymade. Wolf tofu pitchfork vinyl
-                            mumblecore glossier hoodie sriracha ethical. Flannel
-                            pitchfork ennui disrupt, selvage photo booth
-                            glossier green juice chartreuse 3 wolf moon kogi.
-                            Ramps retro humblebrag listicle flexitarian
-                            sustainable gastropub.Lorem ipsum dolor amet
-                            leggings fashion axe skateboard meditation. Chia
-                            cornhole kombucha small batch fam affogato vape kale
-                            chips marfa pok pok raclette meditation everyday
-                            carry readymade. Wolf tofu pitchfork vinyl
-                            mumblecore glossier hoodie sriracha ethical. Flannel
-                            pitchfork ennui disrupt, selvage photo booth
-                            glossier green juice chartreuse 3 wolf moon kogi.
-                            Ramps retro humblebrag listicle flexitarian
-                            sustainable gastropub. PBR&B lo-fi vape tumeric man
-                            braid, snackwave gentrify. Vice gochujang swag
-                            copper mug art party. Intelligentsia sustainable
-                            XOXO lumbersexual YOLO, tbh master cleanse cliche
-                            drinking vinegar vegan snackwave occupy VHS man
-                            braid. Vexillologist 90's chillwave heirloom kitsch
-                            direct trade, vinyl flannel franzen chia occupy
-                            listicle.
-                          </MDBCardText>
-                        </div>
-                      </div>
-                    </MDBCardBody>
-                  ) : (
-                    <MDBCardBody>
-                      <MDBCardTitle>
-                        <input
-                          type="text"
-                          id="example3"
-                          className="edit-title form-control form-control-sm"
-                          placeholder="Title"
-                          value={this.props.createTitle}
-                          name="title"
-                          onChange={e => updatePostTitle(e.target.value)}
-                        />
-                        <MDBInput
-                          className="edit-content"
-                          // iconClass="white-text"
-                          // icon="pencil-alt"
-                          type="textarea"
-                          label="Editing Post?"
-                          outline
-                          value={this.props.createInput}
-                          name="input"
-                          onChange={e => updatePostInput(e.target.value)}
-                        ></MDBInput>
-                        {/* {console.log("hit", this.state.post)} */}
-                      </MDBCardTitle>
-                      <MDBBtn
-                        onClick={() => this.editPost()}
-                        color="default"
-                        className="post-btn"
-                        size="sm"
-                      >
-                        Edit Post
-                      </MDBBtn>
-                      <MDBBtn
-                        onClick={() =>
-                          this.setState({
-                            isEditing: false
-                          })
-                        }
-                        color="default"
-                        className="cancel"
-                        size="sm"
-                      >
-                        Cancel
-                      </MDBBtn>
+          <MDBCard className="post-details-card shadow-box-example">
+            <MDBJumbotron
+              fluid
+              className="jtron"
+              style={{
+                maxHeight: "10rem",
+                padding: ".1rem",
+                backgroundColor: "#4ba3c7",
+                // margin: "1rem 0 0 0",
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
+                <MDBIcon icon="icons" className="cssIcon pr-5" />
+              </ScrollAnimation>
+              <div className="create">
+                <MDBRow>
+                  {/* <MDBAnimation type="bounceIn" delay=".1s">
+                    <h1 className="CssText">M</h1>
+                  </MDBAnimation>
+                  <MDBAnimation type="bounceIn" delay=".2s">
+                    <h1 className="CssText">E</h1>
+                  </MDBAnimation>
+                  <MDBAnimation type="bounceIn" delay=".3s">
+                    <h1 className="CssText">E</h1>
+                  </MDBAnimation>
+                  <MDBAnimation type="bounceIn" delay=".4s">
+                    <h1 className="CssText">T</h1>
+                  </MDBAnimation>
+                  <MDBAnimation type="bounceIn" delay=".6s">
+                    <h1 className="CssText">U</h1>
+                  </MDBAnimation>
+                  <MDBAnimation type="bounceIn" delay=".6s">
+                    <h1 className="CssText">P</h1>
+                  </MDBAnimation> */}
+                  <ScrollAnimation className="bounceIn delay-1s">
+                    <p className="CssText">{this.state.postDetails.title}</p>
+                    {/* {console.log("hit", this.state.post)} */}
+                  </ScrollAnimation>
+                  
+                </MDBRow>
+              </div>
+            </MDBJumbotron>
+            {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
+            {!isEditing ? (
+              <MDBCardBody>
+                {/* <div className="d-flex justify-content"> */}
+                <div className="d-flex justify-content-around flex-wrap">
+                  <img
+                    className="meetup_img_card rounded img-fluid"
+                    src={this.state.postDetails.img}
+                    alt=""
+                  />
 
-                      <MDBBtn
-                        onClick={() => {
-                          this.deletePost();
-                          this.setState({
-                            isEditing: false
-                          });
-                        }}
-                        outline
-                        color="danger"
-                        className="delete"
-                        size="sm"
-                      >
-                        Delete Post
-                      </MDBBtn>
-                    </MDBCardBody>
-                  )}
-
-                  {/*! COMMENTS */}
-
-                  <MDBCardFooter className="footer-bar">
-                    <div className="def-number-input number-input">
-                      <button onClick={this.increase}>
-                        <MDBIcon icon="arrow-alt-circle-up" />
-                      </button>
-                      <br />
-                      {/* <input
-                        className="quantity"
-                        name="quantity"
-                        value={this.state.value}
-                        onChange={() => console.log("change")}
-                        type="number"
-                      /> */}
-                      <br />
-                      <button onClick={this.decrease}>
-                        <MDBIcon icon="arrow-alt-circle-down" />
-                      </button>
+                  <div className="meetup-info mt-4">
+                    <div className="date-time">
+                      {this.state.postDetails.date +
+                        ", " +
+                        this.state.postDetails.time}
                     </div>
+                    <br />
+                    {/* <MDBCardTitle>
+                      {this.state.postDetails.title}
 
-                    <i className="fas fa-share"> Share</i>
+                      {console.log("hit", this.state.post)}
+                    </MDBCardTitle> */}
+                    <div className="">
+                      <MDBIcon icon="map-marker-alt" />
+                      {" " + this.state.postDetails.street}
+                    </div>
+                    <br />
+                    <div className="users">
+                      <MDBIcon icon="users" />
+                      25 users
+                    </div>
+                    <div className="organizer">
+                      <MDBIcon icon="user-astronaut" />
+                      Harry Potter
+                    </div>
+                  </div>
+                  <div className="meetup-details">
+                    <MDBCardTitle>
+                      {/* {this.state.post.title} */}
+                      {this.props.title}
+                      Details
+                      {/* {console.log("hit", this.state.post)} */}
+                    </MDBCardTitle>
+                    <MDBCardText className="card-text">
+                      {this.state.postDetails.description}
+                    </MDBCardText>
+                  </div>
+                </div>
+              </MDBCardBody>
+            ) : (
+              <MDBCardBody>
+                <MDBCardTitle>
+                  <input
+                    type="text"
+                    id="example3"
+                    className="edit-title form-control form-control-sm"
+                    placeholder="Title"
+                    value={this.props.createTitle}
+                    name="title"
+                    // onChange={e => updatePostTitle(e.target.value)}
+                  />
+                  <MDBInput
+                    className="edit-content"
+                    // iconClass="white-text"
+                    // icon="pencil-alt"
+                    type="textarea"
+                    label="Editing Post?"
+                    outline
+                    value={this.props.createInput}
+                    name="input"
+                    // onChange={e => updatePostInput(e.target.value)}
+                  ></MDBInput>
+                  {/* {console.log("hit", this.state.post)} */}
+                </MDBCardTitle>
+                <MDBBtn
+                  onClick={() => this.editPost()}
+                  color="default"
+                  className="post-btn"
+                  size="sm"
+                >
+                  Edit Post
+                </MDBBtn>
+                <MDBBtn
+                  onClick={() =>
+                    this.setState({
+                      isEditing: false
+                    })
+                  }
+                  color="default"
+                  className="cancel"
+                  size="sm"
+                >
+                  Cancel
+                </MDBBtn>
 
-                    <i className="fas fa-bookmark"> Save</i>
-                    <button
-                      className="edit-btn"
-                      onClick={() => {
-                        console.log(this.state.post);
-                        updatePostInput(this.state.post.content);
-                        updatePostTitle(this.state.post.title);
-                        this.setState({
-                          isEditing: true
-                        });
-                      }}
-                    >
-                      <MDBIcon icon="edit" />
-                      Edit
-                    </button>
-                  </MDBCardFooter>
-                </MDBCard>
-              </MDBCol>
-            </MDBRow>
-          </MDBContainer>
+                <MDBBtn
+                  onClick={() => {
+                    this.deletePost();
+                    this.setState({
+                      isEditing: false
+                    });
+                  }}
+                  outline
+                  color="danger"
+                  className="delete"
+                  size="sm"
+                >
+                  Delete Post
+                </MDBBtn>
+              </MDBCardBody>
+            )}
+
+            <MDBCardFooter className="footer-bar">
+              {/* SHARE BTN */}
+              <button
+                type="button"
+                class="mobile-meetup-btn btn btn-default px-3"
+              >
+                <i class="fas fa-share " aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="desktop-meetup-btn btn btn-outline-default waves-effect"
+              >
+                <i class="fas fa-share pr-2" aria-hidden="true"></i>Share
+              </button>
+              {/* SAVE BTN */}
+              <button
+                type="button"
+                class="mobile-meetup-btn btn btn-default px-3"
+              >
+                <i class="fas fa-bookmark" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="desktop-meetup-btn btn btn-outline-default waves-effect"
+              >
+                <i class="fas fa-bookmark pr-2" aria-hidden="true"></i>Save
+              </button>
+              {/* EDIT BTN */}
+              <button
+                type="button"
+                class="mobile-meetup-btn btn btn-default px-3"
+              >
+                <i class="fas fa-edit" aria-hidden="true"></i>
+              </button>
+              <button
+                type="button"
+                class="desktop-meetup-btn btn btn-outline-default waves-effect"
+              >
+                <i class="fas fa-edit pr-2" aria-hidden="true"></i>Edit
+              </button>
+            </MDBCardFooter>
+          </MDBCard>
+
+          {/* </MDBCol>
+            </MDBRow> */}
+          {/* </MDBContainer> */}
         </MDBView>
       </div>
     );
   }
 }
-
-function mapStateToProps(state) {
-  const { createComment, createInput, createTitle } = state;
-
-  return {
-    createComment,
-    createInput,
-    createTitle
-    // profile_img
-  };
-}
-
-export default connect(mapStateToProps, {
-  updateComment,
-  updatePostInput,
-  updatePostTitle,
-  updateUserInfo,
-  clearState
-})(MeetUpsDetails);
