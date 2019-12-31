@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { updateMeetupPosts } from "../../Reduxs/reducer";
+
 import Geocode from "react-geocode";
 import axios from "axios";
 import MeetUp from "./MeetUp";
@@ -17,7 +16,7 @@ import {
 } from "mdbreact";
 import "./MeetUpsDash.scss";
 
-export class CreateMeetUps extends Component {
+export default class CreateMeetUps extends Component {
   constructor() {
     super();
 
@@ -95,7 +94,6 @@ export class CreateMeetUps extends Component {
   getPosts = () => {
     axios.get("/api/meetups").then(res => {
       this.setState({ meetUpPosts: res.data });
-      this.props.updateMeetupPosts(res.data);
       console.log("getPosts (MeetUpsDash.js) ", res.data);
     });
   };
@@ -296,14 +294,3 @@ export class CreateMeetUps extends Component {
     );
   }
 }
-
-function mapStateToProps(reduxState) {
-  const { meetupPosts } = reduxState;
-  return { meetupPosts };
-}
-
-const mapDispatchToProps = {
-  updateMeetupPosts
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateMeetUps);

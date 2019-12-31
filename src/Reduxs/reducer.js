@@ -10,14 +10,7 @@ const initialState = {
   createTitle: "",
   createComment: "",
   //!MEETUPS
-  meetupTitle: "",
-  meetupImg: "",
-  meetupDate: "",
-  meetupDescription: "",
-  meetupStreet: "",
-  meetupCity: "",
-  meetupState: "",
-  meetupZipcode: "",
+
   meetupPosts: []
 };
 
@@ -29,15 +22,7 @@ const UPDATE_POST_TITLE = "UPDATE_POST_TITLE";
 const UPDATE_COMMENT = "UPDATE_COMMENT";
 const CLEAR_STATE = "CLEAR_STATE";
 //!MEETUPS
-const MEETUP_TITLE = "MEETUP_TITLE";
-const MEETUP_IMG = "MEETUP_IMG";
-const MEETUP_DATE = "MEETUP_DATE";
-const MEETUP_DESCRIPTION = "MEETUP_DESCRIPTION";
-const MEETUP_STREET = "MEETUP_STREET";
-const MEETUP_CITY = "MEETUP_CITY";
-const MEETUP_STATE = "MEETUP_STATE";
-const MEETUP_ZIPCODE = "MEETUP_ZIPCODE";
-const MEETUP_POST = "MEETUP_POST";
+
 const GET_MEETUP_POSTS = "GET_MEETUP_POSTS";
 const GET_MEETUP_POST_FOR_ID = "GET_MEETUP_POST_FOR_ID";
 
@@ -69,38 +54,12 @@ function reducer(state = initialState, action) {
     default:
       return state;
     //!MEETUPS
-    case MEETUP_TITLE:
-      return Object.assign({}, state, { meetupTitle: action.payload });
-
-    case MEETUP_IMG:
-      return Object.assign({}, state, { meetupImg: action.payload });
-
-    case MEETUP_DATE:
-      return Object.assign({}, state, { meetupDate: action.payload });
-
-    case MEETUP_DESCRIPTION:
-      return Object.assign({}, state, { meetupDescription: action.payload });
-
-    case MEETUP_STREET:
-      return Object.assign({}, state, { meetupStreet: action.payload });
-
-    case MEETUP_CITY:
-      return Object.assign({}, state, { meetupCity: action.payload });
-
-    case MEETUP_STATE:
-      return Object.assign({}, state, { meetupState: action.payload });
-
-    case MEETUP_ZIPCODE:
-      return Object.assign({}, state, { meetupZipcode: action.payload });
-
-    case MEETUP_POST:
-      return Object.assign({}, state, { meetupPosts: action.payload });
 
     case GET_MEETUP_POSTS:
       return state.meetupPosts;
 
     case GET_MEETUP_POST_FOR_ID:
-      return state.meetupPosts.filter((meetup) => meetup.id == action.payload.id);
+      return state.meetupPosts.filter(meetup => meetup.id == action.payload.id);
 
     //!--------
   }
@@ -149,60 +108,7 @@ export function updateComment(createComment) {
 //!--------
 
 //!MEETUPS
-export function meetupTitle(createMeetupTitle) {
-  return {
-    type: MEETUP_TITLE,
-    payload: createMeetupTitle
-  };
-}
-export function meetupImg(createMeetupImg) {
-  return {
-    type: MEETUP_IMG,
-    payload: createMeetupImg
-  };
-}
-export function meetupDate(createMeetupDate) {
-  return {
-    type: MEETUP_DATE,
-    payload: createMeetupDate
-  };
-}
-export function meetupDescription(createMeetupDescription) {
-  return {
-    type: MEETUP_DESCRIPTION,
-    payload: createMeetupDescription
-  };
-}
-export function meetupStreet(createMeetupStreet) {
-  return {
-    type: MEETUP_STREET,
-    payload: createMeetupStreet
-  };
-}
-export function meetupCity(createMeetupCity) {
-  return {
-    type: MEETUP_CITY,
-    payload: createMeetupCity
-  };
-}
-export function meetupState(createMeetupState) {
-  return {
-    type: MEETUP_STATE,
-    payload: createMeetupState
-  };
-}
-export function meetupZipcode(createMeetupZipcode) {
-  return {
-    type: MEETUP_ZIPCODE,
-    payload: createMeetupZipcode
-  };
-}
-export function updateMeetupPosts(createMeetupPosts) {
-  return {
-    type: MEETUP_POST,
-    payload: createMeetupPosts
-  };
-}
+
 export function getMeetupPosts() {
   return {
     type: GET_MEETUP_POSTS
