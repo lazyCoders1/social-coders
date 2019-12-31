@@ -206,7 +206,7 @@ export default class MeetUpDetails extends Component {
                     <i className="fas fa-share"> Share</i>
 
                     <i className="fas fa-bookmark"> Save</i>
-                    <button
+                    {/* <button
                       className="edit-btn"
                       onClick={() => {
                         console.log(this.state.post);
@@ -217,9 +217,19 @@ export default class MeetUpDetails extends Component {
                         });
                       }}
                     >
-                      <MDBIcon icon="edit" />
                       Edit
-                    </button>
+                    </button> */}
+                    <MDBIcon
+                      icon="edit"
+                      onClick={() => {
+                        console.log(this.state.post);
+                        // updatePostInput(this.state.post.content);
+                        // updatePostTitle(this.state.post.title);
+                        this.setState({
+                          isEditing: true
+                        });
+                      }}
+                    />
                   </MDBCardFooter>
                 </MDBCard>
               </MDBCol>
