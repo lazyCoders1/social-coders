@@ -1,39 +1,60 @@
 .input {
-    width: 720px;
-    background: rgba(248, 248, 255, 0.801);
-    margin: 10px auto;
-    margin-top: 30px;
-    border: .3px solid rgb(99, 99, 99);
-    padding: 6px;
-    border-radius: 5px;
-    display: block;
-    font-size: 1.1rem;
-    text-align: left;
-    box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.199);
+  width: 720px;
+  background: rgba(248, 248, 255, 0.801);
+  margin: 10px auto;
+  margin-top: 30px;
+  border: 0.3px solid rgb(99, 99, 99);
+  padding: 6px;
+  border-radius: 5px;
+  display: block;
+  font-size: 1.1rem;
+  text-align: left;
+  box-shadow: 0px 3px 5px -3px rgba(0, 0, 0, 0.199);
 }
 .input:hover {
-    outline: none;
-    box-shadow: 0 0 5px #2BBBAD;
+  outline: none;
+  box-shadow: 0 0 5px #2bbbad;
 }
 
 .search {
-    position: fixed;
-    top: 12px; 
-    left: 180px;
-    z-index: 10;
-    border: none;
-    border-bottom: 1px solid ghostwhite;
-    background-color: rgba(255, 255, 255, 0);
-    color: ghostwhite;
+  position: fixed;
+  top: 12px;
+  left: 180px;
+  z-index: 10;
+  border: none;
+  border-bottom: 1px solid ghostwhite;
+  background-color: rgba(255, 255, 255, 0);
+  color: ghostwhite;
 }
 
 .search:focus {
-    outline: none;
-    box-shadow: 0 5px 5px -5px ghostwhite;
+  outline: none;
+  box-shadow: 0 5px 5px -5px ghostwhite;
+}
+
+.cssIcon {
+  font-size: 10.3rem;
+  margin: 1rem;
+  padding: 0;
+  color: white;
+}
+
+.CssText {
+  font-size: 6rem;
+  color: white;
+}
+
+.Feed {
+  font-size: 6rem;
+  color: white;
+  margin-left: 4rem;
 }
 
 @media (max-width: 740px) {
-    .input {
-        width: 95%;
-    }
+  .input {
+    width: 95%;
+  }
+  .CssText {
+    display: none;
+  }
 }

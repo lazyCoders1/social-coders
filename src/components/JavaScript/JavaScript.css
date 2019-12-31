@@ -1,4 +1,5 @@
-pre, code {
+pre,
+code {
   background: lightgray;
   font-family: 'Courier New', Courier, monospace;
   /* width: 50%; */
@@ -11,4 +12,23 @@ pre, code {
 }
 p {
   line-height: 1.2;
+}
+
+.jsSquare {
+  font-size: 10.3rem;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.create {
+  margin: 4rem;
+}
+
+.Ctext {
+  font-size: 6rem;
+}
+@media (max-width: 600px) {
+  .Ctext {
+    display: none;
+  }
 }
