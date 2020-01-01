@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { updatePosts } from '../../Reduxs/reducer'
 import Post from '../Posts/Post'
 import './Landing.scss'
-import { MDBJumbotron, MDBAnimation, MDBIcon, MDBRow } from 'mdbreact'
+import { MDBJumbotron, MDBAnimation, MDBRow } from 'mdbreact'
 import ScrollAnimation from 'react-animate-on-scroll'
 class Landing extends Component {
   state = {
