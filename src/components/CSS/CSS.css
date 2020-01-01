@@ -1,0 +1,16 @@
+.cssIcon {
+  font-size: 10.3rem;
+  margin: 1rem;
+  padding: 0;
+  color: white;
+}
+
+.CssText {
+  font-size: 6rem;
+  color: white;
+}
+@media (max-width: 600px) {
+  .CssText {
+    display: none;
+  }
+}

@@ -78,6 +78,22 @@ class Post extends Component {
     });
   };
 
+  deletePost = () => {
+    const { id } = this.props.post;
+    axios
+      .delete(`/api/posts/${id}`)
+      .then(res => document.location.reload())
+      .catch(err => console.log(err));
+  };
+
+  word = ()=> {
+    if(+this.state.likes === +1){
+      return 'like'
+    } else {
+      return 'likes'
+    }
+  }
+
   render() {
     const {
       id,
@@ -111,9 +127,12 @@ class Post extends Component {
           <h2 className="users-name">{name}</h2>
           <h4 className="time">12 hrs</h4>
           <h4 className="title">{title}</h4>
-          <div className="post-content">{parse(content)}</div>
           <img className="post-picture" src={`${img}`} alt="" />
-          <h5 className="likes">{this.state.likes} likes</h5>
+          <div className="post-content">{parse(content)}
+          <div className="post-gradient"/>
+          </div>
+          <h5 className="likes">{this.state.likes} {this.word()}</h5>
+        
         </div>
         <div className="icons">
           <div className="icon-box">
