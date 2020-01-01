@@ -1,43 +1,42 @@
 .blur {
-    height: 100%;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    -webkit-backdrop-filter: blur(2px);
-    backdrop-filter: blur(2px);
-    z-index: 99;
-    background: rgba(0, 0, 0, 0.281);
-
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.281);
 }
 
 .create-post-container {
-    // background: rgba(248, 248, 255, 0.925);
-    // width: 720px;
-    // height: 480px;
-    // margin: auto;
-    // position: fixed;
-    // margin-top: 20px;
-    // box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
-    // border-radius: 5px;
-    // padding: 20px;
-    // padding-top: 35px;
-    // top: 110px;
-    // left: 50%;
-    // margin-left: -360px;
-    // z-index: 20;
-    background: rgba(248, 248, 255, 0.925);
-    width: 720px;
-    margin: auto;
-    position: fixed;
-    margin-top: 20px;
-    box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
-    border-radius: 5px;
-    padding: 20px;
-    padding-top: 35px;
-    top: 110px;
-    left: 50%;
-    margin-left: -360px;
-    z-index: 20;
+  // background: rgba(248, 248, 255, 0.925);
+  // width: 720px;
+  // height: 480px;
+  // margin: auto;
+  // position: fixed;
+  // margin-top: 20px;
+  // box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
+  // border-radius: 5px;
+  // padding: 20px;
+  // padding-top: 35px;
+  // top: 110px;
+  // left: 50%;
+  // margin-left: -360px;
+  // z-index: 20;
+  background: rgba(248, 248, 255, 0.925);
+  width: 720px;
+  margin: auto;
+  position: fixed;
+  margin-top: 20px;
+  box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
+  border-radius: 5px;
+  padding: 20px;
+  padding-top: 35px;
+  top: 110px;
+  left: 50%;
+  margin-left: -360px;
+  z-index: 20;
   .cancel {
     position: absolute;
     right: 0;
@@ -60,61 +59,60 @@
     border: 1px solid #e1e2e1;
     box-shadow: 0 0 10px #e1e2e1;
   }
-    select {
-        background: rgba(248, 248, 255, 0.801);
-        margin: 5px 0;
-        border: .3px solid rgb(99, 99, 99);
-        padding: 5px;
-        border-radius: 2px;
-    }
-    select:focus {
-        outline: none;
-        border:1px solid #E1E2E1;
-        box-shadow: 0 0 10px #E1E2E1;
-    }
-    
-    input {
-        width: 100%;
-        background: rgba(248, 248, 255, 0.801);
-        margin: 5px 0;
-        border: .3px solid rgb(99, 99, 99);
-        padding: 5px;
-        border-radius: 2px;
-    }
-    input:focus {
-        outline: none;
-        border:1px solid #E1E2E1;
-        box-shadow: 0 0 10px #E1E2E1;
-    }
-    .textbox {
-        width: 100%;
-        margin: 5px 0;
-        border-radius: 2px;
-        border: .3px solid rgb(99, 99, 99);
-        background: rgba(248, 248, 255, 0.801);
-        // overflow-y: scroll;
-        height: 220px;
-    }
+  select {
+    background: rgba(248, 248, 255, 0.801);
+    margin: 5px 0;
+    border: 0.3px solid rgb(99, 99, 99);
+    padding: 5px;
+    border-radius: 2px;
+  }
+  select:focus {
+    outline: none;
+    border: 1px solid #e1e2e1;
+    box-shadow: 0 0 10px #e1e2e1;
+  }
 
-    .post-button {
-        position: relative;
-        left: 85%;
-        top: 43px;
-        font-size: .9rem;
-        padding: 5px 15px;
-    }
-    
+  input {
+    width: 100%;
+    background: rgba(248, 248, 255, 0.801);
+    margin: 5px 0;
+    border: 0.3px solid rgb(99, 99, 99);
+    padding: 5px;
+    border-radius: 2px;
+  }
+  input:focus {
+    outline: none;
+    border: 1px solid #e1e2e1;
+    box-shadow: 0 0 10px #e1e2e1;
+  }
+  .textbox {
+    width: 100%;
+    margin: 5px 0;
+    border-radius: 2px;
+    border: 0.3px solid rgb(99, 99, 99);
+    background: rgba(248, 248, 255, 0.801);
+    // overflow-y: scroll;
+    height: 220px;
+  }
+
+  .post-button {
+    position: relative;
+    left: 85%;
+    top: 43px;
+    font-size: 0.9rem;
+    padding: 5px 15px;
+  }
 }
 
 @media (max-width: 710px) {
-    .create-post-container {
-        width: 100vw;
-        top: 110px;
-        left: 0;
-        margin-top: 0;
-        margin-left: 0;
-        .post-button{
-            left: 70%;
-        }
+  .create-post-container {
+    width: 100vw;
+    top: 110px;
+    left: 0;
+    margin-top: 0;
+    margin-left: 0;
+    .post-button {
+      left: 70%;
     }
+  }
 }

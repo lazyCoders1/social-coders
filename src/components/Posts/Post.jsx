@@ -13,45 +13,66 @@ class Post extends Component {
     this.state = {
       likes: 0,
       comments: 0,
-      liked: false
+      liked: false,
+      fav: false
     };
   }
 
   componentDidMount = () => {
     this.getLikes();
     this.checkLikes();
+    this.checkFav();
     this.countComments();
   };
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.liked !== this.state.liked) {
-      // console.log(this.state.likes);
       this.getLikes();
-      // console.log(this.state.posts)
+    }
+    if (prevState.fav !== this.state.fav) {
+      this.checkFav();
     }
   };
 
+  checkFav = () => {
+    if (this.props.id) {
+      const { id: user_id } = this.props;
+      const { id: post_id } = this.props.post;
+      axios
+        .post("/api/favs", { user_id, post_id })
+        .then(res => this.setState({ fav: res.data }))
+        .catch(err => console.log(err));
+    }
+  };
+  
   addFavorite = () => {
     const { id: user_id } = this.props;
     const { id: post_id } = this.props.post;
     axios
       .post(`/api/favorites`, { post_id, user_id })
-      .then(res =>
-        Swal.fire({
-          title: res.data.message,
-          icon: "success",
-          timer: 1000,
-          showConfirmButton: false,
-          position: "top-end"
-        })
-      )
+      .then(res => this.setState({ fav: true }))
       .catch(err =>
         Swal.fire({
           title: err.response.data.message,
           icon: "error",
           timer: 1200,
-          showConfirmButton: false,
-          position: "top-end"
+          showConfirmButton: false
+        })
+      );
+  };
+
+  deleteFavorite = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.props.post;
+    axios
+      .post("/api/favorite", { post_id, user_id })
+      .then(res => this.setState({ fav: false }))
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false
         })
       );
   };
@@ -71,7 +92,7 @@ class Post extends Component {
     const { id: post_id } = this.props.post;
     axios
       .post(`/api/liked`, { post_id, user_id })
-      .then(res => this.setState({ liked: !this.state.liked }))
+      .then(res => this.setState({ liked: true }))
       .catch(err =>
         Swal.fire({
           title: err.response.data.message,
@@ -79,7 +100,7 @@ class Post extends Component {
           showConfirmButton: false,
           timer: 1200
         })
-      )
+      );
   };
 
   deleteLike = () => {
@@ -87,8 +108,8 @@ class Post extends Component {
     const { id: post_id } = this.props.post;
     axios
       .post(`/api/unliked`, { post_id, user_id })
-      .then(res => this.setState({ liked: !this.state.liked }))
-      .catch(err => console.log(err))
+      .then(res => this.setState({ liked: false }))
+      .catch(err => console.log(err));
   };
 
   getLikes = () => {
@@ -111,14 +132,6 @@ class Post extends Component {
         .then(res => this.setState({ liked: res.data }))
         .catch(err => console.log(err));
     }
-  };
-
-  deletePost = () => {
-    const { id } = this.props.post;
-    axios
-      .delete(`/api/posts/${id}`)
-      .then(res => document.location.reload())
-      .catch(err => console.log(err));
   };
 
   word = () => {
@@ -193,7 +206,12 @@ class Post extends Component {
               className="fas fa-ellipsis-h"
             ></i>
           </div>
-          <i className="fas fa-star" onClick={this.addFavorite}></i>
+          <i
+            className={`fas fa-star ${
+              this.state.fav ? "star-yellow" : "star-black"
+            }`}
+            onClick={!this.state.fav ? this.addFavorite : this.deleteFavorite}
+          ></i>
         </div>
       </div>
     );
