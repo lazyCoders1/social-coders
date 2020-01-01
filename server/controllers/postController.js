@@ -48,14 +48,12 @@ module.exports = {
     res.status(202).send({ message: "Changes Saved." });
   },
   addLike: async (req, res) => {
-    // console.log('favorite hit')
     const db = req.app.get("db");
     const { post_id, user_id } = req.body;
     await db.add_like({ user_id, post_id });
     res.status(202).send({ message: "Liked." });
   },
   deleteLike: async (req, res) => {
-    // console.log('favorite hit')
     const db = req.app.get("db");
     const { post_id, user_id } = req.body;
     await db.delete_like({ user_id, post_id });
@@ -66,5 +64,21 @@ module.exports = {
     const { post_id } = req.params;
     const likes = await db.get_likes(post_id);
     res.status(200).send(likes);
-  }
+  },
+  countComments: async (req, res) => {
+    const db = req.app.get("db");
+    const { id } = req.params;
+    const count = await db.count_comments(id);
+    res.status(200).send(count[0].count);
+  },
+  checkLikes: async (req, res) => {
+    const db = req.app.get('db')
+    const { user_id, post_id } = req.body
+    const found = await db.check_likes({ user_id, post_id })
+    if (+found[0].count !== 0) {
+      res.status(200).send(true)
+    } else {
+      res.status(200).send(false)
+    }
+  },
 };

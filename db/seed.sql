@@ -92,3 +92,8 @@ where title like '%Who%'
 or content like '%Who%'
 or category like '%Who%'
 or name like '%Who%';
+
+create table post_likes (
+  user_id int references sc_users(id),
+  post_id int references sc_posts(id)
+)
