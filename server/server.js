@@ -50,7 +50,9 @@ app.delete("/api/posts/:id", postCtrl.deletePost);
 app.patch("/api/posts/:id", postCtrl.updatePost);
 app.post("/api/liked", auth.usersOnly, postCtrl.addLike);
 app.get("/api/likes/:post_id", postCtrl.getLikes);
-app.post("/api/unlike", auth.usersOnly, postCtrl.deleteLike)
+app.post("/api/unliked", auth.usersOnly, postCtrl.deleteLike)
+app.get('/api/comment/:id', postCtrl.countComments)
+app.post('/api/likes', postCtrl.checkLikes)
 
 // Comment Endpoints
 app.get("/api/comments/:id", commentCtrl.getComments);
