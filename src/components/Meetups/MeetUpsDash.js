@@ -141,7 +141,7 @@ export default class CreateMeetUps extends Component {
             justifyContent: 'row'
           }}
         >
-          <MDBContainer>
+          {/* <MDBContainer>
             <MDBRow>
               <MDBCol>
                 <MDBJumbotron style={{ padding: 0 }}>
@@ -155,7 +155,7 @@ export default class CreateMeetUps extends Component {
                     }}
                   >
                     <MDBCol className="py-5">
-                      <MDBCardTitle
+                      <MDBCardTitle */}
                         className="h1-responsive pt-3 m-5 font-bold"
                         style={{ fontSize: '5rem' }}
                       >
