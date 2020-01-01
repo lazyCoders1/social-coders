@@ -66,7 +66,7 @@ export class Header extends Component {
           // color="default-color"
           dark
           expand="md"
-          style={{ backgroundColor: "#80deea", position: "fixed", top: 0, width: "100%", zIndex: "10" }}
+          style={{ backgroundColor: "#80deea", position: "fixed", top: 0, width: "100%", zIndex: "1" }}
         >
           {/* <MDBNavbar color="grey lighten-5" dark expand="md"> */}
           <MDBNavbarBrand>

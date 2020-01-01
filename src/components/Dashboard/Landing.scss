@@ -48,6 +48,8 @@
   font-size: 6rem;
   color: white;
   margin-left: 4rem;
+  z-index: -100;
+  position: relative;
 }
 
 @media (max-width: 740px) {
@@ -56,6 +58,7 @@
   }
   .CssText {
     display: none;
+    
   }
 }
 

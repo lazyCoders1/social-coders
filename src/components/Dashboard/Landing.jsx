@@ -107,7 +107,10 @@ class Landing extends Component {
           value={this.state.search}
         />
         {this.state.toggle ? (
-          <Create toggle={this.toggle} getPosts={this.getPosts} />
+          <>
+          {/* <div className="blur"/> */}
+          <Create style={{zIndex: "100"}} toggle={this.toggle} getPosts={this.getPosts} />
+        </>
         ) : null}
         <div className="input" onClick={this.toggle}>
           Create post...
