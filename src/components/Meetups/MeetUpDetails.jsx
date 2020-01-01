@@ -3,10 +3,10 @@ import axios from "axios";
 // import { Link } from "react-router-dom"
 import {
   MDBRow,
-  MDBCol,
+  // MDBCol,
   MDBBtn,
   MDBView,
-  MDBContainer,
+  // MDBContainer,
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
@@ -15,7 +15,7 @@ import {
   MDBIcon,
   MDBInput,
   MDBJumbotron,
-  MDBAnimation
+  // MDBAnimation
 } from "mdbreact";
 import ScrollAnimation from "react-animate-on-scroll";
 import "./MeetUpDetails.scss";
@@ -44,11 +44,10 @@ export default class MeetUpDetails extends Component {
     // this.setState({
     //   postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
     // });
-    // console.log(stuff);
+    // console.log(this.props.match.params.id);
   }
   getPosts = () => {
     axios.get("/api/meetups").then(res => {
-      // this.props.updateMeetupPosts(res.data);
       const postDets = res.data.filter(
         meetup => meetup.id == this.props.match.params.id
       );
@@ -57,9 +56,9 @@ export default class MeetUpDetails extends Component {
         // postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
         postDetails: postDets[0]
       });
-      
-      console.log(this.state.postDetails);
-      console.log("getPosts (MeetUpsDetails.js) ", res.data);
+
+      // console.log(this.state.postDetails);
+      // console.log("getPosts (MeetUpsDetails.js) ", res.data);
     });
   };
 
@@ -113,7 +112,6 @@ export default class MeetUpDetails extends Component {
                     <p className="CssText">{this.state.postDetails.title}</p>
                     {/* {console.log("hit", this.state.post)} */}
                   </ScrollAnimation>
-                  
                 </MDBRow>
               </div>
             </MDBJumbotron>

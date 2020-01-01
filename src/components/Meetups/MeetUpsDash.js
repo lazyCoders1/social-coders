@@ -263,7 +263,7 @@ export default class CreateMeetUps extends Component {
               <div className="create">
                 <MDBRow>
                   <ScrollAnimation className="bounceIn delay-1s">
-                    <p className="meetups-header-text">MEET UPS</p>
+                    <p className="meetups-header-text">MEET UPS </p>
                     {/* {console.log("hit", this.state.post)} */}
                   </ScrollAnimation>
                 </MDBRow>
