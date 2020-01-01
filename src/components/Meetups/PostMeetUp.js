@@ -27,6 +27,7 @@ export default class PostMeetUp extends Component {
       time,
       description,
       street,
+      city,
       state,
       zipcode
     } = this.state
@@ -38,6 +39,7 @@ export default class PostMeetUp extends Component {
         time,
         description,
         street,
+        city,
         state,
         zipcode
       })

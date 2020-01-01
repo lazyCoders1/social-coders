@@ -1,8 +1,7 @@
-import React, { Component } from "react";
-
-import Geocode from "react-geocode";
-import axios from "axios";
-import MeetUp from "./MeetUp";
+import React, { Component } from 'react'
+import Maps from './Maps'
+import axios from 'axios'
+import MeetUp from './MeetUp'
 
 import {
   MDBJumbotron,
@@ -13,40 +12,30 @@ import {
   MDBRow,
   MDBIcon,
   MDBInput
-} from "mdbreact";
-import "./MeetUpsDash.scss";
+} from 'mdbreact'
+import './MeetUpsDash.scss'
 
 export default class CreateMeetUps extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       meetUpPosts: [],
       toggle: false,
-      title: "",
-      img: "",
-      date: "",
-      time: "",
-      description: "",
-      street: "",
-      city: "",
-      state: "",
-      zipcode: ""
-    };
-    console.log("meetUpPosts", this.state.meetUpPosts);
-    Geocode.setApiKey(process.env.GOOGLE_API_KEY);
-    Geocode.enableDebug();
+      title: '',
+      img: '',
+      date: '',
+      time: '',
+      description: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: ''
+    }
   }
 
-  findLocation = address => {
-    Geocode.fromAddress(address).then(res => {
-      const { lat, lng } = res.results[0].geometry.location;
-      console.log(lat, lng);
-    });
-  };
-
   componentDidMount() {
-    this.getPosts();
+    this.getPosts()
   }
 
   addPost = () => {
@@ -60,9 +49,9 @@ export default class CreateMeetUps extends Component {
       city,
       state,
       zipcode
-    } = this.state;
+    } = this.state
     axios
-      .post("/api/meetups", {
+      .post('/api/meetups', {
         title,
         img,
         date,
@@ -75,28 +64,28 @@ export default class CreateMeetUps extends Component {
       })
       .then(res => {
         this.setState({
-          title: "",
-          img: "",
-          date: "",
-          time: "",
-          description: "",
-          street: "",
-          city: "",
-          state: "",
-          zipcode: ""
-        });
-      });
-    this.toggle();
-    this.getPosts();
-    this.refreshPage();
-  };
+          title: '',
+          img: '',
+          date: '',
+          time: '',
+          description: '',
+          street: '',
+          city: '',
+          state: '',
+          zipcode: ''
+        })
+      })
+    this.toggle()
+    this.getPosts()
+    this.refreshPage()
+  }
 
   getPosts = () => {
-    axios.get("/api/meetups").then(res => {
-      this.setState({ meetUpPosts: res.data });
-      console.log("getPosts (MeetUpsDash.js) ", res.data);
-    });
-  };
+    axios.get('/api/meetups').then(res => {
+      this.setState({ meetUpPosts: res.data })
+      console.log('getPosts (MeetUpsDash.js) ', res.data)
+    })
+  }
 
   // submitPost = () => {
   //   axios
@@ -110,40 +99,41 @@ export default class CreateMeetUps extends Component {
     axios
       .delete(`api/meetups/${id}`)
       .then(() => {
-        this.getPosts();
+        this.getPosts()
       })
       .catch(err => {
-        alert(err.res.data.message);
-      });
-  };
+        alert(err.res.data.message)
+      })
+  }
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    });
-  };
+    })
+  }
   handleInput = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
   refreshPage = () => {
-    window.location.reload(false);
-  };
+    window.location.reload(false)
+  }
 
   render() {
     // console.log(this.state.meetUpPosts)
     const meetUp = this.state.meetUpPosts.map(el => {
-      return (
-        <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
-      );
-    });
+      return <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
+    })
+    const map = this.state.meetUpPosts.map(el => {
+      return <Maps key={el.id} meetUpPosts={el} />
+    })
 
     return (
       <div>
         <header
           style={{
-            display: "flex",
-            justifyContent: "row"
+            display: 'flex',
+            justifyContent: 'row'
           }}
         >
           <MDBContainer>
@@ -153,16 +143,16 @@ export default class CreateMeetUps extends Component {
                   <MDBCol
                     className="text-white text-center py-5 px-4 my-5"
                     style={{
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "center",
-                      backgroundSize: "cover",
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'center',
+                      backgroundSize: 'cover',
                       backgroundImage: `url(https://images.unsplash.com/photo-1500021804447-2ca2eaaaabeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80)`
                     }}
                   >
                     <MDBCol className="py-5">
                       <MDBCardTitle
                         className="h1-responsive pt-3 m-5 font-bold"
-                        style={{ fontSize: "5rem" }}
+                        style={{ fontSize: '5rem' }}
                       >
                         Wanna Meet Up?
                       </MDBCardTitle>
@@ -197,7 +187,7 @@ export default class CreateMeetUps extends Component {
                   label="title"
                   icon="signature"
                   onChange={e => this.handleInput(e)}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="img"
@@ -206,7 +196,7 @@ export default class CreateMeetUps extends Component {
                   label="img"
                   icon="images"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="date"
@@ -215,7 +205,7 @@ export default class CreateMeetUps extends Component {
                   label="date"
                   icon="calendar-alt"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "8px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '8px' }}
                 />
                 <MDBInput
                   name="time"
@@ -224,7 +214,7 @@ export default class CreateMeetUps extends Component {
                   label="time"
                   icon="clock"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="description"
@@ -233,7 +223,7 @@ export default class CreateMeetUps extends Component {
                   label="description"
                   icon="keyboard"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="street"
@@ -242,7 +232,7 @@ export default class CreateMeetUps extends Component {
                   label="street"
                   icon="road"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="city"
@@ -251,7 +241,7 @@ export default class CreateMeetUps extends Component {
                   label="city"
                   icon="city"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="state"
@@ -260,7 +250,7 @@ export default class CreateMeetUps extends Component {
                   label="state"
                   icon="map-pin"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="zipcode"
@@ -269,7 +259,7 @@ export default class CreateMeetUps extends Component {
                   label="zipcode"
                   icon="globe-americas"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
               </div>
               <MDBBtn
@@ -291,6 +281,6 @@ export default class CreateMeetUps extends Component {
           {meetUp}
         </div>
       </div>
-    );
+    )
   }
 }
