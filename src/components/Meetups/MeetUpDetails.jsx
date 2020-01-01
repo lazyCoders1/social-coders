@@ -3,10 +3,10 @@ import axios from 'axios'
 // import { Link } from "react-router-dom"
 import {
   MDBRow,
-  //MDBCol,
+  // MDBCol,
   MDBBtn,
   MDBView,
-  //MDBContainer,
+  // MDBContainer,
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
@@ -45,7 +45,7 @@ export default class MeetUpDetails extends Component {
     // this.setState({
     //   postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
     // });
-    // console.log(stuff);
+    // console.log(this.props.match.params.id);
   }
   getPosts = () => {
     axios.get('/api/meetups').then(res => {
@@ -57,11 +57,11 @@ export default class MeetUpDetails extends Component {
         meetUpPosts: res.data,
         // postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
         postDetails: postDets[0]
-      })
-      // console.log(this.state.postDetails)
-      // console.log('getPosts (MeetUpsDetails.js) ', res.data)
-    })
-  }
+      });
+      // console.log(this.state.postDetails);
+      // console.log("getPosts (MeetUpsDetails.js) ", res.data);
+    });
+  };
 
   render() {
     const { isEditing } = this.state

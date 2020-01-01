@@ -6,14 +6,18 @@ import MeetUp from './MeetUp'
 import {
   MDBJumbotron,
   MDBBtn,
-  MDBCol,
-  MDBCardTitle,
-  MDBContainer,
+  // MDBCol,
+  // MDBCardTitle,
+  // MDBContainer,
   MDBRow,
   MDBIcon,
   MDBInput
-} from 'mdbreact'
-import './MeetUpsDash.scss'
+
+  // MDBAnimation
+} from "mdbreact";
+import ScrollAnimation from "react-animate-on-scroll";
+import "./MeetUpsDash.scss";
+
 
 export default class CreateMeetUps extends Component {
   constructor() {
@@ -130,6 +134,7 @@ export default class CreateMeetUps extends Component {
 
     return (
       <div>
+
         <header
           style={{
             display: 'flex',
@@ -172,6 +177,7 @@ export default class CreateMeetUps extends Component {
             </MDBRow>
           </MDBContainer>
         </header>
+
         {this.state.toggle ? (
           <div>
             <div className="blur" />
@@ -273,12 +279,46 @@ export default class CreateMeetUps extends Component {
             </section>
           </div>
         ) : null}
-        <div className="d-flex  justify-content-center align-content-around flex-wrap bd-highlight example-parent">
-          {/* <h1>meetupjunk</h1> */}
-          {/* <MDBBtn color="warning" size="sm" onClick={() => this.toggle()}>
-          add a meetup??
-        </MDBBtn> */}
-          {meetUp}
+        <div className="">
+          <header className="header-meetup-dash">
+            <MDBJumbotron
+              fluid
+              className="jtron"
+              style={{
+                maxHeight: "10rem",
+                padding: ".1rem",
+                backgroundColor: "#34A9DC",
+                margin: "1rem 0 0 0",
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
+                <MDBIcon fab icon="meetup" className="meetup-dash-icon" />
+              </ScrollAnimation>
+              <div className="create">
+                <MDBRow>
+                  <ScrollAnimation className="bounceIn delay-1s">
+                    <p className="meetups-header-text">MEET UPS </p>
+                    {/* {console.log("hit", this.state.post)} */}
+                  </ScrollAnimation>
+                </MDBRow>
+              </div>
+              <ScrollAnimation className="bounceIn delay-1s">
+                <MDBBtn
+                  className="post-meetup-btn"
+                  color="white"
+                  size="sm"
+                  onClick={() => this.toggle()}
+                >
+                  Post MeetUp
+                </MDBBtn>
+              </ScrollAnimation>
+            </MDBJumbotron>
+          </header>
+          <div className="d-flex  justify-content-center align-content-around flex-wrap bd-highlight example-parent">
+            {meetUp}
+          </div>
         </div>
       </div>
     )

@@ -112,9 +112,9 @@ class Landing extends Component {
         <div className="input" onClick={this.toggle}>
           Create post...
         </div>
-        <ScrollAnimation animateIn="fadeInLeft" delay=".2s">
+        {/* <ScrollAnimation className='post-animation' animateIn="fadeInLeft" delay=".2s"> */}
           {mapPosts}
-        </ScrollAnimation>
+        {/* </ScrollAnimation> */}
       </>
     )
   }

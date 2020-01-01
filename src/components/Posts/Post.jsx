@@ -68,7 +68,6 @@ class Post extends Component {
       .post(`/api/unlike`, { post_id, user_id })
       .then(this.setState({ liked: !this.state.liked }));
   };
-  
 
   getLikes = () => {
     axios.get(`api/likes/${this.props.post.id}`).then(res => {
@@ -86,6 +85,14 @@ class Post extends Component {
       .then(res => document.location.reload())
       .catch(err => console.log(err));
   };
+
+  word = ()=> {
+    if(+this.state.likes === +1){
+      return 'like'
+    } else {
+      return 'likes'
+    }
+  }
 
   render() {
     const {
@@ -120,24 +127,31 @@ class Post extends Component {
           <h2 className="users-name">{name}</h2>
           <h4 className="time">12 hrs</h4>
           <h4 className="title">{title}</h4>
-          <div className="post-content">{parse(content)}</div>
           <img className="post-picture" src={`${img}`} alt="" />
-          <h5 className="likes">{this.state.likes} likes</h5>
+          <div className="post-content">{parse(content)}
+          <div className="post-gradient"/>
+          </div>
+          <h5 className="likes">{this.state.likes} {this.word()}</h5>
+        
         </div>
         <div className="icons">
           <div className="icon-box">
             <i
-              className={`fas fa-heart ${this.state.liked ? "heart-red" : "heart-purple"}`}
+              className={`fas fa-heart ${
+                this.state.liked ? "heart-red" : "heart-purple"
+              }`}
               onClick={!this.state.liked ? this.addLike : this.deleteLike}
             ></i>
-            
             <MDBIcon
               far
               icon="comment-alt"
               onClick={() => this.props.history.push(`/post_details/${id}`)}
             />
             <MDBIcon icon="share" />
-            <i onClick={this.deletePost} className="fas fa-ellipsis-h"></i>
+            <i
+              style={{ visibility: "hidden" }}
+              className="fas fa-ellipsis-h"
+            ></i>
           </div>
           <i className="fas fa-star" onClick={this.addFavorite}></i>
         </div>

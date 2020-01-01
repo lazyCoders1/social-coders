@@ -1,0 +1,27 @@
+.commentText {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
+  margin: 20px;
+  width: 95%;
+}
+
+// .commentor-box {
+//   position: absolute;
+//   right: 5px;
+//   bottom: 5px;
+// }
+
+.commentor-box {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  // border: 1px solid black;
+  .commentor-links {
+    color: #848383;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
