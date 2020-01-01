@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import Maps from "./Maps";
+import axios from "axios";
 // import { Link } from "react-router-dom"
 import {
   MDBRow,
@@ -14,33 +15,32 @@ import {
   MDBCardFooter,
   MDBIcon,
   MDBInput,
-  MDBJumbotron
-  //MDBAnimation
-} from 'mdbreact'
-import ScrollAnimation from 'react-animate-on-scroll'
-import './MeetUpDetails.scss'
-import Maps from './Maps'
+  MDBJumbotron,
+  // MDBAnimation
+} from "mdbreact";
+import ScrollAnimation from "react-animate-on-scroll";
+import "./MeetUpDetails.scss";
 // import MeetUpsDash from "./MeetUp";
 // import Comment from "../Comments/Comment";
 
 export default class MeetUpDetails extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       postDetails: [
         {
-          title: ''
+          title: ""
         }
       ],
       comments: [],
       isEditing: false,
       value: 0
       // profile_img
-    }
+    };
   }
 
   componentDidMount() {
-    this.getPosts()
+    this.getPosts();
     // const stuff = this.props.getMeetupPostsForId(this.props.match.params.id);
     // this.setState({
     //   postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
@@ -48,23 +48,20 @@ export default class MeetUpDetails extends Component {
     // console.log(this.props.match.params.id);
   }
   getPosts = () => {
-    axios.get('/api/meetups').then(res => {
-      // this.props.updateMeetupPosts(res.data);
-      const postDets = res.data.filter(
-        meetup => meetup.id == this.props.match.params.id
-      )
+    axios.get("/api/meetups").then(res => {
+      const postDets = res.data.filter(meetup => {
+        return meetup.id === Number(this.props.match.params.id);
+      });
       this.setState({
         meetUpPosts: res.data,
-        // postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
+
         postDetails: postDets[0]
       });
-      // console.log(this.state.postDetails);
-      // console.log("getPosts (MeetUpsDetails.js) ", res.data);
     });
   };
 
   render() {
-    const { isEditing } = this.state
+    const { isEditing } = this.state;
     // const el = props.meetUpPost;
     return (
       <div id="meetup-post-details">
@@ -78,12 +75,12 @@ export default class MeetUpDetails extends Component {
               fluid
               className="jtron"
               style={{
-                maxHeight: '10rem',
-                padding: '.1rem',
-                backgroundColor: '#4ba3c7',
+                maxHeight: "10rem",
+                padding: ".1rem",
+                backgroundColor: "#4ba3c7",
                 // margin: "1rem 0 0 0",
-                display: 'flex',
-                alignItems: 'center'
+                display: "flex",
+                alignItems: "center"
               }}
             >
               <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
@@ -91,24 +88,6 @@ export default class MeetUpDetails extends Component {
               </ScrollAnimation>
               <div className="create">
                 <MDBRow>
-                  {/* <MDBAnimation type="bounceIn" delay=".1s">
-                    <h1 className="CssText">M</h1>
-                  </MDBAnimation>
-                  <MDBAnimation type="bounceIn" delay=".2s">
-                    <h1 className="CssText">E</h1>
-                  </MDBAnimation>
-                  <MDBAnimation type="bounceIn" delay=".3s">
-                    <h1 className="CssText">E</h1>
-                  </MDBAnimation>
-                  <MDBAnimation type="bounceIn" delay=".4s">
-                    <h1 className="CssText">T</h1>
-                  </MDBAnimation>
-                  <MDBAnimation type="bounceIn" delay=".6s">
-                    <h1 className="CssText">U</h1>
-                  </MDBAnimation>
-                  <MDBAnimation type="bounceIn" delay=".6s">
-                    <h1 className="CssText">P</h1>
-                  </MDBAnimation> */}
                   <ScrollAnimation className="bounceIn delay-1s">
                     <p className="CssText">{this.state.postDetails.title}</p>
                     {/* {console.log("hit", this.state.post)} */}
@@ -120,18 +99,18 @@ export default class MeetUpDetails extends Component {
             {!isEditing ? (
               <MDBCardBody>
                 {/* <div className="d-flex justify-content"> */}
-                <div className="d-flex justify-content-around flex-wrap">
+                <div className="">
+                  <Maps />
                   <img
                     className="meetup_img_card rounded img-fluid"
                     src={this.state.postDetails.img}
                     alt=""
                   />
-                  <Maps />
 
                   <div className="meetup-info mt-4">
                     <div className="date-time">
                       {this.state.postDetails.date +
-                        ', ' +
+                        ", " +
                         this.state.postDetails.time}
                     </div>
                     <br />
@@ -142,7 +121,7 @@ export default class MeetUpDetails extends Component {
                     </MDBCardTitle> */}
                     <div className="">
                       <MDBIcon icon="map-marker-alt" />
-                      {' ' + this.state.postDetails.street}
+                      {" " + this.state.postDetails.street}
                     </div>
                     <br />
                     <div className="users">
@@ -215,10 +194,10 @@ export default class MeetUpDetails extends Component {
 
                 <MDBBtn
                   onClick={() => {
-                    this.deletePost()
+                    this.deletePost();
                     this.setState({
                       isEditing: false
-                    })
+                    });
                   }}
                   outline
                   color="danger"
@@ -278,6 +257,6 @@ export default class MeetUpDetails extends Component {
           {/* </MDBContainer> */}
         </MDBView>
       </div>
-    )
+    );
   }
 }
