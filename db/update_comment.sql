@@ -1,3 +1,3 @@
-update sc_comments (content)
+update sc_comments
 set content = ${content}
 where id = ${id};

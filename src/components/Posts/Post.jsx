@@ -68,7 +68,6 @@ class Post extends Component {
       .post(`/api/unlike`, { post_id, user_id })
       .then(this.setState({ liked: !this.state.liked }));
   };
-  
 
   getLikes = () => {
     axios.get(`api/likes/${this.props.post.id}`).then(res => {
@@ -138,17 +137,21 @@ class Post extends Component {
         <div className="icons">
           <div className="icon-box">
             <i
-              className={`fas fa-heart ${this.state.liked ? "heart-red" : "heart-purple"}`}
+              className={`fas fa-heart ${
+                this.state.liked ? "heart-red" : "heart-purple"
+              }`}
               onClick={!this.state.liked ? this.addLike : this.deleteLike}
             ></i>
-            
             <MDBIcon
               far
               icon="comment-alt"
               onClick={() => this.props.history.push(`/post_details/${id}`)}
             />
             <MDBIcon icon="share" />
-            <i onClick={this.deletePost} className="fas fa-ellipsis-h"></i>
+            <i
+              style={{ visibility: "hidden" }}
+              className="fas fa-ellipsis-h"
+            ></i>
           </div>
           <i className="fas fa-star" onClick={this.addFavorite}></i>
         </div>
