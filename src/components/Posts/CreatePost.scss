@@ -11,9 +11,22 @@
 }
 
 .create-post-container {
+    // background: rgba(248, 248, 255, 0.925);
+    // width: 720px;
+    // height: 480px;
+    // margin: auto;
+    // position: fixed;
+    // margin-top: 20px;
+    // box-shadow: 5px 5px 5px -3px rgba(0, 0, 0, 0.199);
+    // border-radius: 5px;
+    // padding: 20px;
+    // padding-top: 35px;
+    // top: 110px;
+    // left: 50%;
+    // margin-left: -360px;
+    // z-index: 20;
     background: rgba(248, 248, 255, 0.925);
     width: 720px;
-    height: 480px;
     margin: auto;
     position: fixed;
     margin-top: 20px;
@@ -24,8 +37,7 @@
     top: 110px;
     left: 50%;
     margin-left: -360px;
-    z-index: 100;
-
+    z-index: 20;
   .cancel {
     position: absolute;
     right: 0;
