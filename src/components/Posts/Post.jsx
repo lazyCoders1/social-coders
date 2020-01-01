@@ -12,17 +12,20 @@ class Post extends Component {
     super(props);
     this.state = {
       likes: 0,
+      comments: 0,
       liked: false
     };
   }
 
   componentDidMount = () => {
     this.getLikes();
+    this.checkLikes();
+    this.countComments();
   };
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.liked !== this.state.liked) {
-      console.log(this.state.likes);
+      // console.log(this.state.likes);
       this.getLikes();
       // console.log(this.state.posts)
     }
@@ -53,29 +56,61 @@ class Post extends Component {
       );
   };
 
+  countComments = () => {
+    const { id } = this.props.post;
+    axios
+      .get(`/api/comment/${id}`)
+      .then(res => {
+        this.setState({ comments: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   addLike = () => {
     const { id: user_id } = this.props;
     const { id: post_id } = this.props.post;
     axios
       .post(`/api/liked`, { post_id, user_id })
-      .then(this.setState({ liked: !this.state.liked }));
+      .then(res => this.setState({ liked: !this.state.liked }))
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1200
+        })
+      )
   };
 
   deleteLike = () => {
     const { id: user_id } = this.props;
     const { id: post_id } = this.props.post;
     axios
-      .post(`/api/unlike`, { post_id, user_id })
-      .then(this.setState({ liked: !this.state.liked }));
+      .post(`/api/unliked`, { post_id, user_id })
+      .then(res => this.setState({ liked: !this.state.liked }))
+      .catch(err => console.log(err))
   };
 
   getLikes = () => {
-    axios.get(`api/likes/${this.props.post.id}`).then(res => {
-      // console.log(res.data[0].count)
-      this.setState({
-        likes: res.data[0].count
-      });
-    });
+    axios
+      .get(`api/likes/${this.props.post.id}`)
+      .then(res => {
+        this.setState({
+          likes: res.data[0].count
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  checkLikes = () => {
+    if (this.props.id) {
+      const { id: user_id } = this.props;
+      const { id: post_id } = this.props.post;
+      axios
+        .post("/api/likes", { user_id, post_id })
+        .then(res => this.setState({ liked: res.data }))
+        .catch(err => console.log(err));
+    }
   };
 
   deletePost = () => {
@@ -86,13 +121,13 @@ class Post extends Component {
       .catch(err => console.log(err));
   };
 
-  word = ()=> {
-    if(+this.state.likes === +1){
-      return 'like'
+  word = () => {
+    if (+this.state.likes === +1) {
+      return "Like";
     } else {
-      return 'likes'
+      return "Likes";
     }
-  }
+  };
 
   render() {
     const {
@@ -128,11 +163,16 @@ class Post extends Component {
           <h4 className="time">12 hrs</h4>
           <h4 className="title">{title}</h4>
           <img className="post-picture" src={`${img}`} alt="" />
-          <div className="post-content">{parse(content)}
-          <div className="post-gradient"/>
+          <div className="post-content">
+            {parse(content)}
+            <div className="post-gradient" />
           </div>
-          <h5 className="likes">{this.state.likes} {this.word()}</h5>
-        
+          <div style={{ display: "flex" }}>
+            <h5 style={{ marginRight: "7px" }} className="likes">
+              {this.state.likes} {this.word()}
+            </h5>
+            <h5 className="likes"> {this.state.comments} Comments</h5>
+          </div>
         </div>
         <div className="icons">
           <div className="icon-box">

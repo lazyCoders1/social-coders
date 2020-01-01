@@ -26,6 +26,10 @@
     padding-bottom: 125px;
   }
 
+  .card-body {
+    padding: 10px;
+  }
+
   .post-details-card {
     // margin: 50px;
     background-color: ghostwhite;
@@ -52,6 +56,12 @@
     align-content: stretch;
     font-size: small;
     background-color: ghostwhite;
+    .heart-purple {
+      color: black;
+    }
+    .heart-red {
+      color: red;
+    }
   }
 }
 
