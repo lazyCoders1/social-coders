@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import parse from "html-react-parser";
-import {
-  updateComment,
-  updatePostInput,
-  updatePostTitle,
-  updateUserInfo,
-  clearState
-} from "../../Reduxs/reducer";
+import ReactQuill from "react-quill";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import {
@@ -22,37 +16,138 @@ import {
   MDBCardImage,
   MDBCardText,
   MDBCardFooter,
-  MDBIcon,
-  MDBInput
+  MDBIcon
 } from "mdbreact";
+import Swal from "sweetalert2";
 import "./PostDetails.scss";
-// import Comment from "../Comments/Comment";
+import Comment from "./Comment";
 
 export class PostDetails extends Component {
   state = {
-    post: {},
+    author_id: 0,
+    category: "",
+    name: "",
+    id: 0,
+    profile_pic: "",
+    title: "",
+    img: "",
+    content: "",
+    comment: "",
     comments: [],
-    isEditing: false,
-    value: 0
-    // profile_img
+    isEditing: false
   };
 
   componentDidMount() {
     this.getPost();
+    this.getComments();
   }
 
   getPost = () => {
     const { id } = this.props.match.params;
-    axios.get(`/api/post/${id}`).then(res => {
-      console.log(res.data);
-      this.setState({ post: res.data });
+    axios
+      .get(`/api/post/${id}`)
+      .then(res => {
+        this.setState(res.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  deletePost = () => {
+    const { id } = this.state;
+    axios
+      .delete(`/api/posts/${id}`)
+      .then(res => {
+        Swal.fire({
+          title: res.data.message,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1200
+        });
+        window.history.go(-1);
+      })
+      .catch(err => console.log(err));
+  };
+
+  updatePost = () => {
+    const { id, title, content, img } = this.state;
+    axios
+      .patch(`/api/posts/${id}`, { title, content, img })
+      .then(res => {
+        Swal.fire({
+          title: res.data.message,
+          icon: "success",
+          showConfirmButton: false,
+          timer: 1200
+        });
+        this.setState({ isEditing: false });
+        this.getPost();
+      })
+      .catch(err => console.log(err));
+  };
+
+  getComments = () => {
+    const { id } = this.props.match.params;
+    axios
+      .get(`/api/comments/${id}`)
+      .then(res => {
+        this.setState({
+          comments: res.data
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  addComment = () => {
+    const { comment: content } = this.state;
+    const { id: post_id } = this.state;
+    const { id: author_id } = this.props;
+    axios
+      .post("/api/comments", { content, post_id, author_id })
+      .then(res => {
+        this.setState({ comment: "" });
+        this.getComments();
+      })
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false
+        })
+      );
+  };
+
+  handleInput = e => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value
     });
   };
 
+  handlePost = value => {
+    this.setState({ content: value });
+  };
+
+  handleComment = value => {
+    this.setState({ comment: value });
+  };
+
   render() {
-    const { updateComment, updatePostInput, updatePostTitle } = this.props;
+    const modules = {
+      toolbar: [
+        ["bold", "italic", "underline", "strike", "code"],
+        ["blockquote", "code-block"],
+        ["link"],
+        [
+          { list: "ordered" },
+          { list: "bullet" },
+          { indent: "-1" },
+          { indent: "+1" }
+        ]
+      ]
+    };
     const { isEditing } = this.state;
-    const { title, name, category, content, author_id, img } = this.state.post;
+    const { title, name, category, content, author_id, img } = this.state;
     return (
       <div id="post-details">
         <MDBView className="postContainer">
@@ -60,19 +155,46 @@ export class PostDetails extends Component {
             <MDBRow>
               <MDBCol>
                 <MDBCard className="post-details-card shadow-box-example">
-                  {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
                   {!isEditing ? (
                     <MDBCardBody>
-                      <MDBCardText>
+                      <MDBCardText
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
                         Posted by{" "}
-                        <Link className='post-link' to={`/profile/${author_id}`}>{name}</Link> in{" "}
-                        <Link className='post-link' to={`/${category}`}>{category}</Link>
+                        <div
+                          style={{
+                            backgroundImage: `url(${this.state.profile_pic})`,
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            height: "40px",
+                            width: "40px",
+                            borderRadius: "50%",
+                            margin: "3px"
+                          }}
+                        />
+                        <Link
+                          style={{ margin: "3px" }}
+                          className="post-link"
+                          to={`/profile/${author_id}`}
+                        >
+                          {name}
+                        </Link>{" "}
+                        in{" "}
+                        <Link
+                          style={{ margin: "3px" }}
+                          className="post-link"
+                          to={`/${category}`}
+                        >
+                          {category}
+                        </Link>
                       </MDBCardText>
                       <MDBCardTitle tag="h5">
                         <h3> {title} </h3>
-                        {/* {console.log("hit", this.state.post)} */}
                       </MDBCardTitle>
-                      <MDBCardImage style={{maxHeight: '500px', maxWidth: '500px'}} src={img} />  
+                      <MDBCardImage
+                        style={{ maxHeight: "500px", maxWidth: "500px" }}
+                        src={img}
+                      />
                       <MDBCardText className="card-text">
                         {parse(String(content))}
                       </MDBCardText>
@@ -81,29 +203,36 @@ export class PostDetails extends Component {
                     <MDBCardBody>
                       <MDBCardTitle tag="h5">
                         <input
+                          style={{ width: "90%" }}
+                          autoComplete="off"
                           type="text"
-                          id="example3"
                           className="edit-title form-control form-control-sm"
                           placeholder="Title"
-                          value={this.props.createTitle}
+                          value={title}
                           name="title"
-                          onChange={e => updatePostTitle(e.target.value)}
+                          onChange={this.handleInput}
                         />
-                        <MDBInput
-                          className="edit-content"
-                          // iconClass="white-text"
-                          // icon="pencil-alt"
-                          type="textarea"
-                          label="Editing Post?"
-                          outline
-                          value={this.props.createInput}
-                          name="input"
-                          onChange={e => updatePostInput(e.target.value)}
-                        ></MDBInput>
-                        {/* {console.log("hit", this.state.post)} */}
+                        <input
+                          style={{ width: "90%" }}
+                          autoComplete="off"
+                          type="text"
+                          className="edit-title form-control form-control-sm"
+                          placeholder="Image (optional)"
+                          value={img}
+                          name="img"
+                          onChange={this.handleInput}
+                        />
+                        <ReactQuill
+                          style={{
+                            width: "100%"
+                          }}
+                          value={content}
+                          modules={modules}
+                          onChange={this.handlePost}
+                        />
                       </MDBCardTitle>
                       <MDBBtn
-                        onClick={() => this.editPost()}
+                        onClick={this.updatePost}
                         color="default"
                         className="post-btn"
                         size="sm"
@@ -111,18 +240,16 @@ export class PostDetails extends Component {
                         Save Edit
                       </MDBBtn>
                       <MDBBtn
-                        onClick={() =>
-                          this.setState({
-                            isEditing: false
-                          })
-                        }
+                        onClick={() => {
+                          this.setState({ isEditing: false });
+                          this.getPost();
+                        }}
                         color="default"
-                        className="cancel"
+                        className="edit-cancel"
                         size="sm"
                       >
                         Cancel
                       </MDBBtn>
-
                       <MDBBtn
                         onClick={() => {
                           this.deletePost();
@@ -148,30 +275,16 @@ export class PostDetails extends Component {
                         <MDBIcon icon="arrow-alt-circle-up" />
                       </button>
                       <br />
-                      {/* <input
-                        className="quantity"
-                        name="quantity"
-                        value={this.state.value}
-                        onChange={() => console.log("change")}
-                        type="number"
-                      /> */}
                       <br />
                       <button onClick={this.decrease}>
                         <MDBIcon icon="arrow-alt-circle-down" />
                       </button>
                     </div>
                     {/* <i className="fas fa-share"> Share</i> */}
-                    <i className="fas fa-bookmark"> Save</i>
+                    <i className="fas fa-bookmark">Save</i>
                     <button
                       className="edit-btn"
-                      onClick={() => {
-                        // console.log(this.state.post);
-                        updatePostInput(this.state.post.content);
-                        updatePostTitle(this.state.post.title);
-                        this.setState({
-                          isEditing: true
-                        });
-                      }}
+                      onClick={() => this.setState({ isEditing: true })}
                     >
                       <MDBIcon icon="edit" />
                       Edit
@@ -182,44 +295,40 @@ export class PostDetails extends Component {
 
                   <MDBCardBody>
                     <hr />
-                    <p>Comment as Roundy</p>
+                    <p>Add a Comment</p>
                     <div className="input-group">
                       <div className="input-group-prepend">
                         <span className="input-group-text" id="basic-addon">
                           <i className="fas fa-pencil-alt prefix"></i>
                         </span>
                       </div>
-                      <textarea
-                        className="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
+                      <ReactQuill
+                        style={{
+                          width: "100%"
+                        }}
                         placeholder="What are your thoughts?"
-                        value={this.props.createComment}
-                        name="input"
-                        onChange={e => updateComment(e.target.value)}
-                      ></textarea>
+                        value={this.state.comment}
+                        onChange={this.handleComment}
+                        modules={modules}
+                      />
                     </div>
                     <MDBBtn
                       outline
                       color="default"
                       size="sm"
-                      onClick={() => this.addNewComment()}
+                      onClick={this.addComment}
                     >
                       Comment
                       <MDBIcon icon="pencil-alt" className="ml-1" />
                     </MDBBtn>
                     <br />
+                    <MDBCardTitle style={{ marginTop: "50px" }} tag="h5">
+                      Comments...
+                    </MDBCardTitle>
                     <hr />
-                    <MDBCardTitle tag="h5">Comments...</MDBCardTitle>
-
-                    {/* {this.state.comments.map((el, index) => (
-                      <Comment
-                        el={el}
-                        index={index}
-                        key={el.comment_id}
-                        remove={this.deleteComment}
-                      />
-                    ))} */}
+                    {this.state.comments.map(comment => (
+                      <Comment key={comment.id} comment={comment} />
+                    ))}
                   </MDBCardBody>
                 </MDBCard>
               </MDBCol>
@@ -231,21 +340,9 @@ export class PostDetails extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  const { createComment, createInput, createTitle } = state;
-
-  return {
-    createComment,
-    createInput,
-    createTitle
-    // profile_img
-  };
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
 }
 
-export default connect(mapStateToProps, {
-  updateComment,
-  updatePostInput,
-  updatePostTitle,
-  updateUserInfo,
-  clearState
-})(PostDetails);
+export default connect(mapStateToProps)(PostDetails);

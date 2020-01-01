@@ -8,7 +8,7 @@ module.exports = {
   addComment: (req, res) => {
     const db = req.app.get("db");
     const { content, post_id, author_id } = req.body;
-    const comment = db.add_comment({ post_id, content, author_id });
+    const comment = db.add_comment({ content, post_id, author_id });
     res.status(200).send(comment);
   },
   deleteComment: (req, res) => {
