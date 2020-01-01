@@ -8,7 +8,6 @@ import CreatePost from "./components/Posts/CreatePost";
 // import UserPost from "./components/Posts/UserPost";
 import Profile from "./components/Profile/Profile";
 import Favorites from "./components/Profile/Favorites";
-import Startups from "./components/Startups/StartUps";
 import Login from "./components/Authentication/Login";
 import Register from "./components/Authentication/Register";
 import JavaScript from "./components/JavaScript/JavaScript";
@@ -32,7 +31,6 @@ export default (
     <Route path="/post_details/:id" component={PostDetails}></Route>
     <Route path="/profile/:id" component={Profile}></Route>
     <Route path="/favorites" component={Favorites}></Route>
-    <Route path="/startups" component={Startups}></Route>
     <Route path="/login" component={Login}></Route>
     <Route path="/register" component={Register}></Route>
     <Route path="/javascript" component={JavaScript}></Route>
