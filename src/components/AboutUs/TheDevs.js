@@ -32,21 +32,17 @@ const TheDevs = () => {
               >
                 Nate Roundy
               </h2>
-              <a href="https://www.linkedin.com/in/nate-roundy">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nate-roundy">
                 <MDBIcon
                   fab
                   icon="linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ color: "white", fontSize: "1.6rem" }}
                 />
               </a>
-              <a href="https://github.com/Vosslc">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/Vosslc">
                 <MDBIcon
                   fab
                   icon="github"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ margin: "3rem", color: "white", fontSize: "1.6rem" }}
                 />
               </a>
@@ -84,21 +80,17 @@ const TheDevs = () => {
               >
                 Cody Young
               </h2>
-              <a href="https://www.linkedin.com/in/codyjamesyoung">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/codyjamesyoung">
                 <MDBIcon
                   fab
                   icon="linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ color: "white", fontSize: "1.6rem" }}
                 />
               </a>
-              <a href="https://github.com/Codus1127">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/Codus1127">
                 <MDBIcon
                   fab
                   icon="github"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ margin: "3rem", color: "white", fontSize: "1.6rem" }}
                 />
               </a>
@@ -136,21 +128,17 @@ const TheDevs = () => {
               >
                 Josh Jagoda
               </h2>
-              <a href="https://www.linkedin.com/in/joshjagoda">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/joshjagoda">
                 <MDBIcon
                   fab
                   icon="linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ color: "white", fontSize: "1.6rem" }}
                 />
               </a>
-              <a href="https://github.com/jnjagod">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/jnjagod">
                 <MDBIcon
                   fab
                   icon="github"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ margin: "3rem", color: "white", fontSize: "1.6rem" }}
                 />
               </a>
@@ -192,8 +180,6 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="linkedin"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ color: "white", fontSize: "1.6rem" }}
                 />
               </a>
@@ -201,8 +187,6 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="github"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   style={{ margin: "3rem", color: "white", fontSize: "1.6rem" }}
                 />
               </a>
