@@ -14,17 +14,17 @@ class Favorites extends Component {
 
   componentDidMount =()=> {
     this.getFavorites()
-    console.log(this.state.posts)
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate = (prevProps, prevState) => {
     if (prevState.posts.length !== this.state.posts.length) {
       this.getFavorites()
+      console.log(prevState.posts)
     }
   }
 
   getFavorites = () => {
-    const {id} = this.props
+    const {id} = this.props.match.params
     console.log(id)
     axios.get(`/api/favorites/${id}`)
     .then(res => {
@@ -38,6 +38,7 @@ class Favorites extends Component {
   };
 
   render() {
+    console.log(this.state.posts)
     let filterByValue = this.state.posts.filter(o => {
       return Object.keys(o).some(k => {
         return o[k]
