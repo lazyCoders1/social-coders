@@ -90,7 +90,7 @@ class CSS extends Component {
         <div className="input" onClick={this.toggle}>
           Create post...
         </div>
-        <ScrollAnimation animateIn="fadeInLeft">{mapPosts}</ScrollAnimation>
+        <ScrollAnimation className='hide-slide' animateIn="fadeInLeft">{mapPosts}</ScrollAnimation>
       </>
     )
   }
