@@ -152,7 +152,7 @@ const TheDevs = () => {
                 fontSize: '1.6rem'
               }}
             >
-              100% H.U.M.A.N
+              100% H.U.M.A.N.
             </p>
           </MDBContainer>
         </MDBJumbotron>
