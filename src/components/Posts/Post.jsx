@@ -173,7 +173,7 @@ class Post extends Component {
           onClick={() => this.props.history.push(`/post_details/${id}`)}
         >
           <h2 className="users-name">{name}</h2>
-          <h4 className="time">12 hrs</h4>
+          <time className="time">12 hrs</time>
           <h4 className="title">{title}</h4>
           <img className="post-picture" src={`${img}`} alt="" />
           <div className="post-content">

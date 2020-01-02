@@ -77,7 +77,7 @@ class CreatePost extends Component {
             zIndex: "20"
           }}
         >
-          <div className="blur" style={{zIndex: "10"}}>
+          <div className="blur" style={{ zIndex: "10" }}>
             <div className="create-post-container">
               <div className="cancel" onClick={this.props.toggle}>
                 X
@@ -126,8 +126,6 @@ class CreatePost extends Component {
                 color="default"
                 size="sm"
                 onClick={this.addPost}
-                  // this.addPost();
-                
               >
                 Post
                 <MDBIcon icon="pencil-alt" className="ml-2" />

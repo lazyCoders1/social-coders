@@ -46,7 +46,6 @@ class Login extends Component {
         this.props.history.push("/");
       })
       .catch(err => {
-        console.log(err);
         Swal.fire({
           title: err.response.data.message,
           icon: "error"

@@ -6,7 +6,7 @@ module.exports = {
     const { email, password, name } = req.body;
     const found = await db.find_user([email]);
     if (+found[0].count !== 0) {
-      return res.status(409).send({ message: "Email already registered" });
+      return res.status(409).send({ message: "Email already registered." });
     }
     const id = await db.add_user({ name, email });
     const salt = bcrypt.genSaltSync(10);
@@ -23,13 +23,13 @@ module.exports = {
     const { email, password } = req.body;
     const found = await db.find_user([email]);
     if (+found[0].count === 0) {
-      return res.status(401).send({ message: "email does not exist" });
+      return res.status(401).send({ message: "Email not registered." });
     }
     const foundUser = await db.find_hash([email]);
     const { hash, id, name } = foundUser[0];
     const result = bcrypt.compareSync(password, hash);
     if (!result) {
-      return res.status(401).send({ message: "password incorrect" });
+      return res.status(401).send({ message: "Password incorrect." });
     }
     req.session.user = { id, email, name };
     res
@@ -41,7 +41,7 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.status(200).send({ message: "Logged Out!" });
+    res.status(200).send({ message: "Logged Out." });
   },
   loggedIn: (req, res) => {
     if (req.session.user) {
