@@ -127,15 +127,11 @@ export default class CreateMeetUps extends Component {
     const meetUp = this.state.meetUpPosts.map(el => {
       return <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
     })
-    const map = this.state.meetUpPosts.map(el => {
-      return <Maps key={el.id} meetUpPosts={el} />
-    })
-
     return (
       <div>
         {this.state.toggle ? (
           <div>
-            <div className="blur" />
+            <div className="blur2" />
             <section className="newPost">
               <div>
                 <div className="cancel" onClick={() => this.toggle()}>
