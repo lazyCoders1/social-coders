@@ -176,14 +176,14 @@ const TheDevs = () => {
               >
                 Harrison Hancock
               </h2>
-              <a href="https://www.linkedin.com/in/harrison-hancock">
+              <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/harrison-hancock">
                 <MDBIcon
                   fab
                   icon="linkedin"
                   style={{ color: "white", fontSize: "1.6rem" }}
                 />
               </a>
-              <a href="https://github.com/Shokupanman">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/Shokupanman">
                 <MDBIcon
                   fab
                   icon="github"
