@@ -36,6 +36,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="linkedin"
+                  target=""
                   style={{ color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -43,6 +44,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="github"
+                  target=""
                   style={{ margin: '3rem', color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -84,6 +86,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="linkedin"
+                  target=""
                   style={{ color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -91,6 +94,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="github"
+                  target=""
                   style={{ margin: '3rem', color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -132,6 +136,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="linkedin"
+                  target=""
                   style={{ color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -139,6 +144,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="github"
+                  target=""
                   style={{ margin: '3rem', color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -180,6 +186,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="linkedin"
+                  target=""
                   style={{ color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
@@ -187,6 +194,7 @@ const TheDevs = () => {
                 <MDBIcon
                   fab
                   icon="github"
+                  target=""
                   style={{ margin: '3rem', color: 'white', fontSize: '1.6rem' }}
                 />
               </a>
