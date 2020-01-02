@@ -44,7 +44,7 @@ class Post extends Component {
         .catch(err => console.log(err));
     }
   };
-  
+
   addFavorite = () => {
     const { id: user_id } = this.props;
     const { id: post_id } = this.props.post;

@@ -7,9 +7,9 @@ import {
   MDBCardImage,
   MDBCardTitle,
   MDBCol
-} from 'mdbreact'
-import 'animate.css/animate.min.css'
-import ScrollAnimation from 'react-animate-on-scroll'
+} from "mdbreact";
+import "animate.css/animate.min.css";
+import ScrollAnimation from "react-animate-on-scroll";
 
 class AboutUs extends Component {
   render() {
@@ -17,7 +17,7 @@ class AboutUs extends Component {
       <div className="AboutUsDiv">
         <header
           className="topHalf"
-          style={{ display: 'flex', justifyContent: 'flex-start' }}
+          style={{ display: "flex", justifyContent: "flex-start" }}
         >
           <div className="bg">
             <ScrollAnimation animateIn="fadeInLeft" delay=".8s">
@@ -59,13 +59,13 @@ class AboutUs extends Component {
         <MDBRow
           className="startUpsRow"
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            maxWidth: '100vw'
+            display: "flex",
+            justifyContent: "center",
+            maxWidth: "100vw"
           }}
         >
           <ScrollAnimation animateIn="fadeIn" delay=".8s">
-            <MDBCard className="cards" style={{ width: '95vw' }}>
+            <MDBCard className="cards" style={{ width: "95vw" }}>
               <a className="linkText" href="#/startups">
                 <MDBCardImage
                   //className="img-fluid"
@@ -75,10 +75,10 @@ class AboutUs extends Component {
                 />
                 <MDBCardTitle
                   style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    fontSize: '3rem',
-                    color: 'black'
+                    display: "flex",
+                    justifyContent: "center",
+                    fontSize: "3rem",
+                    color: "black"
                   }}
                 >
                   The Devs
@@ -91,16 +91,16 @@ class AboutUs extends Component {
           <MDBCol
             className="cardsContainer"
             style={{
-              display: 'flex',
-              justifyContent: 'center',
-              flexDirection: 'row',
-              margin: '.5rem 0 0 2rem'
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "row",
+              margin: ".5rem 0 0 2rem"
             }}
           >
             <ScrollAnimation animateIn="fadeInLeft" delay=".8s">
               <MDBCard
                 className="cards"
-                style={{ width: '45vw', height: '45vh' }}
+                style={{ width: "45vw", height: "45vh" }}
               >
                 <a
                   className="linkText"
@@ -113,10 +113,10 @@ class AboutUs extends Component {
                   />
                   <MDBCardTitle
                     style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      fontSize: '2rem',
-                      color: 'black'
+                      display: "flex",
+                      justifyContent: "center",
+                      fontSize: "2rem",
+                      color: "black"
                     }}
                   >
                     About Dev Mountain
@@ -127,7 +127,7 @@ class AboutUs extends Component {
             <ScrollAnimation animateIn="fadeInRight" delay=".8s">
               <MDBCard
                 className="cards"
-                style={{ width: '45vw', height: '45vh', margin: '0 0 0 .5rem' }}
+                style={{ width: "45vw", height: "45vh", margin: "0 0 0 .5rem" }}
               >
                 <a className="linkText" href="#/us">
                   <MDBCardImage
@@ -137,10 +137,10 @@ class AboutUs extends Component {
                   />
                   <MDBCardTitle
                     style={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                      fontSize: '2rem',
-                      color: 'black'
+                      display: "flex",
+                      justifyContent: "center",
+                      fontSize: "2rem",
+                      color: "black"
                     }}
                   >
                     The Devs
@@ -157,42 +157,42 @@ class AboutUs extends Component {
               href="https://www.linkedin.com/in/nate-roundy"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
+              style={{ margin: "2rem", fontSize: "2rem", color: "#2BBBAD" }}
             >
-              <MDBIcon icon="beer" style={{ color: '#FFBB33' }} />
+              <MDBIcon icon="beer" style={{ color: "#FFBB33" }} />
               >Roundy
             </a>
             <a
               href="https://www.linkedin.com/in/joshjagoda"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
+              style={{ margin: "2rem", fontSize: "2rem", color: "#2BBBAD" }}
             >
-              <MDBIcon icon="robot" style={{ color: '#FFBB33' }} />
+              <MDBIcon icon="robot" style={{ color: "#FFBB33" }} />
               >Josh
             </a>
             <a
               href="https://www.linkedin.com/in/codyjamesyoung"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
+              style={{ margin: "2rem", fontSize: "2rem", color: "#2BBBAD" }}
             >
-              <MDBIcon fab icon="earlybirds" style={{ color: '#FFBB33' }} />
+              <MDBIcon fab icon="earlybirds" style={{ color: "#FFBB33" }} />
               >Cody
             </a>
             <a
               href="https://www.linkedin.com/in/harrison-hancock"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ margin: '2rem', fontSize: '2rem', color: '#2BBBAD' }}
+              style={{ margin: "2rem", fontSize: "2rem", color: "#2BBBAD" }}
             >
-              <MDBIcon icon="user-ninja" style={{ color: '#FFBB33' }} />
+              <MDBIcon icon="user-ninja" style={{ color: "#FFBB33" }} />
               >Hari
             </a>
           </div> */}
         </footer>
       </div>
-    )
+    );
   }
 }
 

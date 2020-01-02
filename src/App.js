@@ -1,8 +1,8 @@
-import React from 'react'
-import './App.scss'
-import Routes from './Routes'
-import Header from './components/Header/Header'
-import "./index.css"
+import React from "react";
+import "./App.scss";
+import Routes from "./Routes";
+import Header from "./components/Header/Header";
+import "./index.css";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <Header />
       {Routes}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

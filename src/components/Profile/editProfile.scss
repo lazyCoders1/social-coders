@@ -15,7 +15,7 @@
 }
 
 .MDBInput {
-  width: 100%
+  width: 100%;
 }
 
 .md-form {
@@ -54,7 +54,6 @@ input.form-control {
   height: 30px;
   width: 30px;
   font-weight: 700;
-  // background-color: red;
   text-align: center;
   cursor: pointer;
 }
@@ -66,10 +65,10 @@ input.form-control {
 }
 
 @media (max-width: 465px) {
-    .profile-form {
-        width: 100vw;
-        margin: 0;
-        left: 0;
-        top: 100px;
-    }
+  .profile-form {
+    width: 100vw;
+    margin: 0;
+    left: 0;
+    top: 100px;
+  }
 }

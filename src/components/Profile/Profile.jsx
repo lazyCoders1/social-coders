@@ -40,7 +40,6 @@ class Profile extends Component {
 
   getProfile = async () => {
     const res = await axios.get(`/api/profile/${this.props.match.params.id}`);
-    // console.log(res.data[0].name)
     this.setState({
       user_id: res.data[0].id,
       name: res.data[0].name,
@@ -59,7 +58,6 @@ class Profile extends Component {
       this.setState({
         posts: res.data
       });
-      // this.getUsersPosts()
     });
   };
 

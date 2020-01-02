@@ -6,18 +6,11 @@
   width: 95%;
 }
 
-// .commentor-box {
-//   position: absolute;
-//   right: 5px;
-//   bottom: 5px;
-// }
-
 .commentor-box {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   justify-content: space-between;
-  // border: 1px solid black;
   .commentor-links {
     color: #848383;
     &:hover {

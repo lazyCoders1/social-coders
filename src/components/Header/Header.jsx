@@ -60,9 +60,6 @@ export class Header extends Component {
     return (
       <Router>
         <MDBNavbar
-          // fixed="top"
-          // className="position-sticky"
-          // color="default-color"
           dark
           expand="md"
           style={{
@@ -73,7 +70,6 @@ export class Header extends Component {
             zIndex: '10'
           }}
         >
-          {/* <MDBNavbar color="grey lighten-5" dark expand="md"> */}
           <MDBNavbarBrand>
             <a href="#/">
               <strong className="white-text" style={{ cursor: 'pointer' }}>
@@ -85,16 +81,7 @@ export class Header extends Component {
           <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
             <MDBNavbarNav left>
               <MDBNavItem>
-                <MDBFormInline waves>
-                  {/* <div className="md-form my-0">
-                    <input
-                      type="text"
-                      placeholder="Search"
-                      aria-label="Search"
-                      
-                    />
-                  </div> */}
-                </MDBFormInline>
+                <MDBFormInline waves></MDBFormInline>
               </MDBNavItem>
             </MDBNavbarNav>
             <div className="d-flex justify-content-end">

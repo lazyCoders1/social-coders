@@ -4,10 +4,7 @@ import { updateUserInfo } from "../../Reduxs/reducer";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-// import Register from "./Register";
 import "./Login.scss";
-// this is a test on github
-
 import {
   MDBMask,
   MDBRow,
@@ -77,7 +74,6 @@ class Login extends Component {
               <MDBRow>
                 <MDBCol md="6" xl="5" className="mb-4">
                   <MDBAnimation
-                    // type="fadeInRight"
                     type="fadeInLeft"
                     delay=".3s"
                   >
@@ -154,7 +150,6 @@ class Login extends Component {
                   </MDBAnimation>
                 </MDBCol>
                 <MDBAnimation
-                  // type="fadeInLeft"
                   type="fadeInRight"
                   delay=".3s"
                   className="white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"

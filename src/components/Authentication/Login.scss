@@ -1,8 +1,5 @@
 #signin {
   .view {
-    // background-image: url("../../assets/./laptop.jpg");
-    // background-image: url("../../assets/./laptopShoe.jpg");
-    // background-image: url("../../assets/./appleCode.jpg");
     background-image: url("../../assets/./laptop2.jpg");
 
     background-repeat: no-repeat;
@@ -17,28 +14,14 @@
     height: auto;
   }
   .sign-in-card-btn {
-    // background-color: rgba(90, 90, 90, 0.808);
     background-color: rgba(0, 0, 0, 0.808);
-    // background-color: rgba(0, 0, 0, 0);
     height: auto;
   }
 }
-// .sign-up-card {
-//   // background-color: rgba(90, 90, 90, 0.808);
-//   background-color: rgba(0, 0, 0, 0.808);
-//   height: auto;
-// }
 
 /* !KEEP FOR LOG/REG MOBILE */
-@media (max-width: 768px) {
-  #classicformpage .navbar:not(.top-nav-collapse) {
-    /* background: #424f95 !important; */
-  }
-  // #classic-card {
-  //   background-color: none !important;
-  //   height: auto;
-  // }
 
+@media (max-width: 768px) {
   .h6-login {
     display: none;
   }
@@ -53,7 +36,3 @@
     bottom: 0;
   }
 }
-
-// #classicformpage label {
-//   color: rgb(240, 0, 0) !important;
-// }
