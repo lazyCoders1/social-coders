@@ -49,13 +49,13 @@
     text-overflow: ellipsis;
   }
   .post-gradient {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: linear-gradient(rgba(255, 255, 255, 0), ghostwhite);
-      z-index: 20;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0), ghostwhite);
+    z-index: 20;
   }
   .post-picture {
     margin-top: 20px;
@@ -80,8 +80,14 @@
         color: black;
       }
       .heart-red {
-        color: red;
+        color: rgb(255, 66, 66);
       }
+    }
+    .star-black {
+      color: black;
+    }
+    .star-yellow {
+      color: #f4d673;
     }
   }
 }

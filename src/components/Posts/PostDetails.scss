@@ -1,8 +1,7 @@
 #post-details {
-  
   // Use code bellow if you add content next to post
-  // width: 800px; 
-  
+  // width: 800px;
+
   // .card {
   //   display: block;
   //   display: -webkit-box;
@@ -28,6 +27,7 @@
 
   .card-body {
     padding: 10px;
+    position: relative;
   }
 
   .post-details-card {
@@ -35,15 +35,14 @@
     background-color: ghostwhite;
   }
   .post-link {
-    color: #848383
+    color: #848383;
   }
   .post-link:hover {
     text-decoration: underline;
   }
-  .card-text{
+  .card-text {
     line-height: 1.5;
   }
-
 
   /* !FOOTER BAR */
 
@@ -60,7 +59,13 @@
       color: black;
     }
     .heart-red {
-      color: red;
+      color: rgb(255, 66, 66);
+    }
+    .star-black {
+      color: black;
+    }
+    .star-yellow {
+      color: #f3d774;
     }
   }
 }

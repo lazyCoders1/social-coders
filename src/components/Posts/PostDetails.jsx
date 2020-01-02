@@ -37,7 +37,8 @@ export class PostDetails extends Component {
     commentsCount: 0,
     likes: 0,
     isEditing: false,
-    liked: false
+    liked: false,
+    fav: false
   };
 
   componentDidMount() {
@@ -46,19 +47,20 @@ export class PostDetails extends Component {
     this.countComments();
     this.getLikes();
     this.checkLikes();
+    this.checkFav();
   }
 
   componentDidUpdate = (prevProps, prevState) => {
     if (prevState.liked !== this.state.liked) {
       this.getLikes();
     }
-  };
-
-  componentDidUpdate(prevProps, prevState) {
     if (prevState.comments.length !== this.state.comments.length) {
       this.getComments();
     }
-  }
+    if (prevState.fav !== this.state.fav) {
+      this.checkFav();
+    }
+  };
 
   getPost = () => {
     const { id } = this.props.match.params;
@@ -191,6 +193,49 @@ export class PostDetails extends Component {
       .post(`/api/unliked`, { post_id, user_id })
       .then(res => this.setState({ liked: !this.state.liked }))
       .catch(err => console.log(err));
+  };
+
+  checkFav = () => {
+    if (this.props.id) {
+      const { id: user_id } = this.props;
+      const { id: post_id } = this.props.match.params;
+      axios
+        .post("/api/favs", { user_id, post_id })
+        .then(res => this.setState({ fav: res.data }))
+        .catch(err => console.log(err));
+    }
+  };
+
+  addFavorite = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.state;
+    axios
+      .post(`/api/favorites`, { post_id, user_id })
+      .then(res => this.setState({ fav: true }))
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false
+        })
+      );
+  };
+
+  deleteFavorite = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.state;
+    axios
+      .post("/api/favorite", { post_id, user_id })
+      .then(res => this.setState({ fav: false }))
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false
+        })
+      );
   };
 
   handleInput = e => {
@@ -370,7 +415,29 @@ export class PostDetails extends Component {
                       ></i>
                     </div>
                     {/* <i className="fas fa-share"> Share</i> */}
-                    <i className="fas fa-bookmark">Save</i>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: "pointer",
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px"
+                      }}
+                    >
+                      <i
+                        className={`fas fa-star fa-2x ${
+                          this.state.fav ? "star-yellow" : "star-black"
+                        }`}
+                        onClick={
+                          !this.state.fav
+                            ? this.addFavorite
+                            : this.deleteFavorite
+                        }
+                      ></i>
+                    </div>
                     <MDBBtn
                       className="edit-btn"
                       onClick={() => this.setState({ isEditing: true })}
@@ -389,7 +456,7 @@ export class PostDetails extends Component {
                   {/* COMMENT INPUT FIELD */}
 
                   <MDBCardBody>
-                    <hr />
+                    <hr style={{ marginTop: "0px" }} />
                     <p>Add a Comment</p>
                     <div className="input-group">
                       <div className="input-group-prepend">
