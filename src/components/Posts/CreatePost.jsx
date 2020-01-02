@@ -34,6 +34,7 @@ class CreatePost extends Component {
           content: ""
         });
         this.props.getPosts();
+        this.props.toggle();
       })
       .catch(err =>
         Swal.fire({
@@ -124,7 +125,7 @@ class CreatePost extends Component {
                 outline
                 color="default"
                 size="sm"
-                onClick={this.state.category ? this.props.toggle() && this.addPost : this.addPost}
+                onClick={this.addPost}
                   // this.addPost();
                 
               >

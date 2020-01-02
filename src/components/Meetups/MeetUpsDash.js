@@ -39,6 +39,7 @@ export default class CreateMeetUps extends Component {
 
   componentDidMount() {
     this.getPosts();
+    console.log(this.state)
   }
 
   addPost = () => {

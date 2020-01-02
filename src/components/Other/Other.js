@@ -7,7 +7,8 @@ class Other extends Component {
   state = {
     posts: [],
     category: "Other",
-    toggle: false
+    toggle: false,
+    search: ''
   };
 
   componentDidMount() {
@@ -36,12 +37,31 @@ class Other extends Component {
     });
   };
 
+  handleChange = event => {
+    this.setState({ search: event.target.value });
+  };
+
   render() {
-    const mapPosts = this.state.posts.map(post => (
-      <Post key={post.id} post={post} />
-    ));
+    let filterByValue = this.state.posts.filter(o => {
+      return Object.keys(o).some(k => {
+        return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
+      })
+    })
+    const usersPosts = filterByValue.map((post, i) => (
+          <Post
+            post={post}
+            key={post.id}
+          />
+    ))
     return (
       <>
+      <input
+          className="search"
+          placeholder="Search..."
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.search}
+        />
         {this.state.toggle ? (
           <Create
             toggle={this.toggle}
@@ -52,7 +72,7 @@ class Other extends Component {
         <div className="input" onClick={this.toggle}>
           Create post...
         </div>
-        {mapPosts}
+        {usersPosts}
       </>
     );
   }
