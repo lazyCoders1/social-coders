@@ -26,7 +26,7 @@ export default (
     <Route path="/createpost" component={CreatePost}></Route>
     <Route path="/post_details/:id" component={PostDetails}></Route>
     <Route path="/profile/:id" component={Profile}></Route>
-    <Route path="/favorites" component={Favorites}></Route>
+    <Route path="/favorites/:id" component={Favorites}></Route>
     <Route path="/aboutus" component={AboutUs}></Route>
     <Route path="/login" component={Login}></Route>
     <Route path="/register" component={Register}></Route>
