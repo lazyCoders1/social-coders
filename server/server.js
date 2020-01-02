@@ -11,6 +11,7 @@ const postCtrl = require("./controllers/postController");
 const commentCtrl = require("./controllers/commentController");
 const profileCtrl = require("./controllers/profileCtrl");
 const meetCtrl = require("./controllers/meetUpsController");
+const favCtrl = require('./controllers/favController')
 
 // Middleware
 const auth = require("./middleware/authMiddleware");
@@ -63,7 +64,11 @@ app.patch("/api/comments/:id", commentCtrl.updateComment);
 // Profile Endpoints
 app.get("/api/profile/:id", profileCtrl.getProfile);
 app.put("/api/profile/:id", profileCtrl.updateProfile);
-app.post("/api/favorites", auth.usersOnly, profileCtrl.addFavorite);
+
+// Favorite Endpoints
+app.post("/api/favorites", auth.usersOnly, favCtrl.addFavorite);
+app.post('/api/favs', favCtrl.checkFav)
+app.post('/api/favorite', favCtrl.deleteFavorite)
 
 massive(CONNECTION_STRING).then(database => {
   app.set("db", database);
