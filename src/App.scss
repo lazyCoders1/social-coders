@@ -10,14 +10,16 @@ body {
   position: relative;
   z-index: -2;
 }
-
 #root {
   position: relative;
   z-index: -3;
 }
-
 body {
   position: relative;
   z-index: -4;
   padding-top: 50px;
+}
+.hide-slide {
+  position: relative;
+  z-index: -5;
 }
