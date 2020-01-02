@@ -1,15 +1,8 @@
 import React, { Component } from 'react'
 import './AboutUs.scss'
-import {
-  MDBCard,
-  MDBRow,
-  MDBIcon,
-  MDBCardImage,
-  MDBCardTitle,
-  MDBCol
-} from "mdbreact";
-import "animate.css/animate.min.css";
-import ScrollAnimation from "react-animate-on-scroll";
+import { MDBCard, MDBRow, MDBCardImage, MDBCardTitle, MDBCol } from 'mdbreact'
+import 'animate.css/animate.min.css'
+import ScrollAnimation from 'react-animate-on-scroll'
 
 class AboutUs extends Component {
   render() {
@@ -17,7 +10,7 @@ class AboutUs extends Component {
       <div className="AboutUsDiv">
         <header
           className="topHalf"
-          style={{ display: "flex", justifyContent: "flex-start" }}
+          style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
           <div className="bg">
             <ScrollAnimation animateIn="fadeInLeft" delay=".8s">
@@ -91,16 +84,16 @@ class AboutUs extends Component {
           <MDBCol
             className="cardsContainer"
             style={{
-              display: "flex",
-              justifyContent: "center",
-              flexDirection: "row",
-              margin: ".5rem 0 0 2rem"
+              display: 'flex',
+              justifyContent: 'center',
+              flexDirection: 'row',
+              margin: '.5rem 0 0 2rem'
             }}
           >
             <ScrollAnimation animateIn="fadeInLeft" delay=".8s">
               <MDBCard
                 className="cards"
-                style={{ width: "45vw", height: "45vh" }}
+                style={{ width: '45vw', height: '45vh' }}
               >
                 <a
                   className="linkText"
@@ -113,10 +106,10 @@ class AboutUs extends Component {
                   />
                   <MDBCardTitle
                     style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      fontSize: "2rem",
-                      color: "black"
+                      display: 'flex',
+                      justifyContent: 'center',
+                      fontSize: '2rem',
+                      color: 'black'
                     }}
                   >
                     About Dev Mountain
@@ -127,7 +120,7 @@ class AboutUs extends Component {
             <ScrollAnimation animateIn="fadeInRight" delay=".8s">
               <MDBCard
                 className="cards"
-                style={{ width: "45vw", height: "45vh", margin: "0 0 0 .5rem" }}
+                style={{ width: '45vw', height: '45vh', margin: '0 0 0 .5rem' }}
               >
                 <a className="linkText" href="#/us">
                   <MDBCardImage
@@ -137,10 +130,10 @@ class AboutUs extends Component {
                   />
                   <MDBCardTitle
                     style={{
-                      display: "flex",
-                      justifyContent: "center",
-                      fontSize: "2rem",
-                      color: "black"
+                      display: 'flex',
+                      justifyContent: 'center',
+                      fontSize: '2rem',
+                      color: 'black'
                     }}
                   >
                     The Devs
@@ -192,7 +185,7 @@ class AboutUs extends Component {
           </div> */}
         </footer>
       </div>
-    );
+    )
   }
 }
 
