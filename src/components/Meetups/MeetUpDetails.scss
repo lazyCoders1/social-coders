@@ -1,13 +1,17 @@
 #meetup-post-details {
   .cssIcon {
-    font-size: 5rem;
-    margin: 1rem;
+    font-size: 7rem;
+    margin: 0.3rem;
     padding: 0;
     color: white;
   }
   .CssText {
     font-size: 4rem;
     color: white;
+  }
+  .meetUpText {
+    color: white;
+    margin-left: 1rem;
   }
   @media (max-width: 600px) {
     .CssText {
@@ -35,10 +39,15 @@
     // width: 800px;
 
     .meetup_img_card {
-      width: 25vw;
-      height: 25vh;
+      width: 35vw;
+      height: 40vh;
     }
-    
+    .mapAndPic {
+      width: auto;
+      justify-content: space-evenly;
+      margin-top: 0;
+    }
+
     @media (max-width: 768px) {
       .meetup_img_card {
         width: 100vw;
@@ -55,11 +64,12 @@
         display: none;
       }
     }
-    .meetup_img_card {
-      // padding: 20px;
-      // width: 25vw;
-      // height: 25vh;
-    }
+  }
+
+  .meetDeets {
+    display: flex;
+    justify-content: space-evenly;
+    width: auto;
   }
   .card-text {
     line-height: 1.5;
