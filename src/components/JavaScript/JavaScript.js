@@ -114,7 +114,7 @@ class JavaScript extends Component {
         <div className="input" onClick={this.toggle}>
           Create post...
         </div>
-        <ScrollAnimation className='hide-slide' animateIn="fadeInLeft">{usersPosts}</ScrollAnimation>
+        {usersPosts}
       </>
     );
   }
