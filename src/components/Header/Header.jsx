@@ -53,13 +53,8 @@ export class Header extends Component {
   }
 
   toggleCollapse = () => {
-<<<<<<< HEAD
-    this.setState({ isOpen: !this.state.isOpen });
-  };
-=======
     this.setState({ isOpen: !this.state.isOpen })
   }
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e
 
   render() {
     return (
@@ -68,19 +63,11 @@ export class Header extends Component {
           dark
           expand="md"
           style={{
-<<<<<<< HEAD
-            backgroundColor: "#80deea",
-            position: "fixed",
-            top: 0,
-            width: "100%",
-            zIndex: "10"
-=======
             backgroundColor: '#80deea',
             position: 'fixed',
             top: 0,
             width: '100%',
             zIndex: '10'
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e
           }}
         >
           <MDBNavbarBrand>

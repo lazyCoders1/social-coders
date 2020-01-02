@@ -69,15 +69,9 @@ class AboutUs extends Component {
               <a className="linkText" href="#/startups">
                 <MDBCardImage
                   //className="img-fluid"
-<<<<<<< HEAD:src/components/Dashboard/Dashboard.jsx
-                  href="#/startups"
-                  style={{ width: "95vw", height: "64vh", margin: "1vh" }}
-                  src="https://images.unsplash.com/photo-1547039996-61c1135690c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1797&q=80"
-=======
                   href="https://devmountain.com/?utm_medium=ppc&utm_source=googleads&utm_campaign=branded&utm_term=dev%20mountain&e=&gclid=CjwKCAiAo7HwBRBKEiwAvC_Q8bomBKI209Z64j_qfjHmG4OvrfI2aDFoZqtr2D-z7AJ82kDgGkFAkBoCvdkQAvD_BwE"
                   style={{ width: '95vw', height: '64vh', margin: '1vh' }}
                   src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80"
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e:src/components/AboutUs/AboutUs.jsx
                 />
                 <MDBCardTitle
                   style={{
@@ -114,13 +108,8 @@ class AboutUs extends Component {
                 >
                   <MDBCardImage
                     className="img-fluid"
-<<<<<<< HEAD:src/components/Dashboard/Dashboard.jsx
-                    style={{ width: "45vw", height: "40vh" }}
-                    src="https://images.unsplash.com/photo-1500627321089-19f8ec7b3038?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
-=======
                     style={{ width: '45vw', height: '40vh' }}
                     src="https://cdn.dribbble.com/users/125167/screenshots/1826114/dribbble.png"
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e:src/components/AboutUs/AboutUs.jsx
                   />
                   <MDBCardTitle
                     style={{
@@ -143,13 +132,8 @@ class AboutUs extends Component {
                 <a className="linkText" href="#/us">
                   <MDBCardImage
                     className="img-fluid"
-<<<<<<< HEAD:src/components/Dashboard/Dashboard.jsx
-                    style={{ width: "45vw", height: "40vh" }}
-                    src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80"
-=======
                     style={{ width: '45vw', height: '40vh' }}
                     src="https://images.unsplash.com/photo-1512295767273-ac109ac3acfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80"
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e:src/components/AboutUs/AboutUs.jsx
                   />
                   <MDBCardTitle
                     style={{
@@ -167,13 +151,8 @@ class AboutUs extends Component {
           </MDBCol>
         </MDBRow>
         <footer className="footer">
-<<<<<<< HEAD:src/components/Dashboard/Dashboard.jsx
-          <div className="devs">
-            <h1 style={{ maxWidth: "25vw" }}>Developers:</h1>
-=======
           {/* <div className="devs">
             <h1 style={{ maxWidth: '25vw' }}>Developers:</h1>
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e:src/components/AboutUs/AboutUs.jsx
             <a
               href="https://www.linkedin.com/in/nate-roundy"
               target="_blank"
@@ -217,8 +196,4 @@ class AboutUs extends Component {
   }
 }
 
-<<<<<<< HEAD:src/components/Dashboard/Dashboard.jsx
-export default Dashboard;
-=======
 export default AboutUs
->>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e:src/components/AboutUs/AboutUs.jsx

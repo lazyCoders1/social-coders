@@ -1,11 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import Channels from './components/Channels/Channel'
-import Chat from './components/Chat/Chat'
 import MeetUpsDash from './components/Meetups/MeetUpsDash'
 import CreatePost from './components/Posts/CreatePost'
-// import UserPost from "./components/Posts/UserPost";
-
 import Profile from './components/Profile/Profile'
 import Favorites from './components/Profile/Favorites'
 import AboutUs from './components/AboutUs/AboutUs'
@@ -30,9 +27,7 @@ export default (
     <Route path="/post_details/:id" component={PostDetails}></Route>
     <Route path="/profile/:id" component={Profile}></Route>
     <Route path="/favorites" component={Favorites}></Route>
-
     <Route path="/aboutus" component={AboutUs}></Route>
-
     <Route path="/login" component={Login}></Route>
     <Route path="/register" component={Register}></Route>
     <Route path="/javascript" component={JavaScript}></Route>
