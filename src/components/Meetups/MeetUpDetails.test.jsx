@@ -1,4 +1,3 @@
-
 import React from "react";
 import Enzyme, { shallow } from "enzyme";
 import EnzymeAdapter from "enzyme-adapter-react-16";
@@ -10,11 +9,20 @@ Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 test("renders without crashing", () => {
   const wrapper = shallow(<MeetUpDetails />);
+  const MeetUpDetailsComp = wrapper.find("[data-test='component-meet-up-details']");
+  expect(wrapper).toBeTruthy();
+  expect(MeetUpDetailsComp.length).toBe(1);
   // console.log(wrapper.debug());
-  // expect(wrapper).toBeTruthy();
   // expect(wrapper).toBeFalsy();
 });
 
+test("renders edit button", () => {
+
+});
+
+test("clicking button allows you to edit Meetup post", () => {
+
+});
 
 
 

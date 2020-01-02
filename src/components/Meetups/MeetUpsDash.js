@@ -244,7 +244,8 @@ export default class CreateMeetUps extends Component {
                 alignItems: 'center'
               }}
             >
-              <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
+              <ScrollAnimation animateIn="fadeInLeft">
+              {/* <ScrollAnimation animateIn="fadeInLeft" delay=".5s"> */}
                 <MDBIcon fab icon="meetup" className="meetup-dash-icon" />
               </ScrollAnimation>
               <div className="create">

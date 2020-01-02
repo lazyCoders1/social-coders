@@ -15,7 +15,7 @@ import {
   MDBCardFooter,
   MDBIcon,
   MDBInput,
-  MDBJumbotron,
+  MDBJumbotron
   // MDBAnimation
 } from "mdbreact";
 import ScrollAnimation from "react-animate-on-scroll";
@@ -64,7 +64,7 @@ export default class MeetUpDetails extends Component {
     const { isEditing } = this.state;
     // const el = props.meetUpPost;
     return (
-      <div id="meetup-post-details">
+      <div id="meetup-post-details" data-test="component-meet-up-details">
         <MDBView className="post-container">
           {/* <MDBContainer> */}
           {/* <MDBRow>
@@ -83,7 +83,8 @@ export default class MeetUpDetails extends Component {
                 alignItems: "center"
               }}
             >
-              <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
+              <ScrollAnimation animateIn="fadeInLeft">
+                {/* <ScrollAnimation animateIn="fadeInLeft" delay=".5s"> */}
                 <MDBIcon icon="icons" className="cssIcon pr-5" />
               </ScrollAnimation>
               <div className="create">
