@@ -10,12 +10,10 @@ body {
   position: relative;
   z-index: -2;
 }
-
 #root {
   position: relative;
   z-index: -3;
 }
-
 body {
   position: relative;
   z-index: -4;
@@ -25,3 +23,8 @@ body {
 * {
   @include scrollbar;
 }
+.hide-slide {
+  position: relative;
+  z-index: -5;
+}
+

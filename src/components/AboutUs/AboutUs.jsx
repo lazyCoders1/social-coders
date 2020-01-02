@@ -96,6 +96,8 @@ class AboutUs extends Component {
                 style={{ width: '45vw', height: '45vh' }}
               >
                 <a
+                  target='_blank'
+                  rel='noopener noreferrer'
                   className="linkText"
                   href="https://devmountain.com/?utm_medium=ppc&utm_source=googleads&utm_campaign=branded&utm_term=dev%20mountain&e=&gclid=CjwKCAiAo7HwBRBKEiwAvC_Q8bomBKI209Z64j_qfjHmG4OvrfI2aDFoZqtr2D-z7AJ82kDgGkFAkBoCvdkQAvD_BwE"
                 >
