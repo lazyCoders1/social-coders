@@ -33,7 +33,6 @@ class EditProfile extends Component {
   };
 
   handleChange = (key, value) => {
-    // console.log(this.props.profile);
     this.setState({
       [key]: value
     });
@@ -99,78 +98,115 @@ class EditProfile extends Component {
             }}
           ></div>
 
-          <div
-            className="profile-form">
+          <div className="profile-form">
             <div onClick={() => this.props.toggleTwo()} className="back">
               X
             </div>
             <MDBInput
-              className='MDBInput'
+              className="MDBInput"
               value={this.state.cover_photo}
               onChange={e => this.handleChange("cover_photo", e.target.value)}
               label="Cover Photo URL"
               icon="image"
-              style={{margin: "10px auto", padding: "2px", border: ".5px solid grey", borderRadius: "5px" }}
+              style={{
+                margin: "10px auto",
+                padding: "2px",
+                border: ".5px solid grey",
+                borderRadius: "5px"
+              }}
             />
             <MDBInput
-              className='MDBInput'
+              className="MDBInput"
               value={this.state.profile_pic}
               onChange={e => this.handleChange("profile_pic", e.target.value)}
               label="Profile Image URL"
               icon="image"
-              style={{margin: "10px auto", padding: "2px", border: ".5px solid grey", borderRadius: "5px" }}
+              style={{
+                margin: "10px auto",
+                padding: "2px",
+                border: ".5px solid grey",
+                borderRadius: "5px"
+              }}
             />
             <MDBInput
-              className='MDBInput'
+              className="MDBInput"
               value={this.state.name}
               onChange={e => this.handleChange("name", e.target.value)}
               label="Name"
               icon="user"
-              style={{margin: "10px auto", padding: "2px", border: ".5px solid grey", borderRadius: "5px" }}
+              style={{
+                margin: "10px auto",
+                padding: "2px",
+                border: ".5px solid grey",
+                borderRadius: "5px"
+              }}
             />
             <MDBInput
-              className='MDBInput'
+              className="MDBInput"
               value={this.state.headline}
               onChange={e => this.handleChange("headline", e.target.value)}
               label="Headline"
               icon="heading"
-              style={{margin: "10px auto", padding: "2px", border: ".5px solid grey", borderRadius: "5px" }}
+              style={{
+                margin: "10px auto",
+                padding: "2px",
+                border: ".5px solid grey",
+                borderRadius: "5px"
+              }}
             />
             <div
               className="location"
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <MDBInput
-                className='MDBInput'
+                className="MDBInput"
                 value={this.state.city}
                 onChange={e => this.handleChange("city", e.target.value)}
                 label="City"
-                style={{ width: "100px", border: ".5px solid grey", borderRadius: "5px" }}
+                style={{
+                  width: "100px",
+                  border: ".5px solid grey",
+                  borderRadius: "5px"
+                }}
               />
               <MDBInput
-                className='MDBInput'
+                className="MDBInput"
                 value={this.state.state}
                 onChange={e => this.handleChange("state", e.target.value)}
                 label="State"
-                style={{ width: "100px", border: ".5px solid grey", borderRadius: "5px" }}
+                style={{
+                  width: "100px",
+                  border: ".5px solid grey",
+                  borderRadius: "5px"
+                }}
               />
             </div>
 
             <MDBInput
-              className='MDBInput'
+              className="MDBInput"
               value={this.state.linked_in}
               onChange={e => this.handleChange("linked_in", e.target.value)}
               label="LinkedIn"
               icon="link"
-              style={{margin: "10px auto", padding: "2px", border: ".5px solid grey", borderRadius: "5px" }}
+              style={{
+                margin: "10px auto",
+                padding: "2px",
+                border: ".5px solid grey",
+                borderRadius: "5px"
+              }}
             />
             <MDBInput
-              className='MDBInput'
+              className="MDBInput"
               value={this.state.github}
               onChange={e => this.handleChange("github", e.target.value)}
               label="GitHub"
               icon="code-branch"
-              style={{margin: "10px auto", padding: "2px", border: ".5px solid grey", borderRadius: "5px" }}
+              style={{
+                margin: "10px auto",
+                padding: "2px",
+                border: ".5px solid grey",
+                borderRadius: "5px"
+              }}
             />
             <div className="button">
               <MDBBtn
@@ -182,8 +218,6 @@ class EditProfile extends Component {
                 Submit
               </MDBBtn>
             </div>
-
-            {/* </div> */}
           </div>
         </MDBAnimation>
       </div>

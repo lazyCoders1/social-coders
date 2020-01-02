@@ -34,13 +34,33 @@ export class PostDetails extends Component {
     content: "",
     comment: "",
     comments: [],
-    isEditing: false
+    commentsCount: 0,
+    likes: 0,
+    isEditing: false,
+    liked: false,
+    fav: false
   };
 
   componentDidMount() {
     this.getPost();
     this.getComments();
+    this.countComments();
+    this.getLikes();
+    this.checkLikes();
+    this.checkFav();
   }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.liked !== this.state.liked) {
+      this.getLikes();
+    }
+    if (prevState.comments.length !== this.state.comments.length) {
+      this.getComments();
+    }
+    if (prevState.fav !== this.state.fav) {
+      this.checkFav();
+    }
+  };
 
   getPost = () => {
     const { id } = this.props.match.params;
@@ -97,6 +117,16 @@ export class PostDetails extends Component {
       .catch(err => console.log(err));
   };
 
+  countComments = () => {
+    const { id } = this.props.match.params;
+    axios
+      .get(`/api/comment/${id}`)
+      .then(res => {
+        this.setState({ commentsCount: res.data });
+      })
+      .catch(err => console.log(err));
+  };
+
   addComment = () => {
     const { comment: content } = this.state;
     const { id: post_id } = this.state;
@@ -107,6 +137,97 @@ export class PostDetails extends Component {
         this.setState({ comment: "" });
         this.getComments();
       })
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false
+        })
+      );
+  };
+
+  getLikes = () => {
+    axios
+      .get(`api/likes/${this.props.match.params.id}`)
+      .then(res => {
+        this.setState({
+          likes: res.data[0].count
+        });
+      })
+      .catch(err => console.log(err));
+  };
+
+  checkLikes = () => {
+    if (this.props.id) {
+      const { id: user_id } = this.props;
+      const { id } = this.props.match.params;
+      const post_id = parseInt(id);
+      axios
+        .post("/api/likes", { user_id, post_id })
+        .then(res => this.setState({ liked: res.data }))
+        .catch(err => console.log(err));
+    }
+  };
+
+  addLike = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.state;
+    axios
+      .post(`/api/liked`, { post_id, user_id })
+      .then(res => this.setState({ liked: !this.state.liked }))
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          showConfirmButton: false,
+          timer: 1200
+        })
+      );
+  };
+
+  deleteLike = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.state;
+    axios
+      .post(`/api/unliked`, { post_id, user_id })
+      .then(res => this.setState({ liked: !this.state.liked }))
+      .catch(err => console.log(err));
+  };
+
+  checkFav = () => {
+    if (this.props.id) {
+      const { id: user_id } = this.props;
+      const { id: post_id } = this.props.match.params;
+      axios
+        .post("/api/favs", { user_id, post_id })
+        .then(res => this.setState({ fav: res.data }))
+        .catch(err => console.log(err));
+    }
+  };
+
+  addFavorite = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.state;
+    axios
+      .post(`/api/favorites`, { post_id, user_id })
+      .then(res => this.setState({ fav: true }))
+      .catch(err =>
+        Swal.fire({
+          title: err.response.data.message,
+          icon: "error",
+          timer: 1200,
+          showConfirmButton: false
+        })
+      );
+  };
+
+  deleteFavorite = () => {
+    const { id: user_id } = this.props;
+    const { id: post_id } = this.state;
+    axios
+      .post("/api/favorite", { post_id, user_id })
+      .then(res => this.setState({ fav: false }))
       .catch(err =>
         Swal.fire({
           title: err.response.data.message,
@@ -160,8 +281,10 @@ export class PostDetails extends Component {
                       <MDBCardText
                         style={{ display: "flex", alignItems: "center" }}
                       >
-                        Posted by{" "}
                         <div
+                          onClick={() =>
+                            this.props.history.push(`/profile/${author_id}`)
+                          }
                           style={{
                             backgroundImage: `url(${this.state.profile_pic})`,
                             backgroundSize: "cover",
@@ -169,9 +292,11 @@ export class PostDetails extends Component {
                             height: "40px",
                             width: "40px",
                             borderRadius: "50%",
-                            margin: "3px"
+                            margin: "3px",
+                            cursor: "pointer"
                           }}
                         />
+                        Posted by{" "}
                         <Link
                           style={{ margin: "3px" }}
                           className="post-link"
@@ -270,31 +395,67 @@ export class PostDetails extends Component {
                   {/*! COMMENTS */}
 
                   <MDBCardFooter className="footer-bar">
-                    <div className="def-number-input number-input">
-                      <button onClick={this.increase}>
-                        <MDBIcon icon="arrow-alt-circle-up" />
-                      </button>
-                      <br />
-                      <br />
-                      <button onClick={this.decrease}>
-                        <MDBIcon icon="arrow-alt-circle-down" />
-                      </button>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center"
+                      }}
+                    >
+                      <h5>{this.state.likes} Likes</h5>
+                      <i
+                        className={`fas fa-heart fa-2x ${
+                          this.state.liked ? "heart-red" : "heart-purple"
+                        }`}
+                        onClick={
+                          !this.state.liked ? this.addLike : this.deleteLike
+                        }
+                        style={{ cursor: "pointer" }}
+                      ></i>
                     </div>
-                    {/* <i className="fas fa-share"> Share</i> */}
-                    <i className="fas fa-bookmark">Save</i>
-                    <button
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        cursor: "pointer",
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px"
+                      }}
+                    >
+                      <i
+                        className={`fas fa-star fa-2x ${
+                          this.state.fav ? "star-yellow" : "star-black"
+                        }`}
+                        onClick={
+                          !this.state.fav
+                            ? this.addFavorite
+                            : this.deleteFavorite
+                        }
+                      ></i>
+                    </div>
+                    <MDBBtn
                       className="edit-btn"
                       onClick={() => this.setState({ isEditing: true })}
+                      style={{
+                        visibility:
+                          this.props.id === this.state.author_id
+                            ? "visible"
+                            : "hidden"
+                      }}
                     >
-                      <MDBIcon icon="edit" />
-                      Edit
-                    </button>
+                      <MDBIcon style={{ marginRight: "7px" }} icon="edit" />
+                      Post Options
+                    </MDBBtn>
                   </MDBCardFooter>
 
                   {/* COMMENT INPUT FIELD */}
 
                   <MDBCardBody>
-                    <hr />
+                    <hr style={{ marginTop: "0px" }} />
                     <p>Add a Comment</p>
                     <div className="input-group">
                       <div className="input-group-prepend">
@@ -323,7 +484,7 @@ export class PostDetails extends Component {
                     </MDBBtn>
                     <br />
                     <MDBCardTitle style={{ marginTop: "50px" }} tag="h5">
-                      Comments...
+                      {this.state.commentsCount} Comments...
                     </MDBCardTitle>
                     <hr />
                     {this.state.comments.map(comment => (

@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Maps from "./Maps";
-import axios from "axios";
-import MeetUp from "./MeetUp";
+import React, { Component } from 'react'
+import Maps from './Maps'
+import axios from 'axios'
+import MeetUp from './MeetUp'
 
 import {
   MDBJumbotron,
@@ -14,32 +14,31 @@ import {
   MDBInput
 
   // MDBAnimation
-} from "mdbreact";
-import ScrollAnimation from "react-animate-on-scroll";
-import "./MeetUpsDash.scss";
+} from 'mdbreact'
+import ScrollAnimation from 'react-animate-on-scroll'
+import './MeetUpsDash.scss'
 
 export default class CreateMeetUps extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
       meetUpPosts: [],
       toggle: false,
-      title: "",
-      img: "",
-      date: "",
-      time: "",
-      description: "",
-      street: "",
-      city: "",
-      state: "",
-      zipcode: ""
-    };
+      title: '',
+      img: '',
+      date: '',
+      time: '',
+      description: '',
+      street: '',
+      city: '',
+      state: '',
+      zipcode: ''
+    }
   }
 
   componentDidMount() {
-    this.getPosts();
-    console.log(this.state)
+    this.getPosts()
   }
 
   addPost = () => {
@@ -53,9 +52,9 @@ export default class CreateMeetUps extends Component {
       city,
       state,
       zipcode
-    } = this.state;
+    } = this.state
     axios
-      .post("/api/meetups", {
+      .post('/api/meetups', {
         title,
         img,
         date,
@@ -68,28 +67,28 @@ export default class CreateMeetUps extends Component {
       })
       .then(res => {
         this.setState({
-          title: "",
-          img: "",
-          date: "",
-          time: "",
-          description: "",
-          street: "",
-          city: "",
-          state: "",
-          zipcode: ""
-        });
-      });
-    this.toggle();
-    this.getPosts();
-    this.refreshPage();
-  };
+          title: '',
+          img: '',
+          date: '',
+          time: '',
+          description: '',
+          street: '',
+          city: '',
+          state: '',
+          zipcode: ''
+        })
+      })
+    this.toggle()
+    this.getPosts()
+    this.refreshPage()
+  }
 
   getPosts = () => {
-    axios.get("/api/meetups").then(res => {
-      this.setState({ meetUpPosts: res.data });
-      console.log("getPosts (MeetUpsDash.js) ", res.data);
-    });
-  };
+    axios.get('/api/meetups').then(res => {
+      this.setState({ meetUpPosts: res.data })
+      console.log('getPosts (MeetUpsDash.js) ', res.data)
+    })
+  }
 
   // submitPost = () => {
   //   axios
@@ -103,42 +102,36 @@ export default class CreateMeetUps extends Component {
     axios
       .delete(`api/meetups/${id}`)
       .then(() => {
-        this.getPosts();
+        this.getPosts()
       })
       .catch(err => {
-        alert(err.res.data.message);
-      });
-  };
+        alert(err.res.data.message)
+      })
+  }
   toggle = () => {
     this.setState({
       toggle: !this.state.toggle
-    });
-  };
+    })
+  }
   handleInput = e => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
+    const { name, value } = e.target
+    this.setState({ [name]: value })
+  }
 
   refreshPage = () => {
-    window.location.reload(false);
-  };
+    window.location.reload(false)
+  }
 
   render() {
     // console.log(this.state.meetUpPosts)
     const meetUp = this.state.meetUpPosts.map(el => {
-      return (
-        <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
-      );
-    });
-    const map = this.state.meetUpPosts.map(el => {
-      return <Maps key={el.id} meetUpPosts={el} />;
-    });
-
+      return <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
+    })
     return (
       <div>
         {this.state.toggle ? (
           <div>
-            <div className="blur" />
+            <div className="blur2" />
             <section className="newPost">
               <div>
                 <div className="cancel" onClick={() => this.toggle()}>
@@ -151,7 +144,7 @@ export default class CreateMeetUps extends Component {
                   label="title"
                   icon="signature"
                   onChange={e => this.handleInput(e)}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="img"
@@ -160,7 +153,7 @@ export default class CreateMeetUps extends Component {
                   label="img"
                   icon="images"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="date"
@@ -169,7 +162,7 @@ export default class CreateMeetUps extends Component {
                   label="date"
                   icon="calendar-alt"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "8px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '8px' }}
                 />
                 <MDBInput
                   name="time"
@@ -178,7 +171,7 @@ export default class CreateMeetUps extends Component {
                   label="time"
                   icon="clock"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="description"
@@ -187,7 +180,7 @@ export default class CreateMeetUps extends Component {
                   label="description"
                   icon="keyboard"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="street"
@@ -196,7 +189,7 @@ export default class CreateMeetUps extends Component {
                   label="street"
                   icon="road"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="city"
@@ -205,7 +198,7 @@ export default class CreateMeetUps extends Component {
                   label="city"
                   icon="city"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="state"
@@ -214,7 +207,7 @@ export default class CreateMeetUps extends Component {
                   label="state"
                   icon="map-pin"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
                 <MDBInput
                   name="zipcode"
@@ -223,7 +216,7 @@ export default class CreateMeetUps extends Component {
                   label="zipcode"
                   icon="globe-americas"
                   onChange={this.handleInput}
-                  style={{ margin: "0 0 8px 30px", padding: "2px" }}
+                  style={{ margin: '0 0 8px 30px', padding: '2px' }}
                 />
               </div>
               <MDBBtn
@@ -243,12 +236,12 @@ export default class CreateMeetUps extends Component {
               fluid
               className="jtron"
               style={{
-                maxHeight: "10rem",
-                padding: ".1rem",
-                backgroundColor: "#34A9DC",
-                margin: "1rem 0 0 0",
-                display: "flex",
-                alignItems: "center"
+                maxHeight: '10rem',
+                padding: '.1rem',
+                backgroundColor: '#34A9DC',
+                margin: '1rem 0 0 0',
+                display: 'flex',
+                alignItems: 'center'
               }}
             >
               <ScrollAnimation animateIn="fadeInLeft" delay=".5s">
@@ -279,6 +272,6 @@ export default class CreateMeetUps extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

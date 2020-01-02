@@ -1,4 +1,4 @@
-.header-meetup-dash{
+.header-meetup-dash {
   .meetup-dash-icon {
     font-size: 5rem;
     margin: 1rem;
@@ -13,10 +13,20 @@
     .meetups-header-text {
       display: none;
     }
-    .post-meetup-btn{
-      
+    .post-meetup-btn {
     }
   }
+}
+
+.blur2 {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.281);
 }
 
 .newPost {

@@ -6,9 +6,9 @@
   max-height: 16vh;
   border-radius: 3%;
   padding: 0.5rem;
-  display: 'flex';
-  flex-direction: 'row';
-  margin: '0 auto';
+  display: "flex";
+  flex-direction: "row";
+  margin: "0 auto";
   align-content: center;
   color: #2bbbad;
 }
@@ -22,12 +22,13 @@
 }
 
 .bg {
-  background-image: url('https://images.unsplash.com/photo-1573295918221-c650d1990fc3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1049&q=80');
+  background-image: url('https://images.unsplash.com/photo-1567570016998-35a878b32cac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80');
   height: 95vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,5 +36,22 @@
 
 .landingText {
   font-size: 10rem;
+  color: #80deea;
+}
+
+.moretext {
+  display: flex;
+  flex-direction: row;
+}
+.landingDes {
+  font-size: 4rem;
+  color: whitesmoke;
+}
+.devM {
+  font-size: 5rem;
+  color: #80deea;
+}
+.onHund {
+  font-size: 7rem;
   color: whitesmoke;
 }

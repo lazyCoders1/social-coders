@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Create from '../Posts/CreatePost'
-// import "./JavaScript.css";
 import { connect } from 'react-redux'
 import { updatePosts } from '../../Reduxs/reducer'
 import Post from '../Posts/Post'
 import './Landing.scss'
 import { MDBJumbotron, MDBAnimation, MDBRow } from 'mdbreact'
-import ScrollAnimation from 'react-animate-on-scroll'
 class Landing extends Component {
   state = {
     posts: [],
@@ -32,7 +30,6 @@ class Landing extends Component {
     axios
       .get(`/api/posts`)
       .then(res => {
-        // console.log(res.data)
         this.setState({ posts: res.data })
         this.props.updatePosts(res.data)
       })
@@ -76,9 +73,6 @@ class Landing extends Component {
             alignItems: 'center'
           }}
         >
-          {/* <ScrollAnimation animateIn="fadeInLeft" delay=".2s">
-            <MDBIcon icon="terminal" />
-          </ScrollAnimation> */}
           <div className="create">
             <MDBRow>
               <MDBAnimation type="flipInY" duration="3s" delay=".3s">
@@ -115,9 +109,7 @@ class Landing extends Component {
         <div className="input" onClick={this.toggle}>
           Create post...
         </div>
-        {/* <ScrollAnimation className='post-animation' animateIn="fadeInLeft" delay=".2s"> */}
           {mapPosts}
-        {/* </ScrollAnimation> */}
       </>
     )
   }

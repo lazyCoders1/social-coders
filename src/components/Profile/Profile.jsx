@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import "./profile.scss";
 import EditProfile from "./EditProfile";
@@ -39,7 +40,6 @@ class Profile extends Component {
 
   getProfile = async () => {
     const res = await axios.get(`/api/profile/${this.props.match.params.id}`);
-    // console.log(res.data[0].name)
     this.setState({
       user_id: res.data[0].id,
       name: res.data[0].name,
@@ -58,7 +58,6 @@ class Profile extends Component {
       this.setState({
         posts: res.data
       });
-      // this.getUsersPosts()
     });
   };
 
@@ -83,16 +82,19 @@ class Profile extends Component {
 
     let filterByValue = this.state.posts.filter(o => {
       return Object.keys(o).some(k => {
-        return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
-      })
-    })
+        return o[k]
+          .toString()
+          .toLowerCase()
+          .includes(this.state.search.toLowerCase());
+      });
+    });
     const usersPosts = filterByValue.map((post, i) => (
-          <Post
-            id={this.props.match.params.id}
-            post={post}
-            profile={this.state}
-            key={post.id}
-          />
+      <Post
+        id={this.props.match.params.id}
+        post={post}
+        profile={this.state}
+        key={post.id}
+      />
     ));
     return (
       <>
@@ -135,20 +137,23 @@ class Profile extends Component {
               <div className="address">{el.city + ", " + el.state}</div>
             </div>
             <div className="links">
-                <MDBIcon
-                  icon="pen"
-                  onClick={() => this.toggleTwo()}
-                  className="edit-pen"
-                />
-                <a className="github" href={`${el.github}`}>
-                  <MDBIcon fab icon="github" />
-                </a>
-                <a className="linkedin" href={`${el.linked_in}`}>
-                  <MDBIcon fab icon="linkedin" />
-                </a>
+              <MDBIcon
+                icon="pen"
+                onClick={() => this.toggleTwo()}
+                className="edit-pen"
+                style={{
+                  visibility:
+                    this.props.id === this.state.user_id ? "visible" : "hidden"
+                }}
+              />
+              <a className="github" href={`${el.github}`}>
+                <MDBIcon fab icon="github" />
+              </a>
+              <a className="linkedin" href={`${el.linked_in}`}>
+                <MDBIcon fab icon="linkedin" />
+              </a>
             </div>
           </div>
-
         </div>
         {this.state.toggle ? (
           <Create toggle={this.toggle} getPosts={this.getPosts} />
@@ -171,4 +176,9 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
+}
+
+export default connect(mapStateToProps)(Profile);

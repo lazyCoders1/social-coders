@@ -11,6 +11,7 @@ const postCtrl = require("./controllers/postController");
 const commentCtrl = require("./controllers/commentController");
 const profileCtrl = require("./controllers/profileCtrl");
 const meetCtrl = require("./controllers/meetUpsController");
+const favCtrl = require('./controllers/favController')
 
 // Middleware
 const auth = require("./middleware/authMiddleware");
@@ -50,7 +51,9 @@ app.delete("/api/posts/:id", postCtrl.deletePost);
 app.patch("/api/posts/:id", postCtrl.updatePost);
 app.post("/api/liked", auth.usersOnly, postCtrl.addLike);
 app.get("/api/likes/:post_id", postCtrl.getLikes);
-app.post("/api/unlike", auth.usersOnly, postCtrl.deleteLike)
+app.post("/api/unliked", auth.usersOnly, postCtrl.deleteLike)
+app.get('/api/comment/:id', postCtrl.countComments)
+app.post('/api/likes', postCtrl.checkLikes)
 
 // Comment Endpoints
 app.get("/api/comments/:id", commentCtrl.getComments);
@@ -61,7 +64,11 @@ app.patch("/api/comments/:id", commentCtrl.updateComment);
 // Profile Endpoints
 app.get("/api/profile/:id", profileCtrl.getProfile);
 app.put("/api/profile/:id", profileCtrl.updateProfile);
-app.post("/api/favorites", auth.usersOnly, profileCtrl.addFavorite);
+
+// Favorite Endpoints
+app.post("/api/favorites", auth.usersOnly, favCtrl.addFavorite);
+app.post('/api/favs', favCtrl.checkFav)
+app.post('/api/favorite', favCtrl.deleteFavorite)
 
 massive(CONNECTION_STRING).then(database => {
   app.set("db", database);

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updateComment, updateUserInfo } from "../../Reduxs/reducer";
 import parse from "html-react-parser";
 import axios from "axios";
 import ReactQuill from "react-quill";
@@ -8,15 +7,10 @@ import { Link } from "react-router-dom";
 import {
   MDBRow,
   MDBCol,
-  // MDBBtn,
-  // MDBView,
+  MDBBtn,
   MDBContainer,
-  // MDBCard,
   MDBCardBody,
-  // MDBCardTitle,
   MDBCardText
-  // MDBCardFooter,
-  // MDBIcon
 } from "mdbreact";
 import "./Comment.scss";
 
@@ -32,7 +26,7 @@ export class Comment extends Component {
       edit: false
     };
   }
-
+  
   deleteComment = () => {
     const { id } = this.state;
     axios
@@ -85,7 +79,6 @@ export class Comment extends Component {
         <MDBContainer className="commentText">
           <MDBRow>
             <MDBCol>
-              {/* <Link className="btn stretched-link" to={`/postdetails/${this.props.el.post_id}`}> */}
               <MDBCardBody>
                 <MDBCardText>
                   {!this.state.edit ? (
@@ -106,22 +99,34 @@ export class Comment extends Component {
                     <div className="commentbtn-box">
                       {this.props.id === this.props.comment.author_id && (
                         <>
-                          <button onClick={this.toggleEdit}>Edit</button>
-                          <button
-                            onClick={() => {
-                              this.toggleEdit();
-                              this.updateComment();
-                            }}
+                          {!this.state.edit ? (
+                            <MDBBtn onClick={this.toggleEdit} size="sm">
+                              Edit Comment
+                            </MDBBtn>
+                          ) : (
+                            <MDBBtn
+                              size="sm"
+                              onClick={() => {
+                                this.toggleEdit();
+                                this.updateComment();
+                              }}
+                            >
+                              Save Edit
+                            </MDBBtn>
+                          )}
+                          <MDBBtn
+                            size="sm"
+                            color="danger"
+                            onClick={this.deleteComment}
                           >
-                            Done
-                          </button>
-                          <button onClick={this.deleteComment}>Delete</button>
+                            Delete Comment
+                          </MDBBtn>
                         </>
                       )}
                     </div>
                     <Link
                       className="commentor-links"
-                      to={`/profile/${this.props.id}`}
+                      to={`/profile/${this.props.comment.author_id}`}
                     >
                       <div
                         style={{
@@ -152,7 +157,4 @@ function mapStateToProps(reduxState) {
   return { id };
 }
 
-export default connect(mapStateToProps, {
-  updateComment,
-  updateUserInfo
-})(Comment);
+export default connect(mapStateToProps)(Comment);
