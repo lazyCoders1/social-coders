@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react'
 import {
   MDBNavbar,
   MDBNavbarBrand,
@@ -13,48 +13,53 @@ import {
   MDBIcon,
   MDBFormInline,
   MDBBtn
-} from "mdbreact";
-import { BrowserRouter as Router } from "react-router-dom";
-import { connect } from "react-redux";
-import axios from "axios";
-import Swal from "sweetalert2";
-import { updateUserInfo } from "../../Reduxs/reducer";
+} from 'mdbreact'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { connect } from 'react-redux'
+import axios from 'axios'
+import Swal from 'sweetalert2'
+import { updateUserInfo } from '../../Reduxs/reducer'
 
 export class Header extends Component {
   state = {
     isOpen: false
-  };
+  }
 
   componentDidMount() {
-    this.getMe();
+    this.getMe()
   }
 
   getMe() {
     axios
-      .get("/auth/me")
+      .get('/auth/me')
       .then(res => {
-        this.props.updateUserInfo(res.data.user);
+        this.props.updateUserInfo(res.data.user)
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   }
 
   logout = () => {
     axios
-      .delete("/auth/logout")
+      .delete('/auth/logout')
       .then(res => {
         Swal.fire({
           title: res.data.message,
-          icon: "success",
+          icon: 'success',
           showConfirmButton: false,
           timer: 1500
-        });
+        })
       })
-      .catch(err => console.log(err));
-  };
+      .catch(err => console.log(err))
+  }
 
   toggleCollapse = () => {
+<<<<<<< HEAD
     this.setState({ isOpen: !this.state.isOpen });
   };
+=======
+    this.setState({ isOpen: !this.state.isOpen })
+  }
+>>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e
 
   render() {
     return (
@@ -63,16 +68,24 @@ export class Header extends Component {
           dark
           expand="md"
           style={{
+<<<<<<< HEAD
             backgroundColor: "#80deea",
             position: "fixed",
             top: 0,
             width: "100%",
             zIndex: "10"
+=======
+            backgroundColor: '#80deea',
+            position: 'fixed',
+            top: 0,
+            width: '100%',
+            zIndex: '10'
+>>>>>>> b07d93fbfd11b011c8d8757cd3d0c74400019a1e
           }}
         >
           <MDBNavbarBrand>
             <a href="#/">
-              <strong className="white-text" style={{ cursor: "pointer" }}>
+              <strong className="white-text" style={{ cursor: 'pointer' }}>
                 Social Coders
               </strong>
             </a>
@@ -100,6 +113,11 @@ export class Header extends Component {
                       <MDBDropdownItem href="#/meetups">
                         Meetups
                       </MDBDropdownItem>
+
+                      <MDBDropdownItem href="#/aboutus">
+                        About Us
+                      </MDBDropdownItem>
+
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>
@@ -125,7 +143,7 @@ export class Header extends Component {
                     </MDBDropdown>
                   </MDBNavItem>
                 ) : (
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: 'flex' }}>
                     <a href="#/login">
                       <MDBBtn color="white" size="sm">
                         SignIn
@@ -143,17 +161,17 @@ export class Header extends Component {
           </MDBCollapse>
         </MDBNavbar>
       </Router>
-    );
+    )
   }
 }
 
 function mapStateToProps(reduxState) {
-  const { id, posts } = reduxState;
-  return { id, posts };
+  const { id, posts } = reduxState
+  return { id, posts }
 }
 
 const mapDispatchToProps = {
   updateUserInfo
-};
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header)

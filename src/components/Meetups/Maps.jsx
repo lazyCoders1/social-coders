@@ -31,12 +31,12 @@ class Maps extends Component {
 
   getAddress = () => {
     const address = `${this.state.postDets.street}, ${this.state.postDets.city}, ${this.state.postDets.state} ${this.state.postDets.zipcode} `
-    console.log(this.state.postDets)
+    //console.log(this.state.postDets)
     Geocode.fromAddress(`${address}`).then(
       response => {
-        console.log(response)
+        //console.log(response)
         const { lat, lng } = response.results[0].geometry.location
-        console.log(lat, lng)
+        //console.log(lat, lng)
         this.setState({
           lat: lat,
           lng: lng
