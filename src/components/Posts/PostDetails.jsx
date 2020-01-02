@@ -414,7 +414,6 @@ export class PostDetails extends Component {
                         style={{ cursor: "pointer" }}
                       ></i>
                     </div>
-                    {/* <i className="fas fa-share"> Share</i> */}
                     <div
                       style={{
                         display: "flex",

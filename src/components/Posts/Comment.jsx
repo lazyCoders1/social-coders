@@ -26,7 +26,7 @@ export class Comment extends Component {
       edit: false
     };
   }
-
+  
   deleteComment = () => {
     const { id } = this.state;
     axios
@@ -126,7 +126,7 @@ export class Comment extends Component {
                     </div>
                     <Link
                       className="commentor-links"
-                      to={`/profile/${this.props.id}`}
+                      to={`/profile/${this.props.comment.author_id}`}
                     >
                       <div
                         style={{

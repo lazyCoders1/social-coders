@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-import { updateUserInfo } from '../../Reduxs/reducer'
-import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
+import React, { Component } from "react";
+import axios from "axios";
+import { updateUserInfo } from "../../Reduxs/reducer";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import {
   MDBMask,
   MDBRow,
@@ -16,52 +16,44 @@ import {
   MDBCardBody,
   MDBInput,
   MDBAnimation
-} from 'mdbreact'
-import './Register.scss'
+} from "mdbreact";
+import "./Register.scss";
 
 class Register extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
-      email: '',
-      name: '',
-      password1: '',
-      password2: ''
-    }
+      email: "",
+      name: "",
+      password1: "",
+      password2: ""
+    };
   }
 
   handleChange = (key, value) => {
     this.setState({
       [key]: value
-    })
-  }
+    });
+  };
 
   register = () => {
     if (this.state.password1 === this.state.password2) {
-      const { email, name, password1: password } = this.state
+      const { email, name, password1: password } = this.state;
       axios
-        .post('/auth/register', { name, email, password })
+        .post("/auth/register", { name, email, password })
         .then(res => {
-          // console.log("register res.data", res.data);
-          this.props.updateUserInfo(res.data.user)
-          Swal.fire(res.data.message)
-          this.props.history.push('/login')
+          this.props.updateUserInfo(res.data.user);
+          Swal.fire(res.data.message);
+          this.props.history.push("/login");
         })
         .catch(err => {
-          console.log('Err register', err.response.data.message)
-        })
+          console.log("Err register", err.response.data.message);
+        });
     } else {
-      Swal.fire(`passwords don't match`)
+      Swal.fire(`passwords don't match`);
     }
-  }
-
-  //! REACTSTRAP MDB-REACT
-  // toggleCollapse = collapseID => () =>
-  //   this.setState(prevState => ({
-  //     collapseID: prevState.collapseID !== collapseID ? collapseID : ""
-  //   }));
-  //! ******
+  };
 
   render() {
     return (
@@ -75,7 +67,6 @@ class Register extends Component {
                   <MDBAnimation
                     type="fadeInLeft"
                     delay=".3s"
-                    // className="signInBtn white-text text-center text-md-left col-md-6 mt-xl-5 mb-5"
                     className="white-text text-center "
                   >
                     <MDBCard className="sign-up-card-btn">
@@ -101,20 +92,15 @@ class Register extends Component {
                 </MDBCol>
                 {/* ------------END: SIGN IN HERE SECTION */}
 
-                {/* REGISTER INPUT FILED */}
+                {/* REGISTER INPUT FIELD */}
                 <MDBCol md="6" xl="5" className="mb-4">
-                  <MDBAnimation
-                    type="fadeInRight"
-                    // type="fadeInLeft"
-                    delay=".3s"
-                  >
+                  <MDBAnimation type="fadeInRight" delay=".3s">
                     <MDBCard className="sign-up-card">
                       <MDBCardBody className="white-text">
                         <h3 className="text-center">
                           <MDBIcon icon="user" /> Sign Up:
                         </h3>
                         <hr className="hr-light" />
-
                         <form action="">
                           <MDBInput
                             className="white-text"
@@ -124,7 +110,7 @@ class Register extends Component {
                             icon="envelope"
                             value={this.state.email}
                             onChange={e =>
-                              this.handleChange('email', e.target.value)
+                              this.handleChange("email", e.target.value)
                             }
                             type="text"
                           />
@@ -136,17 +122,10 @@ class Register extends Component {
                             icon="user"
                             value={this.state.name}
                             onChange={e =>
-                              this.handleChange('name', e.target.value)
+                              this.handleChange("name", e.target.value)
                             }
                             type="text"
                           />
-                          {/* <MDBInput
-                          className="white-text"
-                          iconClass="white-text"
-                          label="Your email"
-                          
-                        /> */}
-
                           <MDBInput
                             className="white-text"
                             iconClass="white-text"
@@ -157,7 +136,7 @@ class Register extends Component {
                             autoComplete="off"
                             value={this.state.password1}
                             onChange={e =>
-                              this.handleChange('password1', e.target.value)
+                              this.handleChange("password1", e.target.value)
                             }
                           />
                           <MDBInput
@@ -170,7 +149,7 @@ class Register extends Component {
                             autoComplete="off"
                             value={this.state.password2}
                             onChange={e =>
-                              this.handleChange('password2', e.target.value)
+                              this.handleChange("password2", e.target.value)
                             }
                           />
                         </form>
@@ -219,16 +198,12 @@ class Register extends Component {
           </MDBMask>
         </MDBView>
       </div>
-    )
+    );
   }
-}
-
-function mapStateToProps(reduxState) {
-  return reduxState
 }
 
 const mapDispatchToProps = {
   updateUserInfo
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register)
+export default connect(null, mapDispatchToProps)(Register);
