@@ -1,11 +1,9 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Channels from "./components/Channels/Channel";
-import Chat from "./components/Chat/Chat";
 import Dashboard from "./components/Dashboard/Dashboard";
 import MeetUpsDash from "./components/Meetups/MeetUpsDash";
 import CreatePost from "./components/Posts/CreatePost";
-// import UserPost from "./components/Posts/UserPost";
 import Profile from "./components/Profile/Profile";
 import Favorites from "./components/Profile/Favorites";
 import Login from "./components/Authentication/Login";
@@ -14,17 +12,15 @@ import JavaScript from "./components/JavaScript/JavaScript";
 import CSS from "./components/CSS/CSS";
 import Other from "./components/Other/Other";
 import Post from "./components/Posts/Post";
-import PostDetails from './components/Posts/PostDetails'
-import Landing from './components/Dashboard/Landing';
+import PostDetails from "./components/Posts/PostDetails";
+import Landing from "./components/Dashboard/Landing";
 import MeetUpDetails from "./components/Meetups/MeetUpDetails";
-
 
 export default (
   <Switch>
-    <Route exact path= "/" component={Landing}/>
+    <Route exact path="/" component={Landing} />
     <Route path="/dashboard" component={Dashboard}></Route>
     <Route path="/channels" component={Channels}></Route>
-    <Route path="/chat" component={Chat}></Route>
     <Route path="/meetups" component={MeetUpsDash}></Route>
     <Route path="/meetup_details/:id" component={MeetUpDetails}></Route>
     <Route path="/createpost" component={CreatePost}></Route>
