@@ -69,6 +69,7 @@ app.put("/api/profile/:id", profileCtrl.updateProfile);
 app.post("/api/favorites", auth.usersOnly, favCtrl.addFavorite);
 app.post('/api/favs', favCtrl.checkFav)
 app.post('/api/favorite', favCtrl.deleteFavorite)
+app.get('/api/favorites/:id', favCtrl.getFavorites)
 
 massive(CONNECTION_STRING).then(database => {
   app.set("db", database);

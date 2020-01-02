@@ -33,7 +33,8 @@ export default class CreateMeetUps extends Component {
       street: '',
       city: '',
       state: '',
-      zipcode: ''
+      zipcode: '',
+      search: ''
     }
   }
 
@@ -122,13 +123,30 @@ export default class CreateMeetUps extends Component {
     window.location.reload(false)
   }
 
+  handleChange = event => {
+    this.setState({ search: event.target.value });
+  };
+
   render() {
-    // console.log(this.state.meetUpPosts)
-    const meetUp = this.state.meetUpPosts.map(el => {
-      return <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />
+    let filterByValue = this.state.meetUpPosts.filter(o => {
+      return Object.keys(o).some(k => {
+        return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
+      })
     })
+    const meetUp = filterByValue.map((el, i) => (
+      <MeetUp key={el.id} meetUpPost={el} deletePost={this.deletePost} />  
+    ))
+    // console.log(this.state.meetUpPosts)
+    
     return (
       <div>
+         <input
+          className="search"
+          placeholder="Search..."
+          type="text"
+          onChange={this.handleChange}
+          value={this.state.search}
+        />
         {this.state.toggle ? (
           <div>
             <div className="blur2" />

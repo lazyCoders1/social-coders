@@ -84,6 +84,11 @@ export class Header extends Component {
                 <MDBFormInline waves></MDBFormInline>
               </MDBNavItem>
             </MDBNavbarNav>
+                  {this.props.id 
+                  ? ( <a href='#/'>
+                  <MDBIcon icon="home" className="d-none d-md-inline" style={{color: "ghostwhite", marginRight: "5px" }} />
+                  </a>
+                   ) : ( null)}
             <div className="d-flex justify-content-end">
               <MDBNavbarNav>
                 <MDBNavItem>
@@ -120,7 +125,7 @@ export class Header extends Component {
                         <MDBDropdownItem href={`#/profile/${this.props.id}`}>
                           Profile
                         </MDBDropdownItem>
-                        <MDBDropdownItem href="#/favorites">
+                        <MDBDropdownItem href={`#/favorites/${this.props.id}`}>
                           Favorites
                         </MDBDropdownItem>
                         <MDBDropdownItem onClick={this.logout} href="/">
