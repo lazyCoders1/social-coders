@@ -63,7 +63,7 @@ export class Header extends Component {
           dark
           expand="md"
           style={{
-            backgroundColor: '#80deea',
+            backgroundColor: 'black',
             position: 'fixed',
             top: 0,
             width: '100%',
@@ -84,11 +84,15 @@ export class Header extends Component {
                 <MDBFormInline waves></MDBFormInline>
               </MDBNavItem>
             </MDBNavbarNav>
-                  {this.props.id 
-                  ? ( <a href='#/'>
-                  <MDBIcon icon="home" className="d-none d-md-inline" style={{color: "ghostwhite", marginRight: "5px" }} />
-                  </a>
-                   ) : ( null)}
+            {this.props.id ? (
+              <a href="#/">
+                <MDBIcon
+                  icon="home"
+                  className="d-none d-md-inline"
+                  style={{ color: 'ghostwhite', marginRight: '5px' }}
+                />
+              </a>
+            ) : null}
             <div className="d-flex justify-content-end">
               <MDBNavbarNav>
                 <MDBNavItem>
@@ -105,6 +109,7 @@ export class Header extends Component {
                       <MDBDropdownItem href="#/meetups">
                         Meetups
                       </MDBDropdownItem>
+
                       <MDBDropdownItem href="#/aboutus">
                         About Us
                       </MDBDropdownItem>
