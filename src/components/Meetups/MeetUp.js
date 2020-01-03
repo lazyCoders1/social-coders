@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 import {
   // MDBBtn,
   MDBCard,
@@ -11,12 +11,12 @@ import {
   MDBCardText,
   // MDBBox,
   MDBCol
-} from "mdbreact";
-import { Link } from "react-router-dom";
-import "./MeetUps.scss";
+} from 'mdbreact'
+import { Link } from 'react-router-dom'
+import './MeetUps.scss'
 
 export default function MeetUpsDash(props) {
-  const el = props.meetUpPost;
+  const el = props.meetUpPost
   console.log(props.meetUpPost)
   return (
     <div id="meetups" key={el.id}>
@@ -37,11 +37,10 @@ export default function MeetUpsDash(props) {
             <MDBCardImage className="img-fluid" src={el.img} waves />
             <MDBCardBody className="meetup-content">
               <MDBCardText className="text-uppercase font-weight-bolder blue-text">
-                {el.date}, {el.time}{" "}
+                {el.date}, {el.time}{' '}
               </MDBCardText>
               <MDBCardTitle>{el.title}</MDBCardTitle>
               {/* <MDBCardText>Time:</MDBCardText> */}
-              <MDBCardText>Description: {el.description} </MDBCardText>
               <MDBCardText>Street: {el.street} </MDBCardText>
               <MDBCardText>City: {el.city}</MDBCardText>
               <MDBCardText>State: {el.state} </MDBCardText>
@@ -63,5 +62,5 @@ export default function MeetUpsDash(props) {
         </Link>
       </MDBCol>
     </div>
-  );
+  )
 }
