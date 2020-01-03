@@ -16,11 +16,13 @@ class Favorites extends Component {
     };
   }
 
+
   componentDidMount = () => {
     this.getFavorites();
   };
 
-  componentDidUpdate(prevProps, prevState) {
+
+  componentDidUpdate = (prevProps, prevState) => {
     if (prevState.posts.length !== this.state.posts.length) {
       this.getFavorites();
     }
@@ -41,6 +43,7 @@ class Favorites extends Component {
   }
 
   render() {
+    console.log(this.state.posts)
     let filterByValue = this.state.posts.filter(o => {
       return Object.keys(o).some(k => {
         return o[k]

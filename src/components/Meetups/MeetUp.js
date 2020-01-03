@@ -17,6 +17,7 @@ import "./MeetUps.scss";
 
 export default function MeetUpsDash(props) {
   const el = props.meetUpPost;
+  console.log(props.meetUpPost)
   return (
     <div id="meetups" key={el.id}>
       <MDBCol>

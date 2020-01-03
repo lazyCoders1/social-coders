@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Maps from './Maps'
 import axios from 'axios'
+import {connect} from "react-redux"
 // import { Link } from "react-router-dom"
 import {
   MDBRow,
@@ -24,7 +25,7 @@ import Swal from 'sweetalert2'
 // import MeetUpsDash from "./MeetUp";
 // import Comment from "../Comments/Comment";
 
-export default class MeetUpDetails extends Component {
+class MeetUpDetails extends Component {
   constructor() {
     super()
     this.state = {
@@ -42,6 +43,7 @@ export default class MeetUpDetails extends Component {
 
   componentDidMount() {
     this.getPosts()
+
     // const stuff = this.props.getMeetupPostsForId(this.props.match.params.id);
     // this.setState({
     //   postDetails: this.props.getMeetupPostsForId(this.props.match.params.id)
@@ -53,11 +55,14 @@ export default class MeetUpDetails extends Component {
       const postDets = res.data.filter(meetup => {
         return meetup.id === Number(this.props.match.params.id)
       })
+      // console.log(res.data)
       this.setState({
         meetUpPosts: res.data,
 
         postDetails: postDets[0]
+        
       })
+      // console.log(postDets[0].author_id)
     })
   }
 
@@ -84,6 +89,7 @@ export default class MeetUpDetails extends Component {
 
   render() {
     const { isEditing } = this.state
+    console.log(this.state.postDetails.author_id)
     // const el = props.meetUpPost;
     return (
       <div id="meetup-post-details" data-test="component-meet-up-details">
@@ -239,6 +245,7 @@ export default class MeetUpDetails extends Component {
                   color="danger"
                   className="delete"
                   size="sm"
+                  
                 >
                   Delete Post
                 </MDBBtn>
@@ -257,6 +264,10 @@ export default class MeetUpDetails extends Component {
                 type="button"
                 class="desktop-meetup-btn btn btn-outline-red waves-effect"
                 onClick={this.deleteMeet}
+                style={{
+                  visibility:
+                    this.props.id === this.state.postDetails.author_id ? "visible" : "hidden"
+                }}
               >
                 <i
                   class="fas fa-trash-alt pr-2"
@@ -266,7 +277,7 @@ export default class MeetUpDetails extends Component {
                 Delete
               </button>
               {/* SAVE BTN */}
-              <button
+              {/* <button
                 type="button"
                 class="mobile-meetup-btn btn btn-default px-3"
               >
@@ -277,9 +288,9 @@ export default class MeetUpDetails extends Component {
                 class="desktop-meetup-btn btn btn-outline-default waves-effect"
               >
                 <i class="fas fa-bookmark pr-2" aria-hidden="true"></i>Save
-              </button>
+              </button> */}
               {/* EDIT BTN */}
-              <button
+              {/* <button
                 type="button"
                 class="mobile-meetup-btn btn btn-default px-3"
               >
@@ -290,7 +301,7 @@ export default class MeetUpDetails extends Component {
                 class="desktop-meetup-btn btn btn-outline-default waves-effect"
               >
                 <i class="fas fa-edit pr-2" aria-hidden="true"></i>Edit
-              </button>
+              </button> */}
             </MDBCardFooter>
           </MDBCard>
 
@@ -302,3 +313,10 @@ export default class MeetUpDetails extends Component {
     )
   }
 }
+
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
+}
+
+export default connect (mapStateToProps)(MeetUpDetails);

@@ -17,8 +17,9 @@ import {
 } from 'mdbreact'
 import ScrollAnimation from 'react-animate-on-scroll'
 import './MeetUpsDash.scss'
+import { connect } from "react-redux";
 
-export default class CreateMeetUps extends Component {
+class CreateMeetUps extends Component {
   constructor() {
     super()
 
@@ -54,6 +55,7 @@ export default class CreateMeetUps extends Component {
       state,
       zipcode
     } = this.state
+    const {id: author_id} = this.props
     axios
       .post('/api/meetups', {
         title,
@@ -64,7 +66,8 @@ export default class CreateMeetUps extends Component {
         street,
         city,
         state,
-        zipcode
+        zipcode,
+        author_id
       })
       .then(res => {
         this.setState({
@@ -87,7 +90,7 @@ export default class CreateMeetUps extends Component {
   getPosts = () => {
     axios.get('/api/meetups').then(res => {
       this.setState({ meetUpPosts: res.data })
-      console.log('getPosts (MeetUpsDash.js) ', res.data)
+      // console.log('getPosts (MeetUpsDash.js) ', res.data)
     })
   }
 
@@ -128,6 +131,7 @@ export default class CreateMeetUps extends Component {
   };
 
   render() {
+    console.log(this.props.id)
     let filterByValue = this.state.meetUpPosts.filter(o => {
       return Object.keys(o).some(k => {
         return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())
@@ -294,3 +298,10 @@ export default class CreateMeetUps extends Component {
     )
   }
 }
+
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
+}
+
+export default connect(mapStateToProps)(CreateMeetUps)

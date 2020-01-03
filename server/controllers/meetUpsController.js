@@ -13,7 +13,8 @@ module.exports = {
       street,
       city,
       state,
-      zipcode
+      zipcode,
+      author_id
     } = req.body
     const db = await req.app.get('db')
     const meetUp = await db.add_meetup(
@@ -25,7 +26,8 @@ module.exports = {
       street,
       city,
       state,
-      zipcode
+      zipcode,
+      author_id
     )
     if (meetUp[0]) {
       res.status(201).send({ message: 'Meet Up created!', data: meetUp })
