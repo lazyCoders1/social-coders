@@ -30,8 +30,8 @@ module.exports = {
   },
   addPost: (req, res) => {
     const db = req.app.get("db");
-    const { title, img, content, author_id, category } = req.body;
-    db.add_post({ title, img, content, author_id, category });
+    const { title, img, content, author_id, category, time_stamp } = req.body;
+    db.add_post({ title, img, content, author_id, category, time_stamp });
     res.status(201).send({ message: "Posted." });
   },
   deletePost: (req, res) => {

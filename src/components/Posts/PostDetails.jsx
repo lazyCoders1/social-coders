@@ -38,7 +38,8 @@ export class PostDetails extends Component {
     likes: 0,
     isEditing: false,
     liked: false,
-    fav: false
+    fav: false,
+    time_stamp: ''
   };
 
   componentDidMount() {
@@ -68,6 +69,7 @@ export class PostDetails extends Component {
       .get(`/api/post/${id}`)
       .then(res => {
         this.setState(res.data);
+        console.log(this.state)
       })
       .catch(err => console.log(err));
   };
@@ -268,7 +270,7 @@ export class PostDetails extends Component {
       ]
     };
     const { isEditing } = this.state;
-    const { title, name, category, content, author_id, img } = this.state;
+    const { title, name, category, content, author_id, img, time_stamp } = this.state;
     return (
       <div id="post-details">
         <MDBView className="postContainer">
@@ -289,13 +291,15 @@ export class PostDetails extends Component {
                             backgroundImage: `url(${this.state.profile_pic})`,
                             backgroundSize: "cover",
                             backgroundPosition: "center",
-                            height: "40px",
-                            width: "40px",
+                            height: "60px",
+                            width: "60px",
                             borderRadius: "50%",
                             margin: "3px",
                             cursor: "pointer"
                           }}
                         />
+                        <div className="post-info-time">
+                        <div className="post-info">
                         Posted by{" "}
                         <Link
                           style={{ margin: "3px" }}
@@ -312,6 +316,11 @@ export class PostDetails extends Component {
                         >
                           {category}
                         </Link>
+                        </div>
+
+                        <time className="time">{new Date(time_stamp).toLocaleTimeString([], {timeStyle: 'short', dateStyle: 'medium'})}</time>
+                        </div>
+
                       </MDBCardText>
                       <MDBCardTitle tag="h5">
                         <h3> {title} </h3>
