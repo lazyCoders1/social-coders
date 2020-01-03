@@ -32,9 +32,9 @@ const findByTestAttr = (wrapper, val) => {
 
 test("renders without crashing", () => {
   const wrapper = setup();
-  const MeetUpDetailsComp = findByTestAttr(wrapper, "component-meetup-details");
+  const MeetUpDetailsComp = findByTestAttr(wrapper, "component-meet-up-details");
   expect(wrapper).toBeTruthy();
-  expect(MeetUpDetailsComp.length).toBe(0);
+  expect(MeetUpDetailsComp.length).toBe(1);
   // console.log(wrapper.debug());
   // expect(wrapper).toBeFalsy();
 });
@@ -42,8 +42,10 @@ test("renders without crashing", () => {
 test("renders edit button", () => {
   const wrapper = setup();
   const button = findByTestAttr(wrapper, "edit-button-display");
-  // expect(wrapper).toBeTruthy();
-  expect(button.length).toBe(0);
+  expect(wrapper).toBeTruthy();
+  console.log(wrapper.debug());
+
+  expect(button.length).toBe(1);
 });
 
 test("clicking button allows you to edit Meetup post", () => {
