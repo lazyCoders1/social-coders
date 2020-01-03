@@ -1,37 +1,36 @@
 import React, { Component } from "react";
-import axios from 'axios'
-import Post from "../Posts/Post"
-import { connect } from 'react-redux'
+import axios from "axios";
+import Post from "../Posts/Post";
+import { connect } from "react-redux";
 
 class Favorites extends Component {
   constructor(props) {
     super(props);
-    this.state={
+    this.state = {
       posts: [],
-      search: ''
-    }
+      search: ""
+    };
   }
 
-  componentDidMount =()=> {
-    this.getFavorites()
-    console.log(this.state.posts)
-  }
+  componentDidMount = () => {
+    this.getFavorites();
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.posts.length !== this.state.posts.length) {
-      this.getFavorites()
+      this.getFavorites();
     }
   }
 
   getFavorites = () => {
-    const {id} = this.props
-    console.log(id)
-    axios.get(`/api/favorites/${id}`)
-    .then(res => {
-      this.setState({posts: res.data})
-    })
-    .catch(err => console.log(err))
-  }
+    const { id } = this.props.match.params;
+    axios
+      .get(`/api/favorites/${id}`)
+      .then(res => {
+        this.setState({ posts: res.data });
+      })
+      .catch(err => console.log(err));
+  };
 
   handleChange = event => {
     this.setState({ search: event.target.value });
@@ -59,15 +58,14 @@ class Favorites extends Component {
           value={this.state.search}
         />
         {usersPosts}
-
-    </>
-    )
+      </>
+    );
   }
 }
 
 function mapStateToProps(reduxState) {
-  const { id } = reduxState
-  return { id }
+  const { id } = reduxState;
+  return { id };
 }
 
-export default connect(mapStateToProps) (Favorites);
+export default connect(mapStateToProps)(Favorites);

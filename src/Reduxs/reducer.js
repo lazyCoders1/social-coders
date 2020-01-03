@@ -59,7 +59,7 @@ function reducer(state = initialState, action) {
       return state.meetupPosts;
 
     case GET_MEETUP_POST_FOR_ID:
-      return state.meetupPosts.filter(meetup => meetup.id == action.payload.id);
+      return state.meetupPosts.filter(meetup => +meetup.id === +action.payload.id);
 
     //!--------
   }
