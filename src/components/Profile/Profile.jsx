@@ -79,7 +79,6 @@ class Profile extends Component {
 
   render() {
     const el = this.state;
-
     let filterByValue = this.state.posts.filter(o => {
       return Object.keys(o).some(k => {
         return o[k]
@@ -143,13 +142,23 @@ class Profile extends Component {
                 className="edit-pen"
                 style={{
                   visibility:
-                    this.props.id === this.state.user_id ? "visible" : "hidden"
+                    this.props.id === el.user_id ? "visible" : "hidden"
                 }}
               />
-              <a className="github" href={`${el.github}`}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github"
+                href={`${el.github}`}
+              >
                 <MDBIcon fab icon="github" />
               </a>
-              <a className="linkedin" href={`${el.linked_in}`}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="linkedin"
+                href={`${el.linked_in}`}
+              >
                 <MDBIcon fab icon="linkedin" />
               </a>
             </div>

@@ -316,10 +316,12 @@ export class PostDetails extends Component {
                       <MDBCardTitle tag="h5">
                         <h3> {title} </h3>
                       </MDBCardTitle>
-                      <MDBCardImage
-                        style={{ maxHeight: "500px", maxWidth: "500px" }}
-                        src={img}
-                      />
+                      <div className="img-box">
+                        <MDBCardImage
+                          style={{ maxHeight: "400px", maxWidth: "99%" }}
+                          src={img}
+                        />
+                      </div>
                       <MDBCardText className="card-text">
                         {parse(String(content))}
                       </MDBCardText>
