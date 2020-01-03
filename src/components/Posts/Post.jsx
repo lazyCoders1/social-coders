@@ -175,7 +175,12 @@ class Post extends Component {
           <h2 className="users-name">{name}</h2>
           <time className="time">12 hrs</time>
           <h4 className="title">{title}</h4>
-          <img className="post-picture" src={`${img}`} alt="" />
+          <img
+            className="post-picture"
+            src={`${img}`}
+            alt=""
+            style={{ maxWidth: "98%", maxHeight: '200px' }}
+          />
           <div className="post-content">
             {parse(content)}
             <div className="post-gradient" />

@@ -84,7 +84,7 @@ class CreatePost extends Component {
               </div>
               {this.props.location.pathname !== "/javascript" &&
                 this.props.location.pathname !== "/css" &&
-                this.props.location.pathname !== "/public" && (
+                this.props.location.pathname !== "/other" && (
                   <select onChange={this.handleInput} name="category" id="">
                     <option value=""></option>
                     <option value="JavaScript">JavaScript</option>
