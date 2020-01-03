@@ -1,2 +1,2 @@
 delete from meetups 
-where user_id = $1;
+where id = $1;

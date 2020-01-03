@@ -20,5 +20,11 @@ module.exports = {
     } else {
       res.status(200).send(false);
     }
+  },
+  getFavorites: async (req, res) => {
+    const db = req.app.get("db")
+    const {id} = req.params;
+    const favorites = await db.get_favorites(id)
+    res.status(200).send(favorites)
   }
 };
