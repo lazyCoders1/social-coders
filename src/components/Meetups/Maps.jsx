@@ -4,6 +4,7 @@ import Geocode from 'react-geocode'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
 import './Maps.scss'
+const { REACT_APP_GOOGLE_API_KEY } = process.env
 
 class Maps extends Component {
   constructor() {
@@ -15,7 +16,7 @@ class Maps extends Component {
       lat: '',
       lng: ''
     }
-    Geocode.setApiKey('AIzaSyAF2ehHNVz4w3Q6wBLgY_zDICDGirXRoCE')
+    Geocode.setApiKey(REACT_APP_GOOGLE_API_KEY)
   }
 
   getPosts = () => {
@@ -57,6 +58,7 @@ class Maps extends Component {
     }
   }
   render() {
+    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
     return (
       <div>
         {this.state.lng && (
@@ -81,6 +83,6 @@ class Maps extends Component {
 
 export default withRouter(
   GoogleApiWrapper({
-    apiKey: 'AIzaSyAF2ehHNVz4w3Q6wBLgY_zDICDGirXRoCE'
+    apiKey: REACT_APP_GOOGLE_API_KEY
   })(Maps)
 )

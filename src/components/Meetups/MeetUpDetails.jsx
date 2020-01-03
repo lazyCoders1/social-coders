@@ -92,7 +92,7 @@ class MeetUpDetails extends Component {
     console.log(this.state.postDetails.author_id)
     // const el = props.meetUpPost;
     return (
-      <div id="meetup-post-details">
+      <div id="meetup-post-details" data-test="component-meet-up-details">
         <MDBView className="post-container">
           {/* <MDBContainer> */}
           {/* <MDBRow>
@@ -213,6 +213,7 @@ class MeetUpDetails extends Component {
                   {/* {console.log("hit", this.state.post)} */}
                 </MDBCardTitle>
                 <MDBBtn
+                  data-test="edit-button"
                   onClick={() => this.editPost()}
                   color="default"
                   className="post-btn"
