@@ -120,7 +120,7 @@ const TheDevs = () => {
                 fontSize: '1.6rem'
               }}
             >
-              Snow Board Shedding Developer
+              Snow Board Shredding Developer
             </p>
           </MDBContainer>
         </MDBJumbotron>
