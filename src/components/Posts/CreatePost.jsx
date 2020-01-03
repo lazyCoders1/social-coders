@@ -19,6 +19,7 @@ class CreatePost extends Component {
   addPost = () => {
     const { id: author_id } = this.props;
     const { title, img, content, category } = this.state;
+    const time_stamp = new Date()
     if (!category) {
       return Swal.fire({
         title: "Please select a category.",
@@ -26,7 +27,7 @@ class CreatePost extends Component {
       });
     }
     axios
-      .post("/api/posts", { title, img, content, author_id, category })
+      .post("/api/posts", { title, img, content, author_id, category, time_stamp })
       .then(res => {
         this.setState({
           title: "",
