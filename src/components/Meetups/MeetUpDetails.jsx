@@ -86,7 +86,7 @@ export default class MeetUpDetails extends Component {
     const { isEditing } = this.state
     // const el = props.meetUpPost;
     return (
-      <div id="meetup-post-details">
+      <div id="meetup-post-details" data-test="component-meet-up-details">
         <MDBView className="post-container">
           {/* <MDBContainer> */}
           {/* <MDBRow>
@@ -207,6 +207,7 @@ export default class MeetUpDetails extends Component {
                   {/* {console.log("hit", this.state.post)} */}
                 </MDBCardTitle>
                 <MDBBtn
+                  data-test="edit-button"
                   onClick={() => this.editPost()}
                   color="default"
                   className="post-btn"
