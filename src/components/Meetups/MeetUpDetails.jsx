@@ -173,6 +173,7 @@ export default class MeetUpDetails extends Component {
                   {/* {console.log("hit", this.state.post)} */}
                 </MDBCardTitle>
                 <MDBBtn
+                  data-test="edit-button"
                   onClick={() => this.editPost()}
                   color="default"
                   className="post-btn"
