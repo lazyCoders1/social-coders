@@ -6,7 +6,8 @@ import { updatePosts } from '../../Reduxs/reducer'
 import Post from '../Posts/Post'
 import './Landing.scss'
 import { MDBJumbotron, MDBAnimation, MDBRow } from 'mdbreact'
-class Landing extends Component {
+
+export class Landing extends Component {
   state = {
     posts: [],
     title: '',

@@ -7,7 +7,7 @@ import parse from "html-react-parser";
 import Swal from "sweetalert2";
 import { withRouter } from "react-router-dom";
 
-class Post extends Component {
+export class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -196,6 +196,7 @@ class Post extends Component {
         <div className="icons">
           <div className="icon-box">
             <i
+              data-test="like-icon"
               className={`fas fa-heart ${
                 this.state.liked ? "heart-red" : "heart-purple"
               }`}
@@ -226,7 +227,7 @@ class Post extends Component {
 
 function mapStateToProps(reduxState) {
   const { id } = reduxState;
-  return { id };
+  return { id } || '';
 }
 
 export default withRouter(connect(mapStateToProps)(Post));

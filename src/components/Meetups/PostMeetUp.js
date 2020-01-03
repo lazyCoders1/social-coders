@@ -1,10 +1,11 @@
 import React from 'react'
 import { MDBInput, MDBBtn, MDBContainer, MDBCard } from 'mdbreact'
 import { Component } from 'react'
+
 import axios from 'axios'
 
 
-class PostMeetUp extends Component {
+export class PostMeetUp extends Component {
   constructor() {
     super()
     this.state = {

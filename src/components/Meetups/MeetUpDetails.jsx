@@ -25,7 +25,7 @@ import Swal from 'sweetalert2'
 // import MeetUpsDash from "./MeetUp";
 // import Comment from "../Comments/Comment";
 
-class MeetUpDetails extends Component {
+export class MeetUpDetails extends Component {
   constructor() {
     super()
     this.state = {
@@ -213,7 +213,7 @@ class MeetUpDetails extends Component {
                   {/* {console.log("hit", this.state.post)} */}
                 </MDBCardTitle>
                 <MDBBtn
-                  data-test="edit-button"
+                  data-test="edit-button-display"
                   onClick={() => this.editPost()}
                   color="default"
                   className="post-btn"
