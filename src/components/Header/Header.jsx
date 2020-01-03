@@ -105,11 +105,9 @@ export class Header extends Component {
                       <MDBDropdownItem href="#/meetups">
                         Meetups
                       </MDBDropdownItem>
-
                       <MDBDropdownItem href="#/aboutus">
                         About Us
                       </MDBDropdownItem>
-
                     </MDBDropdownMenu>
                   </MDBDropdown>
                 </MDBNavItem>

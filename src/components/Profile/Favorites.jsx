@@ -9,33 +9,32 @@ import './Favorites.scss'
 class Favorites extends Component {
   constructor(props) {
     super(props)
+
     this.state = {
       posts: [],
-      search: ''
-    }
+      search: ""
+    };
   }
 
   componentDidMount = () => {
-    this.getFavorites()
-    console.log(this.state.posts)
-  }
+    this.getFavorites();
+  };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.posts.length !== this.state.posts.length) {
-      this.getFavorites()
+      this.getFavorites();
     }
   }
 
   getFavorites = () => {
-    const { id } = this.props
-    console.log(id)
+    const { id } = this.props.match.params;
     axios
       .get(`/api/favorites/${id}`)
       .then(res => {
-        this.setState({ posts: res.data })
+        this.setState({ posts: res.data });
       })
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   handleChange = event => {
     this.setState({ search: event.target.value })
@@ -120,8 +119,9 @@ class Favorites extends Component {
 }
 
 function mapStateToProps(reduxState) {
-  const { id } = reduxState
-  return { id }
+  const { id } = reduxState;
+  return { id };
 }
-
+        
 export default connect(mapStateToProps)(Favorites)
+

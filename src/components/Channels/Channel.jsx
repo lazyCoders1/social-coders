@@ -60,7 +60,7 @@ const Channels = () => {
                 This channel allows users to post any code they want to show off
                 or to browse code already posted.
               </MDBCardText>
-              <MDBBtn href="#/public">Go!</MDBBtn>
+              <MDBBtn href="#/other">Go!</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

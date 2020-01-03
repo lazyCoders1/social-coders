@@ -44,14 +44,23 @@ class Register extends Component {
         .post("/auth/register", { name, email, password })
         .then(res => {
           this.props.updateUserInfo(res.data.user);
-          Swal.fire(res.data.message);
+          Swal.fire({
+            title: res.data.message,
+            icon: 'success',
+            timer: 1200,
+            showConfirmButton: false
+          });
           this.props.history.push("/login");
         })
-        .catch(err => {
-          console.log("Err register", err.response.data.message);
-        });
+        .catch(err => Swal.fire({
+          title: err.response.data.message,
+          icon: 'error'
+        }));
     } else {
-      Swal.fire(`passwords don't match`);
+      Swal.fire({
+        title: 'Passwords do not match.',
+        icon: 'error',
+      });
     }
   };
 

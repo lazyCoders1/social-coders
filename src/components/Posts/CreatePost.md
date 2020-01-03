@@ -114,7 +114,7 @@ class CreatePost extends Component {
                       <MDBCardTitle tag="h5">
                         {this.props.location.pathname !== "/javascript" &&
                           this.props.location.pathname !== "/css" &&
-                          this.props.location.pathname !== "/public" && (
+                          this.props.location.pathname !== "/other" && (
                             // <select
                             //   onChange={this.handleInput}
                             //   name="category"
@@ -251,7 +251,7 @@ export default withRouter(connect(mapStateToProps)(CreatePost));
 //     />
 //     {this.props.location.pathname !== "/javascript" &&
 //       this.props.location.pathname !== "/css" &&
-//       this.props.location.pathname !== "/public" && (
+//       this.props.location.pathname !== "/other" && (
 //         <select onChange={this.handleInput} name="category" id="">
 //           <option value=""></option>
 //           <option value="JavaScript">JavaScript</option>
@@ -398,7 +398,7 @@ class CreatePost extends Component {
                       <MDBCardTitle tag="h5">
                         {this.props.location.pathname !== "/javascript" &&
                           this.props.location.pathname !== "/css" &&
-                          this.props.location.pathname !== "/public" && (
+                          this.props.location.pathname !== "/other" && (
                             // <select
                             //   onChange={this.handleInput}
                             //   name="category"
@@ -539,7 +539,7 @@ export default withRouter(connect(mapStateToProps)(CreatePost));
 //     />
 //     {this.props.location.pathname !== "/javascript" &&
 //       this.props.location.pathname !== "/css" &&
-//       this.props.location.pathname !== "/public" && (
+//       this.props.location.pathname !== "/other" && (
 //         <select onChange={this.handleInput} name="category" id="">
 //           <option value=""></option>
 //           <option value="JavaScript">JavaScript</option>
