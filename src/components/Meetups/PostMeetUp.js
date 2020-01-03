@@ -3,7 +3,8 @@ import { MDBInput, MDBBtn, MDBContainer, MDBCard } from 'mdbreact'
 import { Component } from 'react'
 import axios from 'axios'
 
-export default class PostMeetUp extends Component {
+
+class PostMeetUp extends Component {
   constructor() {
     super()
     this.state = {
@@ -18,6 +19,9 @@ export default class PostMeetUp extends Component {
       zipcode: ''
     }
   }
+  // componentDidMount = () => {
+  //   console.log(props.id)
+  // }
 
   addPost = () => {
     const {
@@ -31,6 +35,8 @@ export default class PostMeetUp extends Component {
       state,
       zipcode
     } = this.state
+    
+    console.log(author_id)
     axios
       .post('/api/meetups', {
         title,
@@ -41,7 +47,8 @@ export default class PostMeetUp extends Component {
         street,
         city,
         state,
-        zipcode
+        zipcode,
+        author_id
       })
       .then(res => {
         this.setState({
@@ -59,6 +66,7 @@ export default class PostMeetUp extends Component {
   }
 
   render() {
+    console.log(this.props.id)
     return (
       <div>
         <MDBContainer>
@@ -133,3 +141,10 @@ export default class PostMeetUp extends Component {
     )
   }
 }
+
+function mapStateToProps(reduxState) {
+  const { id } = reduxState;
+  return { id };
+}
+
+export default connect(mapStateToProps)(PostMeetUp)
