@@ -1,0 +1,17 @@
+.lapTop2 {
+  font-size: 8rem;
+  margin: 0 auto;
+  padding: 0;
+  color: whitesmoke;
+}
+
+.Ctext22 {
+  font-size: 6rem;
+  color: whitesmoke;
+}
+@media (max-width: 600px) {
+  .Ctext22 {
+    display: none;
+    color: whitesmoke;
+  }
+}

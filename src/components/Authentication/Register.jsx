@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { updateUserInfo } from "../../Reduxs/reducer";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+import React, { Component } from 'react'
+import axios from 'axios'
+import { updateUserInfo } from '../../Reduxs/reducer'
+import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import {
   MDBMask,
   MDBRow,
@@ -16,53 +16,55 @@ import {
   MDBCardBody,
   MDBInput,
   MDBAnimation
-} from "mdbreact";
-import "./Register.scss";
+} from 'mdbreact'
+import './Register.scss'
 
 class Register extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
-      email: "",
-      name: "",
-      password1: "",
-      password2: ""
-    };
+      email: '',
+      name: '',
+      password1: '',
+      password2: ''
+    }
   }
 
   handleChange = (key, value) => {
     this.setState({
       [key]: value
-    });
-  };
+    })
+  }
 
   register = () => {
     if (this.state.password1 === this.state.password2) {
-      const { email, name, password1: password } = this.state;
+      const { email, name, password1: password } = this.state
       axios
-        .post("/auth/register", { name, email, password })
+        .post('/auth/register', { name, email, password })
         .then(res => {
-          this.props.updateUserInfo(res.data.user);
+          this.props.updateUserInfo(res.data.user)
           Swal.fire({
             title: res.data.message,
             icon: 'success',
             timer: 1200,
             showConfirmButton: false
-          });
-          this.props.history.push("/login");
+          })
+          this.props.history.push('/login')
         })
-        .catch(err => Swal.fire({
-          title: err.response.data.message,
-          icon: 'error'
-        }));
+        .catch(err =>
+          Swal.fire({
+            title: err.response.data.message,
+            icon: 'error'
+          })
+        )
     } else {
       Swal.fire({
         title: 'Passwords do not match.',
-        icon: 'error',
-      });
+        icon: 'error'
+      })
     }
-  };
+  }
 
   render() {
     return (
@@ -91,7 +93,7 @@ class Register extends Component {
                           Gates
                         </h6>
                         <Link to="/login">
-                          <MDBBtn outline color="white">
+                          <MDBBtn outline color="white" size="sm">
                             Sign In
                           </MDBBtn>
                         </Link>
@@ -119,7 +121,7 @@ class Register extends Component {
                             icon="envelope"
                             value={this.state.email}
                             onChange={e =>
-                              this.handleChange("email", e.target.value)
+                              this.handleChange('email', e.target.value)
                             }
                             type="text"
                           />
@@ -131,7 +133,7 @@ class Register extends Component {
                             icon="user"
                             value={this.state.name}
                             onChange={e =>
-                              this.handleChange("name", e.target.value)
+                              this.handleChange('name', e.target.value)
                             }
                             type="text"
                           />
@@ -145,7 +147,7 @@ class Register extends Component {
                             autoComplete="off"
                             value={this.state.password1}
                             onChange={e =>
-                              this.handleChange("password1", e.target.value)
+                              this.handleChange('password1', e.target.value)
                             }
                           />
                           <MDBInput
@@ -158,7 +160,7 @@ class Register extends Component {
                             autoComplete="off"
                             value={this.state.password2}
                             onChange={e =>
-                              this.handleChange("password2", e.target.value)
+                              this.handleChange('password2', e.target.value)
                             }
                           />
                         </form>
@@ -166,6 +168,7 @@ class Register extends Component {
                           <MDBBtn
                             onClick={() => this.register()}
                             color="default"
+                            size="sm"
                           >
                             Sign Up
                           </MDBBtn>
@@ -207,12 +210,12 @@ class Register extends Component {
           </MDBMask>
         </MDBView>
       </div>
-    );
+    )
   }
 }
 
 const mapDispatchToProps = {
   updateUserInfo
-};
+}
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(Register)
