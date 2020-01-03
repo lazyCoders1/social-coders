@@ -19,7 +19,7 @@ import ScrollAnimation from 'react-animate-on-scroll'
 import './MeetUpsDash.scss'
 import { connect } from "react-redux";
 
-class CreateMeetUps extends Component {
+export class CreateMeetUps extends Component {
   constructor() {
     super()
 
@@ -131,7 +131,7 @@ class CreateMeetUps extends Component {
   };
 
   render() {
-    console.log(this.props.id)
+    // console.log(this.props.id)
     let filterByValue = this.state.meetUpPosts.filter(o => {
       return Object.keys(o).some(k => {
         return o[k].toString().toLowerCase().includes(this.state.search.toLowerCase())

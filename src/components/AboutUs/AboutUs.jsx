@@ -4,7 +4,7 @@ import { MDBCard, MDBRow, MDBCardImage, MDBCardTitle, MDBCol } from 'mdbreact'
 import 'animate.css/animate.min.css'
 import ScrollAnimation from 'react-animate-on-scroll'
 
-class AboutUs extends Component {
+export class AboutUs extends Component {
   render() {
     return (
       <div className="AboutUsDiv">

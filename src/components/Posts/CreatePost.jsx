@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import "./CreatePost.scss";
 import { MDBBtn, MDBIcon, MDBAnimation } from "mdbreact";
 
-class CreatePost extends Component {
+export class CreatePost extends Component {
   state = {
     title: "",
     img: "",

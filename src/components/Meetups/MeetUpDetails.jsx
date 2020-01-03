@@ -25,7 +25,7 @@ import Swal from 'sweetalert2'
 // import MeetUpsDash from "./MeetUp";
 // import Comment from "../Comments/Comment";
 
-class MeetUpDetails extends Component {
+export class MeetUpDetails extends Component {
   constructor() {
     super()
     this.state = {
