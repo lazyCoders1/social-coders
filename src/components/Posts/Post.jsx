@@ -150,7 +150,8 @@ export class Post extends Component {
       content,
       name,
       profile_pic,
-      author_id
+      author_id,
+      time_stamp
     } = this.props.post;
     return (
       <div style={{ background: "#f8f8ff" }} className="post-card">
@@ -173,7 +174,7 @@ export class Post extends Component {
           onClick={() => this.props.history.push(`/post_details/${id}`)}
         >
           <h2 className="users-name">{name}</h2>
-          <time className="time">12 hrs</time>
+          <time className="time">{new Date(time_stamp).toLocaleTimeString([], {timeStyle: 'short', dateStyle: 'medium'})}</time>
           <h4 className="title">{title}</h4>
           <img
             className="post-picture"

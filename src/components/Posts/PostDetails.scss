@@ -26,6 +26,11 @@
     justify-content: center;
   }
 
+  .post-info-time {
+    display: flex;
+    flex-direction: column;
+  }
+
   /* !FOOTER BAR */
 
   .footer-bar {
