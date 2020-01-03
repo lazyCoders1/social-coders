@@ -33,7 +33,7 @@ class Maps extends Component {
 
   getAddress = () => {
     const address = `${this.state.postDets.street}, ${this.state.postDets.city}, ${this.state.postDets.state} ${this.state.postDets.zipcode} `
-    console.log(this.state.postDets)
+    //console.log(this.state.postDets)
     Geocode.fromAddress(`${address}`).then(
       response => {
         console.log(response)
@@ -58,7 +58,7 @@ class Maps extends Component {
     }
   }
   render() {
-    console.log(process.env.REACT_APP_GOOGLE_API_KEY)
+    //console.log(process.env.REACT_APP_GOOGLE_API_KEY)
     return (
       <div>
         {this.state.lng && (
