@@ -12,6 +12,7 @@ export class AboutUs extends Component {
           className="topHalf"
           style={{ display: 'flex', justifyContent: 'flex-start' }}
         >
+          
           <div className="bg">
             <ScrollAnimation animateIn="fadeInLeft" delay=".8s">
               <h1 className="landingText">Social Coders</h1>
