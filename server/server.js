@@ -18,6 +18,7 @@ const auth = require("./middleware/authMiddleware");
 
 const app = express();
 
+app.use( express.static( `${__dirname}/../build` ) );
 app.use(express.json());
 
 app.use(
